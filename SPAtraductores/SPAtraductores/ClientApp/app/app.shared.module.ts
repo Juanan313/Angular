@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -27,10 +27,11 @@ import { TraductorService } from './Services/traductorService.service';
         CommonModule,
         HttpModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'fetchTraductor', component: FetchTraductorComponent },
+            { path: 'fetch-traductor', component: FetchTraductorComponent },
             { path: 'register-Traductor', component: createtraductor },
             { path: 'Traductor/edit/:usuario', component: createtraductor },
             { path: '**', redirectTo: 'home' }
