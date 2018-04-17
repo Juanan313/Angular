@@ -10,7 +10,7 @@ using SPAtraductores.Models;
 
 namespace SPAtraductores.Controllers
 {
-    public class EmployeeController : Controller
+    public class TraductorController : Controller
     {
         TraductorDataAccess objtraduct = new TraductorDataAccess();
         [HttpGet]

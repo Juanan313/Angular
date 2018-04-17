@@ -9,6 +9,9 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { createtraductor } from './components/addtraductor/addtraductor.component';
+import { FetchTraductorComponent } from './components/fetchtraductor/fetchtraductor.component'
+import { TraductorService } from './Services/traductorService.service';
 
 @NgModule({
     declarations: [
@@ -16,7 +19,9 @@ import { CounterComponent } from './components/counter/counter.component';
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        createtraductor,
+        FetchTraductorComponent
     ],
     imports: [
         CommonModule,
@@ -25,11 +30,13 @@ import { CounterComponent } from './components/counter/counter.component';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'fetchTraductor', component: FetchTraductorComponent },
+            { path: 'register-Traductor', component: createtraductor },
+            { path: 'Traductor/edit/:usuario', component: createtraductor },
             { path: '**', redirectTo: 'home' }
         ])
-    ]
+    ],
+    providers: [TraductorService]
 })
 export class AppModuleShared {
 }

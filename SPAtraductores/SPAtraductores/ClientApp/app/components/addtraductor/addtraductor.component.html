@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <h3>Traductor</h3>
+    <hr />
+    <form [formGroup]="traductorForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Email">Email</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="email">
+            </div>
+            <span class="text-danger" *ngIf="traductorForm.hasError('required', 'email') && formDir.submitted">
+                Email is required.
+            </span>
+        </div>
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Usuario">User</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="usuario">
+            </div>
+            <span class="text-danger" *ngIf="traductorForm.hasError('required', 'usuario') && formDir.submitted">
+                User is required.
+            </span>
+        </div>
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Name">Name</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="name">
+            </div>
+            <span class="text-danger" *ngIf="traductorForm.hasError('required', 'name') && formDir.submitted">
+                Name is required.
+            </span>
+        </div>
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="LastName">LastName</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="lastname">
+            </div>
+            <span class="text-danger" *ngIf="traductorForm.hasError('required', 'lastname') && formDir.submitted">
+                LastName is required.
+            </span>
+        </div>
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="CP">Postal Code</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="cp">
+            </div>
+            <span class="text-danger" *ngIf="traductorForm.hasError('required', 'cp') && formDir.submitted">
+                Postal Code is required.
+            </span>
+        </div>
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Tlfn">Phone number</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="tlfn">
+            </div>
+            <span class="text-danger" *ngIf="traductorForm.hasError('required', 'tlfn') && formDir.submitted">
+                Phone number is required.
+            </span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Save</button>
+            <button class="btn" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</body>
+</html>

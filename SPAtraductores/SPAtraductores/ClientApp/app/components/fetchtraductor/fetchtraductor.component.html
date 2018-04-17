@@ -1,0 +1,32 @@
+﻿<h1>Datos Traductores</h1>
+<p>Este componente muestra datos de los traductores desde servidor</p>
+<p *ngIf="!tradList"><em>Loading...</em></p>
+<p>
+    <a [routerLink]="['/register-traductor']">Create New</a>
+</p>
+<table class='table' *ngIf="tradList">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>CP</th>
+            <th>Tlfn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let traductor of tradList">
+            <td>{{ traductor.id }}</td>
+            <td>{{ traductor.Name }}</td>
+            <td>{{ traductor.LastName }}</td>
+            <td>{{ traductor.Email }}</td>
+            <td>{{ traductor.CP }}</td>
+            <td>{{ traductor.Tlfn }}</td>
+            <td>
+                <a [routerLink]="['/traductor/edit/', traductor.id]">Edit</a> |
+                <a [routerLink]="" (click)="delete(traductor.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
