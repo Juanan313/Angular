@@ -11,7 +11,7 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { createtraductor } from './components/addtraductor/addtraductor.component';
 import { FetchTraductorComponent } from './components/fetchtraductor/fetchtraductor.component'
-import { TraductorService } from './Services/traductorService.service';
+import { TraductorService } from './services/traductorservice.service';
 
 @NgModule({
     declarations: [

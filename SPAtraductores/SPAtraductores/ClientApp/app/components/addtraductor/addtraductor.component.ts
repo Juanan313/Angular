@@ -29,14 +29,14 @@ export class createtraductor implements OnInit {
             this.id = this._avRoute.snapshot.params["id"];
         }
         this.traductorForm = this._fb.group({
-            idTraductores: 0,
-            Email: ['', [Validators.required]],
-            Usuario: ['', [Validators.required]],
-            Name: ['', [Validators.required]],
-            Pass: ['', [Validators.required]],
-            LastName: ['', [Validators.required]],
-            CP: [0, [Validators.required]],
-            Tlfn: [0, [Validators.required]]
+            id: 0,
+            email: ['', [Validators.required]],
+            usuario: ['', [Validators.required]],
+            name: ['', [Validators.required]],
+            pass: ['', [Validators.required]],
+            lastname: ['', [Validators.required]],
+            cp: ['', [Validators.required]],
+            tlfn: ['', [Validators.required]]
         })
     }
     ngOnInit() {
@@ -67,11 +67,11 @@ export class createtraductor implements OnInit {
     cancel() {
         this._router.navigate(['/fetch-traductor']);
     }
-    get Email() { return this.traductorForm.get('CorreoElectronico'); }
-    get Usuario() { return this.traductorForm.get('Contrasena'); }
-    get Pass() { return this.traductorForm.get('Pass'); }
-    get Name() { return this.traductorForm.get('Nombre'); }
-    get LastName() { return this.traductorForm.get('Apellidos'); }
-    get CP () { return this.traductorForm.get('CP'); }
-    get Tlfn() { return this.traductorForm.get('Tlfn'); } 
+    get email() { return this.traductorForm.get('email'); }
+    get usuario() { return this.traductorForm.get('usuario'); }
+    get pass() { return this.traductorForm.get('pass'); }
+    get name() { return this.traductorForm.get('name'); }
+    get lastname() { return this.traductorForm.get('lastname'); }
+    get cp () { return this.traductorForm.get('cp'); }
+    get tlfn() { return this.traductorForm.get('tlfn'); } 
 }

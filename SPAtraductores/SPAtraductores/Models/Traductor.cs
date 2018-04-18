@@ -8,7 +8,7 @@ namespace SPAtraductores.Models
     public class Traductor
     {
 
-        public int idTraductores { get; set; }
+        public int ID { get; set; }
         public String Email { get; set; }
         public String Usuario { get; set; }
         public String Pass { get; set; }

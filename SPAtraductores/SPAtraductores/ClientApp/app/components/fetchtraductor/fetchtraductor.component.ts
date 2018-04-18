@@ -16,22 +16,22 @@ export class FetchTraductorComponent {
             data => this.tradList = data  
         )  
     }  
-    delete(traductorID) {  
-        var ans = confirm("Do you want to delete customer with Id: " + traductorID);  
+    delete(idTraductores) {  
+        var ans = confirm("Do you want to delete customer with Id: " + idTraductores);  
         if (ans) {  
-            this._traductorService.deleteTraductor(traductorID).subscribe((data) => {  
+            this._traductorService.deleteTraductor(idTraductores).subscribe((data) => {  
                 this.getTraductors();  
             }, error => console.error(error))   
         }  
     }  
 }  
 interface TraductorData {  
-    idTraductores: number;  
-    Emial: string;  
-    Usuario: string;  
-    Pass: string;  
-    Name: string;
-    LastName: string;
-    CP: number;
-    Tlfn: number;
+    id: number;  
+    email: string;  
+    usuario: string;  
+    pass: string;  
+    name: string;
+    lastname: string;
+    cp: number;
+    tlfn: number;
 }
