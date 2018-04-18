@@ -12,6 +12,8 @@ import { CounterComponent } from './components/counter/counter.component';
 import { createtraductor } from './components/addtraductor/addtraductor.component';
 import { FetchTraductorComponent } from './components/fetchtraductor/fetchtraductor.component'
 import { TraductorService } from './services/traductorservice.service';
+import { HeroFormComponent } from './components/hero-form/hero-form.component';
+import { Hero } from './components/hero';
 
 @NgModule({
     declarations: [
@@ -21,7 +23,8 @@ import { TraductorService } from './services/traductorservice.service';
         FetchDataComponent,
         HomeComponent,
         createtraductor,
-        FetchTraductorComponent
+        FetchTraductorComponent,
+        HeroFormComponent
     ],
     imports: [
         CommonModule,
@@ -34,6 +37,7 @@ import { TraductorService } from './services/traductorservice.service';
             { path: 'fetch-traductor', component: FetchTraductorComponent },
             { path: 'register-Traductor', component: createtraductor },
             { path: 'Traductor/edit/:usuario', component: createtraductor },
+            { path: 'hero-form', component: HeroFormComponent},
             { path: '**', redirectTo: 'home' }
         ])
     ],
