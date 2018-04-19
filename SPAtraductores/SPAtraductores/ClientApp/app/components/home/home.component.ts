@@ -21,9 +21,21 @@ import { Router } from '@angular/router';
 export class HomeComponent {
 
     public lenguageList: IdiomaData[];
+    public serviceList: ServicioData[];
+
+    
+
+
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
         this.getLanguages();
+        this.getServices();
     }  
+
+    getServices() {
+        this._traductorService.getServices().subscribe(
+            data => this.serviceList = data
+            )
+    }
 
     getLanguages() {
         this._traductorService.getLanguages().subscribe(
@@ -36,4 +48,8 @@ export class HomeComponent {
 
 interface IdiomaData {
     Idioma: string;
+}
+
+interface ServicioData {
+    Servicio: string;
 }

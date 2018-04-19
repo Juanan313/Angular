@@ -184,6 +184,37 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
+
+
+        public IEnumerable<Servicio> GetAllServices()
+        {
+            try
+            {
+                List<Servicio> serviceList = new List<Servicio>();
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("GetAllServicios", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        Servicio servicio = new Servicio();
+                        servicio.service = rdr["Servicio"].ToString();
+
+                        serviceList.Add(servicio);
+                    }
+
+                    con.Close();
+                }
+                return serviceList;
+            }
+
+            catch
+            {
+                throw;
+            }
+        }
     }
 
 

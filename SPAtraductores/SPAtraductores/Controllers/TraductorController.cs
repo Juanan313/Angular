@@ -51,5 +51,12 @@ namespace SPAtraductores.Controllers
             return objtraduct.GetAllLenguages();
         }
 
+        [HttpGet]
+        [Route("api/Servicio/Index")]
+        public IEnumerable<Servicio> IndexServices()
+        {
+            return objtraduct.GetAllServices();
+        }
+
     }
 }

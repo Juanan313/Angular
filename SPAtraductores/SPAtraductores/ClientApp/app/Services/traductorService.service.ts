@@ -23,6 +23,12 @@ export class TraductorService {
             .catch(this.errorHandler);
     }
 
+    getServices() {
+        return this._http.get(this.myAppUrl + 'api/Servicio/Index')
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }
+
     getTraductorById(id: number) {  
         return this._http.get(this.myAppUrl + "api/Traductor/Details/" + id)  
             .map((response: Response) => response.json())  
