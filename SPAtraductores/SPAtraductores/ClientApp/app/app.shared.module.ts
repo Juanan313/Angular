@@ -14,7 +14,8 @@ import { FetchTraductorComponent } from './components/fetchtraductor/fetchtraduc
 import { TraductorService } from './services/traductorservice.service';
 import { HeroFormComponent } from './components/hero-form/hero-form.component';
 import { Hero } from './components/hero';
-import { HomePageComponent } from './components/home-page/home-page.component';
+//import { HomePageComponent } from './components/home-page/home-page.component';
+import { TranslatorLoginComponent } from './components/translator-login/translator-login.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
         createtraductor,
         FetchTraductorComponent,
         HeroFormComponent,
-        HomePageComponent
+        //HomePageComponent,
+        TranslatorLoginComponent
     ],
     imports: [
         CommonModule,
@@ -39,9 +41,11 @@ import { HomePageComponent } from './components/home-page/home-page.component';
             { path: 'fetch-traductor', component: FetchTraductorComponent },
             { path: 'register-Traductor', component: createtraductor },
             { path: 'Traductor/edit/:usuario', component: createtraductor },
-            { path: 'hero-form', component: HeroFormComponent},
+            { path: 'hero-form', component: HeroFormComponent },
+            { path: 'translator-login', component: TranslatorLoginComponent },
             { path: '**', redirectTo: 'home' },
-            { path: 'home-page', component: HomePageComponent}
+            //{ path: 'home-page', component: HomePageComponent }
+            
         ])
     ],
     providers: [TraductorService]

@@ -9,12 +9,21 @@
 <form>
     <div class="form-group">
         <label for="CP"> Postal Code </label>
-        <input type="text" id="CP" class="form-control"/>
+        <input required pattern="[0-9]{5}" ngModel name="CP" #CP="ngModel" (change)="search(CP)" type="text" id="CP" class="form-control" />
+        <div class="alert alert-danger" *ngIf="CP.touched && !CP.valid">
+            A correct postal code is required. <br />
+            A correct CP has to be a number of 5 digits length.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="language">Language for translate</label>
+        <select class="form-control" id="language" reqiored ngModel #language="ngModel" name="language">
+            <option *ngFor="let language of lenguageList"> {{ language.lenguage }}</option>
+        </select>
     </div>
     <button class="btn btn-primary"> Search </button>
-
 </form>
-<br/>
+<br />
 <p>If you are a translator who wants to works with us login or register here!</p>
-<a [routerLink]="['/hero-form']">Login</a>
+<a [routerLink]="['/translator-login']">Login</a>
 

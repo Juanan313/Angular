@@ -1,0 +1,29 @@
+﻿
+<div class="card">
+    <div class="card-header">
+        <h1> Login Translators</h1>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="user">User name</label>
+                <input required pattern="^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d]{8,}$" ngModel #user="ngModel" id="user" type="text" name="user" class="form-control" />
+                <div class="alert alert-danger" *ngIf="user.touched && !user.valid">
+                    A correct username is required. The username has to be 8 length. <br/>
+                    An has to have at least one uppercase letter, onelowercase letter.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="pass"> Password </label>
+                <input required ngModel #pass="ngModel" id="pass" type="text" name="pass" class="form-control" />
+                <div class="alert alert-danger" *ngIf="pass.touched && !pass.valid">
+                   A password is required for login!
+                </div>
+            </div>
+
+            <button class="btn btn-primary">sumbit</button>
+
+        </form>
+    </div>
+</div>

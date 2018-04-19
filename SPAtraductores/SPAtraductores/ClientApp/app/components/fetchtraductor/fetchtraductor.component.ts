@@ -10,7 +10,7 @@ export class FetchTraductorComponent {
     public tradList: TraductorData[];  
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {  
         this.getTraductors();  
-    }  
+    }       
     getTraductors() {  
         this._traductorService.getTraductors().subscribe(  
             data => this.tradList = data  

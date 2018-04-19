@@ -43,5 +43,13 @@ namespace SPAtraductores.Controllers
         {
             return objtraduct.DeleteTraductor(id);
         }
+
+        [HttpGet]
+        [Route("api/Idioma/Index")]
+        public IEnumerable<Idioma> IndexLanguage()
+        {
+            return objtraduct.GetAllLenguages();
+        }
+
     }
 }
