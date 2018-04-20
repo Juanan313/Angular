@@ -4,7 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service'  
 @Component({  
     selector: 'FetchTraductorComponent',  
-    templateUrl: './fetchtraductor.component.html'  
+    templateUrl: './fetchtraductor.component.html',
+    styleUrls: ['./fetchtraductor.component.css']
 })  
 export class FetchTraductorComponent {  
     public tradList: TraductorData[];  

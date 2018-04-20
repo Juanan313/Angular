@@ -9,7 +9,8 @@ import { validateConfig } from '@angular/router/src/config';
 import { BrowserModule } from '@angular/platform-browser';
 @Component({
     selector: 'createtraductor',
-    templateUrl: './addtraductor.component.html'
+    templateUrl: './addtraductor.component.html',
+    styleUrls: ['./addtraductor.component.css']
 })
 @NgModule({
     imports: [
@@ -20,7 +21,7 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class createtraductor implements OnInit {
     traductorForm: FormGroup;
-    title: string = "Create";
+    title: string = "Create an Account";
     id: number;
     errorMessage: any;
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,

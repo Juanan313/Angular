@@ -1,19 +1,19 @@
-﻿<h1>Language DataBase</h1>
+﻿<h1>Services DataBase</h1>
 
-<p *ngIf="!lenguageList"><em>Loading...</em></p>
+<p *ngIf="!serviceList"><em>Loading...</em></p>
 <p>
     <a [routerLink]="['/register-Traductor']">Create New</a>
 </p>
-<table class='table' *ngIf="lenguageList">
+<table class='table' *ngIf="serviceList">
     <thead>
         <tr>
-            <th>Idioma</th>
-            
+            <th>Service</th>
+
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let language of lenguageList">
-            <td>{{ language.lenguage }}</td>
+        <tr *ngFor="let service of serviceList">
+            <td>{{ service.service }}</td>
             <td>
                 <a [routerLink]="" (click)="delete(traductor.id)">Delete</a>
             </td>

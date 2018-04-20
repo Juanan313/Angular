@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
 
 @Component({
-    selector: 'idiomas-fecth',
+    selector: 'idiomas-fetch',
     templateUrl: './idiomas-fecth.component.html',
     styleUrls: ['./idiomas-fecth.component.css']
 })
