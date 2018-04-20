@@ -12,9 +12,9 @@ import { CounterComponent } from './components/counter/counter.component';
 import { createtraductor } from './components/addtraductor/addtraductor.component';
 import { FetchTraductorComponent } from './components/fetchtraductor/fetchtraductor.component'
 import { TraductorService } from './services/traductorservice.service';
+import { IdiomasFecthComponent } from './components/idiomas-fecth/idiomas-fecth.component';
 import { HeroFormComponent } from './components/hero-form/hero-form.component';
 import { Hero } from './components/hero';
-//import { HomePageComponent } from './components/home-page/home-page.component';
 import { TranslatorLoginComponent } from './components/translator-login/translator-login.component';
 
 @NgModule({
@@ -27,8 +27,8 @@ import { TranslatorLoginComponent } from './components/translator-login/translat
         createtraductor,
         FetchTraductorComponent,
         HeroFormComponent,
-        //HomePageComponent,
-        TranslatorLoginComponent
+        TranslatorLoginComponent,
+        IdiomasFecthComponent
     ],
     imports: [
         CommonModule,
@@ -44,7 +44,7 @@ import { TranslatorLoginComponent } from './components/translator-login/translat
             { path: 'hero-form', component: HeroFormComponent },
             { path: 'translator-login', component: TranslatorLoginComponent },
             { path: '**', redirectTo: 'home' },
-            //{ path: 'home-page', component: HomePageComponent }
+
             
         ])
     ],

@@ -1,0 +1,22 @@
+﻿<h1>Translators DataBase</h1>
+<p>This components shows a DB with the data of our translators</p>
+<p *ngIf="!lenguageList"><em>Loading...</em></p>
+<p>
+    <a [routerLink]="['/register-Traductor']">Create New</a>
+</p>
+<table class='table' *ngIf="lenguageList">
+    <thead>
+        <tr>
+            <th>Idioma</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let language of lenguageList">
+            <td>{{ language.lenguage }}</td>
+            <td>
+                <a [routerLink]="" (click)="delete(traductor.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
