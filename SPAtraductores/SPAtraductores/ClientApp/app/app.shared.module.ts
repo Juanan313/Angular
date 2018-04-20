@@ -40,7 +40,7 @@ import { TranslatorLoginComponent } from './components/translator-login/translat
             { path: 'home', component: HomeComponent },
             { path: 'fetch-traductor', component: FetchTraductorComponent },
             { path: 'register-Traductor', component: createtraductor },
-            { path: 'Traductor/edit/:usuario', component: createtraductor },
+            { path: 'Traductor/edit/:id', component: createtraductor },
             { path: 'hero-form', component: HeroFormComponent },
             { path: 'translator-login', component: TranslatorLoginComponent },
             { path: '**', redirectTo: 'home' },

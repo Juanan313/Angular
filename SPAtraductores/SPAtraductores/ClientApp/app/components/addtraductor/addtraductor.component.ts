@@ -34,7 +34,7 @@ export class createtraductor implements OnInit {
             usuario: ['', [Validators.required]],
             name: ['', [Validators.required]],
             pass: ['', [Validators.required]],
-            lastname: ['', [Validators.required]],
+            lastName: ['', [Validators.required]],
             cp: ['', [Validators.required]],
             tlfn: ['', [Validators.required]]
         })
