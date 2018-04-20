@@ -154,6 +154,8 @@ namespace SPAtraductores.Models
             }
         }
 
+        // DATA ACCESS IDIOMAS
+
 
         public IEnumerable<Idioma> GetAllLenguages()
         {
@@ -185,6 +187,30 @@ namespace SPAtraductores.Models
             }
         }
 
+        public int AddLanguage(Idioma idioma)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("AddLanguage", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Language", idioma.lenguage);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+        // DATA ACCESS SERVICIOS
+
 
         public IEnumerable<Servicio> GetAllServices()
         {
@@ -215,6 +241,34 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
+
+        public int AddService(Servicio servicio)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("AddLanguage", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Service", servicio.service);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+
+
+
+
+
     }
 
 

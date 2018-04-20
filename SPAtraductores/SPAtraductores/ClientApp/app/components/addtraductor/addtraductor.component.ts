@@ -55,18 +55,18 @@ export class createtraductor implements OnInit {
         if (this.title == "Create") {
             this._traductorService.saveTraductor(this.traductorForm.value)
                 .subscribe((data) => {
-                    this._router.navigate(['/fetch-traductor']);
+                    this._router.navigate(['/admin-page']);
                 }, error => this.errorMessage = error)
         }
         else if (this.title == "Edit") {
             this._traductorService.updateTraductor(this.traductorForm.value)
                 .subscribe((data) => {
-                    this._router.navigate(['/fetch-traductor']);
+                    this._router.navigate(['/admin-page']);
                 }, error => this.errorMessage = error)
         }
     }
     cancel() {
-        this._router.navigate(['/fetch-traductor']);
+        this._router.navigate(['/admin-page']);
     }
     get email() { return this.traductorForm.get('email'); }
     get usuario() { return this.traductorForm.get('usuario'); }

@@ -1,9 +1,18 @@
 ﻿<h1>Language DataBase</h1>
 
 <p *ngIf="!lenguageList"><em>Loading...</em></p>
-<p>
-    <a [routerLink]="['/register-Traductor']">Create New</a>
-</p>
+
+    <!--<a [routerLink]="['/register-Traductor']">Create New</a>-->
+    <form [formGroup]="languageForm">
+        <div class="form-group" (ngSubmit)="save()">
+            <label for="idioma">Add new language: </label>
+            <input ngModel #idioma="ngModel" id="idioma" type="text" name="idioma" />
+            <button class="btn">sumbit</button>
+        </div>
+       
+    </form>
+    <br />
+
 <table class='table' *ngIf="lenguageList">
     <thead>
         <tr>
