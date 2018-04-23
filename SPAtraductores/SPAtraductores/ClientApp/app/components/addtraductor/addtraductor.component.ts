@@ -14,7 +14,7 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 @NgModule({
     imports: [
-        BrowserModule,
+        BrowserModule, 
         FormsModule,
         ReactiveFormsModule
     ]

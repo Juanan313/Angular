@@ -195,7 +195,7 @@ namespace SPAtraductores.Models
                 {
                     SqlCommand cmd = new SqlCommand("AddLanguage", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Language", idioma.lenguage);
+                    cmd.Parameters.AddWithValue("@idioma", idioma.lenguage);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();

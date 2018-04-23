@@ -2,22 +2,22 @@
 
 <p *ngIf="!lenguageList"><em>Loading...</em></p>
 
-    <!--<a [routerLink]="['/register-Traductor']">Create New</a>-->
-    <form [formGroup]="languageForm">
-        <div class="form-group" (ngSubmit)="save()">
-            <label for="idioma">Add new language: </label>
-            <input ngModel #idioma="ngModel" id="idioma" type="text" name="idioma" />
-            <button class="btn">sumbit</button>
-        </div>
-       
-    </form>
-    <br />
+<!--<a [routerLink]="['/register-Traductor']">Create New</a>-->
+<form [formGroup]="languageForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    <div class="form-group">
+        <label for="Lenguage">Add new language: </label>
+        <input id="lenguage" formControlName="lenguage" type="text" name="lenguage" />
+    </div>
+    <button type="submit" class="btn" ng-click="save()">sumbit</button>
+</form>
+
+<br />
 
 <table class='table' *ngIf="lenguageList">
     <thead>
         <tr>
             <th>Idioma</th>
-            
+
         </tr>
     </thead>
     <tbody>
