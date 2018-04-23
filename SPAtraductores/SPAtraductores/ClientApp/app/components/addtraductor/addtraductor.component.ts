@@ -52,7 +52,7 @@ export class createtraductor implements OnInit {
         if (!this.traductorForm.valid) {
             return;
         }
-        if (this.title == "Create") {
+        if (this.title == "Create an Account") {
             this._traductorService.saveTraductor(this.traductorForm.value)
                 .subscribe((data) => {
                     this._router.navigate(['/admin-page']);
