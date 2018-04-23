@@ -187,7 +187,7 @@ namespace SPAtraductores.Models
             }
         }
 
-        public int AddLanguage(Idioma idioma)
+        public string AddLanguage(Idioma idioma)
         {
             try
             {
@@ -200,7 +200,29 @@ namespace SPAtraductores.Models
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
-                return 1;
+                return idioma.lenguage;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        //To Delete the record on a particular employee
+        public string DeleteLanguage(String idioma)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("DeleteLanguage", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Language", idioma);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return idioma;
             }
             catch
             {

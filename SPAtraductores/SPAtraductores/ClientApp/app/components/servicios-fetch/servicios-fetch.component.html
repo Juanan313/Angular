@@ -1,22 +1,31 @@
-﻿<h1>Services DataBase</h1>
+﻿
+<div col-md-6>
+    <h1>Services DataBase</h1>
 
-<p *ngIf="!serviceList"><em>Loading...</em></p>
-<p>
-    <a [routerLink]="['/register-Traductor']">Create New</a>
-</p>
-<table class='table' *ngIf="serviceList">
-    <thead>
-        <tr>
-            <th>Service</th>
+    <p *ngIf="!serviceList"><em>Loading...</em></p>
+    <form [formGroup]="serviceForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+        <div class="form-group">
+            <label for="Service">Add new service: </label>
+            <input id="service" formControlName="service" type="text" name="service" />
+            <button type="submit" class="btn" ng-click="save()">sumbit</button>
+        </div>
+        
+    </form>
+    <br/>
+    <table class='table' *ngIf="serviceList">
+        <thead>
+            <tr>
+                <th>Service</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let service of serviceList">
-            <td>{{ service.service }}</td>
-            <td>
-                <a [routerLink]="" (click)="delete(traductor.id)">Delete</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let service of serviceList">
+                <td>{{ service.service }}</td>
+                <td>
+                    <a [routerLink]="" (click)="delete(traductor.id)">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

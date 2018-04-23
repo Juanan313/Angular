@@ -74,6 +74,12 @@ export class TraductorService {
             .catch(this.errorHandler);  
     }  
 
+    deleteLanguage(idioma) {
+        return this._http.delete(this.myAppUrl + "api/Idioma/Delete/" + idioma)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }  
+
 
     // ERROR HANDLER
     errorHandler(error: Response) {  

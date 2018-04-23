@@ -50,7 +50,7 @@ namespace SPAtraductores.Controllers
 
         [HttpPost]
         [Route("api/Idioma/Create")]
-        public int CreateLengage([FromBody] Idioma idioma)
+        public String CreateLengage([FromBody] Idioma idioma)
         {
             return objtraduct.AddLanguage(idioma);
         }
@@ -79,6 +79,13 @@ namespace SPAtraductores.Controllers
         public int Delete(int id)
         {
             return objtraduct.DeleteTraductor(id);
+        }
+
+        [HttpDelete]
+        [Route("api/Idioma/Delete/{idioma}")]
+        public string DeleteLenguage(string idioma)
+        {
+            return objtraduct.DeleteLanguage(idioma);
         }
 
     }

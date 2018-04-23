@@ -49,17 +49,28 @@ export class IdiomasFecthComponent {
             return;
         }
 
-        this._traductorService.saveLanguage(this.languageForm.value)
-            .subscribe((data) => {
-                this._router.navigate(['/admin-page']);
+        this._traductorService.saveLanguage(this.languageForm.value).subscribe((data) => {
+                this.getLanguages();
             }, error => this.errorMessage = error)
-
-        this.refresh();
+        this.languageForm.reset();
+        this.getLanguages();
+        //this.refresh();
     }
 
     refresh(): void {
         window.location.reload();
     }
+
+
+    delete(idioma) {
+        var ans = confirm("Do you want to delete this languge: " + idioma);
+        if (ans) {
+            this._traductorService.deleteLanguage(idioma).subscribe((data) => {
+                this.getLanguages();
+            }, error => console.error(error))
+        } 
+        this.getLanguages();
+    }  
 
     get lenguage() { return this.languageForm.get('lenguage'); }
 }
