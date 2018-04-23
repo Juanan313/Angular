@@ -57,10 +57,12 @@ namespace SPAtraductores.Controllers
 
         [HttpPost]
         [Route("api/Service/Create")]
-        public int CreateService([FromBody] Servicio servicio)
+        public string CreateService([FromBody] Servicio servicio)
         {
             return objtraduct.AddService(servicio);
         }
+
+        // Get the data of a traductor by id
 
         [HttpGet]
         [Route("api/Traductor/Details/{id}")]
@@ -68,12 +70,18 @@ namespace SPAtraductores.Controllers
         {
             return objtraduct.GetTraductorData(id);
         }
+
+        // Edit traductor data
         [HttpPut]
         [Route("api/Traductor/Edit")]
         public int Edit([FromBody]Traductor traductor)
         {
             return objtraduct.UpdateTraductor(traductor);
         }
+
+
+        // Http DELETE DATA
+
         [HttpDelete]
         [Route("api/Traductor/Delete/{id}")]
         public int Delete(int id)

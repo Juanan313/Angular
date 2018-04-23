@@ -264,20 +264,20 @@ namespace SPAtraductores.Models
             }
         }
 
-        public int AddService(Servicio servicio)
+        public string AddService(Servicio servicio)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("AddLanguage", con);
+                    SqlCommand cmd = new SqlCommand("AddService", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Service", servicio.service);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
-                return 1;
+                return servicio.service;
             }
             catch
             {
