@@ -32,7 +32,7 @@ namespace SPAtraductores.Models
                         traductor.Email = rdr["Email"].ToString();
                         traductor.Usuario = rdr["Usuario"].ToString();
                         traductor.Pass = rdr["Pass"].ToString();
-                        traductor.CP = Convert.ToInt32(rdr["CP"]);
+                        traductor.CP = rdr["CP"].ToString();
                         traductor.Tlfn = Convert.ToInt32(rdr["Tlfn"]);
 
                         lsttraductores.Add(traductor);
@@ -121,7 +121,7 @@ namespace SPAtraductores.Models
                         traductor.Email = rdr["Email"].ToString();
                         traductor.Usuario = rdr["Usuario"].ToString();
                         traductor.Pass = rdr["Pass"].ToString();
-                        traductor.CP = Convert.ToInt32(rdr["CP"]);
+                        traductor.CP = rdr["CP"].ToString(); 
                         traductor.Tlfn = Convert.ToInt32(rdr["Tlfn"]);
                     }
                 }

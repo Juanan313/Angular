@@ -1,0 +1,24 @@
+﻿<h1>Translators DataBase</h1>
+
+<p *ngIf="!tradList"><em>Loading...</em></p>
+
+<table class='table' *ngIf="tradList">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>CP</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let traductor of tradList">
+            <td>{{ traductor.name }}</td>
+            <td>{{ traductor.lastName }}</td>
+            <td>{{ traductor.email }}</td>
+            <td>{{ traductor.cp }}</td>
+            <td>{{ traductor.tlfn }}</td>
+        </tr>
+    </tbody>
+</table>

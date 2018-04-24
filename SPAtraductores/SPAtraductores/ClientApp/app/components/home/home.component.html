@@ -5,9 +5,9 @@
         Here is a quick and easy way to find a translator to help you if you need it!
     </p>
 </div>
-
+<div class="col-md-2"></div>
 <div class="container bg-success p-3 col-md-8">
-    <form>
+    <form (ngSubmit)="search(CP)">
         <div class="form-group">
             <label for="CP"> Postal Code </label>
             <input required pattern="[0-9]{5}" ngModel name="CP" #CP="ngModel" (change)="search(CP)" type="text" id="CP" class="form-control" />
@@ -31,7 +31,7 @@
                 <option *ngFor="let service of serviceList"> {{ service.service }}</option>
             </select>
         </div>
-        <button class="btn btn-primary"> Search </button>
+        <button type="submit" class="btn btn-primary"> Search </button>
     </form>
 </div>
 <div class="col-md-offset-2"></div>

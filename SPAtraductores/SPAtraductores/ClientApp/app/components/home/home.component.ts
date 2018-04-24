@@ -20,10 +20,9 @@ import { Router } from '@angular/router';
     })
 export class HomeComponent {
 
+    // Listas donde se guardon los datos de sql a mostrar en los selects
     public lenguageList: IdiomaData[];
     public serviceList: ServicioData[];
-
-    
 
 
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
@@ -43,8 +42,10 @@ export class HomeComponent {
         )
     }  
 
-    search(x) { console.log(this.lenguageList); }
+    search(x) { console.log(x); }
 }
+
+// Interfaces para dar formato a los datos obtenidos de sql
 
 interface IdiomaData {
     Idioma: string;
