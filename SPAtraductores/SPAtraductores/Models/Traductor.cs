@@ -15,7 +15,7 @@ namespace SPAtraductores.Models
         public String Name { get; set; }
         public String LastName { get; set; }
         public String CP { get; set; }
-        public int Tlfn { get; set; }
+        public String Tlfn { get; set; }
 
     }
 }
