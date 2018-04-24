@@ -14,6 +14,7 @@ import { IdiomasFecthComponent } from './components/idiomas-fecth/idiomas-fecth.
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { TranslatorLoginComponent } from './components/translator-login/translator-login.component';
 import { ServiciosFetchComponent } from './components/servicios-fetch/servicios-fetch.component';
+import { TraductorByCpComponent } from './components/traductor-by-cp/traductor-by-cp.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { ServiciosFetchComponent } from './components/servicios-fetch/servicios-
         TranslatorLoginComponent,
         IdiomasFecthComponent,
         AdminPageComponent,
-        ServiciosFetchComponent
+        ServiciosFetchComponent,
+        TraductorByCpComponent
     ],
     imports: [
         CommonModule,
@@ -40,7 +42,8 @@ import { ServiciosFetchComponent } from './components/servicios-fetch/servicios-
             { path: 'Traductor/edit/:id', component: createtraductor },
             { path: 'translator-login', component: TranslatorLoginComponent },
             { path: 'admin-page', component: AdminPageComponent },
-            { path: 'servicios-fetch', component: ServiciosFetchComponent },          
+            { path: 'servicios-fetch', component: ServiciosFetchComponent },
+            { path: 'traductor-bycp' , component: TraductorByCpComponent },
             { path: '**', redirectTo: 'home' },
 
             

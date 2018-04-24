@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service'  
 
 @Component({
-    selector: 'app-traductor-by-cp',
+    selector: 'traductor-by-cp',
     templateUrl: './traductor-by-cp.component.html',
     styleUrls: ['./traductor-by-cp.component.css']
 })
@@ -12,14 +12,20 @@ import { TraductorService } from '../../services/traductorservice.service'
 /** traductorByCP component*/
 export class TraductorByCpComponent {
 
+    cp: string;
     public tradList: TraductorData[]; 
     /** traductorByCP ctor */
-    constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
-        this.getTraductorsByCp();
+    constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService) {
+        this.cp = this._avRoute.snapshot.params["CP"];
+        this.getTraductorsByCp(this.cp)
     }
 
-    getTraductorsByCp() {
+    getTraductorsByCp(cp) {
 
+        this._traductorService.getTraductorByCP(cp).subscribe(
+            data => this.tradList = data
+        )  
+            
     }
 
 

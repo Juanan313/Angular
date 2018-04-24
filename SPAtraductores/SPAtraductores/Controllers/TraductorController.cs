@@ -71,6 +71,13 @@ namespace SPAtraductores.Controllers
             return objtraduct.GetTraductorData(id);
         }
 
+        [HttpGet]
+        [Route("api/Traductor/DetailsCP/{CP}")]
+        public Traductor DetailsByCP(String CP)
+        {
+            return objtraduct.GetTraductorByCP(CP);
+        }
+
         // Edit traductor data
         [HttpPut]
         [Route("api/Traductor/Edit")]

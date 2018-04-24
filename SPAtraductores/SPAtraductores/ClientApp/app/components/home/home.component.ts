@@ -42,7 +42,9 @@ export class HomeComponent {
         )
     }  
 
-    search(x) { console.log(x); }
+    search(cp) {
+        this._router.navigate(['/traductor-bycp', cp]);
+    }
 }
 
 // Interfaces para dar formato a los datos obtenidos de sql

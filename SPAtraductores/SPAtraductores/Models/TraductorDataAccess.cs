@@ -11,7 +11,7 @@ namespace SPAtraductores.Models
     public class TraductorDataAccess
     {
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = 'SPA Traductores'; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        //To View all employees details
+        //To View all translator details
         public IEnumerable<Traductor> GetAllTraductores()
         {
             try
@@ -46,7 +46,7 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
-        //To Add new employee record 
+        //To Add new translator record 
         public int AddTraductor(Traductor traductor)
         {
             try
@@ -73,7 +73,7 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
-        //To Update the records of a particluar employee
+        //To Update the records of a particluar translator
         public int UpdateTraductor(Traductor traductor)
         {
             try
@@ -101,7 +101,7 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
-        //Get the details of a particular employee
+        //Get the details of a particular translator for edit
         public Traductor GetTraductorData(int id)
         {
             try
@@ -132,7 +132,41 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
-        //To Delete the record on a particular employee
+
+        //Get the details of a particular translator
+        public Traductor GetTraductorByCP(String CP)
+        {
+            try
+            {
+                Traductor traductor = new Traductor();
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = "SELECT * FROM Traductores WHERE CP = " + CP;
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        traductor.ID = Convert.ToInt32(rdr["idTraductores"]);
+                        traductor.Name = rdr["Name"].ToString();
+                        traductor.LastName = rdr["LastName"].ToString();
+                        traductor.Email = rdr["Email"].ToString();
+                        traductor.Usuario = rdr["Usuario"].ToString();
+                        traductor.Pass = rdr["Pass"].ToString();
+                        traductor.CP = rdr["CP"].ToString();
+                        traductor.Tlfn = rdr["Tlfn"].ToString();
+                    }
+                }
+                return traductor;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+        //To Delete the record on a particular translator
         public int DeleteTraductor(int id)
         {
             try

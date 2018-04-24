@@ -38,6 +38,14 @@ export class TraductorService {
             .catch(this.errorHandler)  
     } 
 
+    
+    getTraductorByCP(CP: String) {
+        return this._http.get(this.myAppUrl + "api/Traductor/DetailsCP/" + CP)
+    .map((response: Response) => response.json())
+    .catch(this.errorHandler)
+    } 
+
+
     // SAVES NEW DATA
 
     saveTraductor(traductor) {  
