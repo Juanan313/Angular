@@ -52,8 +52,8 @@ export class TraductorService {
             .catch(this.errorHandler)  
     }
 
-    saveService(servicio) {
-        return this._http.post(this.myAppUrl + 'api/Servicio/Create', servicio)
+    saveService(service) {
+        return this._http.post(this.myAppUrl + 'api/Servicio/Create', service)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)  
     }
@@ -76,6 +76,12 @@ export class TraductorService {
 
     deleteLanguage(idioma) {
         return this._http.delete(this.myAppUrl + "api/Idioma/Delete/" + idioma)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }
+
+    deleteService(servicio) {
+        return this._http.delete(this.myAppUrl + "api/Service/Delete/" + servicio)
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }  

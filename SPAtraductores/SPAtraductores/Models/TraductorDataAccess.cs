@@ -287,7 +287,27 @@ namespace SPAtraductores.Models
 
 
 
-
+        //To Delete the record of a service
+        public string DeleteService(String service)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("DeleteService", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Service", service);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return service;
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
 
 

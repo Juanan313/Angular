@@ -56,7 +56,7 @@ namespace SPAtraductores.Controllers
         }
 
         [HttpPost]
-        [Route("api/Service/Create")]
+        [Route("api/Servicio/Create")]
         public string CreateService([FromBody] Servicio servicio)
         {
             return objtraduct.AddService(servicio);
@@ -94,6 +94,13 @@ namespace SPAtraductores.Controllers
         public string DeleteLenguage(string idioma)
         {
             return objtraduct.DeleteLanguage(idioma);
+        }
+
+        [HttpDelete]
+        [Route("api/Service/Delete/{servicio}")]
+        public string DeleteService(string servicio)
+        {
+            return objtraduct.DeleteService(servicio);
         }
 
     }

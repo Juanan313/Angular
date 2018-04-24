@@ -26,8 +26,8 @@ import { CommonModule } from '@angular/common';
 /** servicios-fetch component*/
 export class ServiciosFetchComponent {
     /** servicios-fetch ctor */
-    public serviceList: ServicioData[];
     errorMessage: any;
+    public serviceList: ServicioData[];
     serviceForm: FormGroup;
 
 
@@ -51,18 +51,25 @@ export class ServiciosFetchComponent {
         }
 
         this._traductorService.saveService(this.serviceForm.value).subscribe((data) => {
-            this.getServices();
+            this._router.navigate(['/admin-page']);
         }, error => this.errorMessage = error)
         this.serviceForm.reset();
-        this.getServices();
-        //this.refresh();
+        this._router.navigate(['/admin-page']);
     }
 
     refresh(): void {
         window.location.reload();
     }
 
-
+    delete(servicio) {
+        var ans = confirm("Do you want to delete this service: " + servicio);
+        if (ans) {
+            this._traductorService.deleteService(servicio).subscribe((data) => {
+                this.getServices();
+            }, error => console.error(error))
+        }
+        this.getServices();
+    } 
 
     get service() { return this.serviceForm.get('service'); }
 }

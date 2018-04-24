@@ -3,11 +3,12 @@
     <h1>Services DataBase</h1>
 
     <p *ngIf="!serviceList"><em>Loading...</em></p>
+
     <form [formGroup]="serviceForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
         <div class="form-group">
             <label for="Service">Add new service: </label>
             <input id="service" formControlName="service" type="text" name="service" />
-            <button type="submit" class="btn" ng-click="save()">sumbit</button>
+            <button type="submit" class="btn" >sumbit</button>
         </div>
         
     </form>
@@ -23,7 +24,7 @@
             <tr *ngFor="let service of serviceList">
                 <td>{{ service.service }}</td>
                 <td>
-                    <a [routerLink]="" (click)="delete(traductor.id)">Delete</a>
+                    <a [routerLink]="" (click)="delete(service.service)">Delete</a>
                 </td>
             </tr>
         </tbody>
