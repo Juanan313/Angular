@@ -43,7 +43,13 @@ export class TraductorService {
         return this._http.get(this.myAppUrl + "api/Traductor/DetailsCP/" + CP)
     .map((response: Response) => response.json())
     .catch(this.errorHandler)
-    } 
+    }
+
+    getTraductorsDatos(CP: string, idioma: string, servicio: string) {
+        return this._http.get(this.myAppUrl + "api/Traductor/DetailsDatos/" + CP + ","+idioma+"," + servicio)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler)
+    }
 
 
     // SAVES NEW DATA

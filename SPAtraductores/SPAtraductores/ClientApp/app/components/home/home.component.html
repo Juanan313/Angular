@@ -7,7 +7,7 @@
 </div>
 <div class="col-md-2"></div>
 <div class="container bg-success p-3 col-md-8">
-    <form (ngSubmit)="search(CP)">
+    <form (ngSubmit)="search(CP, language, service)">
         <div class="form-group">
             <label for="CP"> Postal Code </label>
             <input required pattern="[0-9]{5}" ngModel name="CP" #CP="ngModel" type="text" id="CP" class="form-control" />

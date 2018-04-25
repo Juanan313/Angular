@@ -10,15 +10,19 @@
             <th>Email</th>
             <th>CP</th>
             <th>Phone Number</th>
+            <th>Language </th>
+            <th>Service</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let traductor of tradList">
-            <td>{{ traductor.name }}</td>
-            <td>{{ traductor.lastName }}</td>
-            <td>{{ traductor.email }}</td>
-            <td>{{ traductor.cp }}</td>
-            <td>{{ traductor.tlfn }}</td>
+        <tr *ngFor="let traductorData of tradList">
+            <td>{{ traductorData.name }}</td>
+            <td>{{ traductorData.lastName }}</td>
+            <td>{{ traductorData.email }}</td>
+            <td>{{ traductorData.cp }}</td>
+            <td>{{ traductorData.tlfn }}</td>
+            <td>{{ traductorData.language }}</td>
+            <td>{{ traductorData.service }}</td>
         </tr>
     </tbody>
 </table>

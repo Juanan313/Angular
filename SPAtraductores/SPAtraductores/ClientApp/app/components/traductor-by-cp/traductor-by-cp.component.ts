@@ -3,6 +3,8 @@ import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service'
 import { codigoPostal } from '../home/home.component'
+import { idioma } from '../home/home.component'
+import { servicio } from '../home/home.component'
 
 @Component({
     selector: 'traductor-by-cp',
@@ -14,11 +16,15 @@ import { codigoPostal } from '../home/home.component'
 export class TraductorByCpComponent {
 
     cp: string;
+    language: string;
+    service: string;
     public tradList: TraductorData[]; 
     /** traductorByCP ctor */
     constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService) {
         this.cp = codigoPostal;
-        this.getTraductorsByCp()
+        this.language = idioma;
+        this.service = servicio;
+        this.getTraductorsData();
     }
 
     getTraductorsByCp() {
@@ -30,17 +36,23 @@ export class TraductorByCpComponent {
             
     }
 
+    getTraductorsData() {
+        console.log("codigo postal: " + codigoPostal + " idioma: " + idioma + " servicio: " + servicio);
+
+        this._traductorService.getTraductorsDatos(codigoPostal, idioma, servicio).subscribe(
+            data => this.tradList = data)
+    }
+
 
 
 }
 
 interface TraductorData {
-    id: number;
-    email: string;
-    usuario: string;
-    pass: string;
     name: string;
     lastname: string;
+    email: string;
     cp: number;
     tlfn: number;
+    language: string;
+    service: string;
 }

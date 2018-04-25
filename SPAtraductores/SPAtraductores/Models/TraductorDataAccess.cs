@@ -178,6 +178,54 @@ namespace SPAtraductores.Models
         }
 
 
+        //Get the details of a particular translator
+        public IEnumerable<DatosTraductor> GetTraductorDatos(String CP, String idioma, String servicio)
+        {
+            try
+            {
+                List<DatosTraductor> lsttraductores = new List<DatosTraductor>();
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("searchTraductors", con);
+                    cmd.Parameters.AddWithValue("@CP", CP);
+                    cmd.Parameters.AddWithValue("@Idioma", idioma);
+                    cmd.Parameters.AddWithValue("@Servicio", servicio);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        DatosTraductor datosTraductor = new DatosTraductor();
+
+                        datosTraductor.Email = rdr["Email"].ToString();
+                        datosTraductor.Name = rdr["Name"].ToString();
+                        datosTraductor.LastName = rdr["LastName"].ToString();
+                        datosTraductor.CP = rdr["CP"].ToString();
+                        datosTraductor.Tlfn = rdr["Tlfn"].ToString();
+                        datosTraductor.Idioma = rdr["Idioma"].ToString();
+                        datosTraductor.Servicio = rdr["Servicio"].ToString();
+
+                        lsttraductores.Add(datosTraductor);
+                    }
+
+
+                    //SqlCommand cmd = new SqlCommand("GetTraductoresByCp", con);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.AddWithValue("@CP", CP);
+                    //con.Open();
+                    //cmd.ExecuteNonQuery();
+                    con.Close();
+
+                }
+                return lsttraductores;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
         //To Delete the record on a particular translator
         public int DeleteTraductor(int id)
         {
