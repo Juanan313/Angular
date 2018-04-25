@@ -134,37 +134,42 @@ namespace SPAtraductores.Models
         }
 
         //Get the details of a particular translator
-        public Traductor GetTraductorByCP(String CP)
+        public IEnumerable<Traductor> GetTraductorByCP(String CP)
         {
             try
             {
-                Traductor traductor = new Traductor();
+                List<Traductor> lsttraductores = new List<Traductor>();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    //string sqlQuery = "SELECT * FROM Traductores WHERE CP = " + CP;
-                    //SqlCommand cmd = new SqlCommand(sqlQuery, con);
-                    //con.Open();
-                    //SqlDataReader rdr = cmd.ExecuteReader();
-                    //while (rdr.Read())
-                    //{
-                    //    traductor.ID = Convert.ToInt32(rdr["idTraductores"]);
-                    //    traductor.Name = rdr["Name"].ToString();
-                    //    traductor.LastName = rdr["LastName"].ToString();
-                    //    traductor.Email = rdr["Email"].ToString();
-                    //    traductor.Usuario = rdr["Usuario"].ToString();
-                    //    traductor.Pass = rdr["Pass"].ToString();
-                    //    traductor.CP = rdr["CP"].ToString();
-                    //    traductor.Tlfn = rdr["Tlfn"].ToString();
-                    //}
-                    SqlCommand cmd = new SqlCommand("GetTraductoresByCp", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@CP", CP);
+                    string sqlQuery = "SELECT * FROM Traductores WHERE CP = " + CP;
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
                     con.Open();
-                    cmd.ExecuteNonQuery();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        Traductor traductor = new Traductor();
+                        traductor.ID = Convert.ToInt32(rdr["idTraductores"]);
+                        traductor.Name = rdr["Name"].ToString();
+                        traductor.LastName = rdr["LastName"].ToString();
+                        traductor.Email = rdr["Email"].ToString();
+                        traductor.Usuario = rdr["Usuario"].ToString();
+                        traductor.Pass = rdr["Pass"].ToString();
+                        traductor.CP = rdr["CP"].ToString();
+                        traductor.Tlfn = rdr["Tlfn"].ToString();
+
+                        lsttraductores.Add(traductor);
+                    }
+
+
+                    //SqlCommand cmd = new SqlCommand("GetTraductoresByCp", con);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.AddWithValue("@CP", CP);
+                    //con.Open();
+                    //cmd.ExecuteNonQuery();
                     con.Close();
 
                 }
-                return traductor;
+                return lsttraductores;
             }
             catch
             {

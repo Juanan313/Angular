@@ -28,6 +28,7 @@ export class HomeComponent {
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
         this.getLanguages();
         this.getServices();
+        var codigoPostal = "";
     }  
 
     getServices() {
@@ -43,9 +44,13 @@ export class HomeComponent {
     }  
 
     search(cp) {
-        this._router.navigate(['/traductor-bycp', cp]);
+        ////var CP = ((document.getElementById("CP") as HTMLInputElement).value);
+        codigoPostal = cp.value.toString();
+        this._router.navigate(['/traductor-bycp']);
     }
 }
+
+export var codigoPostal;
 
 // Interfaces para dar formato a los datos obtenidos de sql
 

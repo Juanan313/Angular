@@ -73,7 +73,7 @@ namespace SPAtraductores.Controllers
 
         [HttpGet]
         [Route("api/Traductor/DetailsCP/{CP}")]
-        public Traductor DetailsByCP(String CP)
+        public IEnumerable<Traductor> DetailsByCP(String CP)
         {
             return objtraduct.GetTraductorByCP(CP);
         }

@@ -1,7 +1,8 @@
 ﻿import { Component, Inject } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TraductorService } from '../../services/traductorservice.service'  
+import { TraductorService } from '../../services/traductorservice.service'
+import { codigoPostal } from '../home/home.component'
 
 @Component({
     selector: 'traductor-by-cp',
@@ -16,13 +17,14 @@ export class TraductorByCpComponent {
     public tradList: TraductorData[]; 
     /** traductorByCP ctor */
     constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService) {
-        this.cp = this._avRoute.snapshot.params["CP"];
-        this.getTraductorsByCp(this.cp)
+        this.cp = codigoPostal;
+        this.getTraductorsByCp()
     }
 
-    getTraductorsByCp(cp) {
+    getTraductorsByCp() {
 
-        this._traductorService.getTraductorByCP("07001").subscribe(
+        console.log(this.cp);
+        this._traductorService.getTraductorByCP(this.cp).subscribe(
             data => this.tradList = data
         )  
             

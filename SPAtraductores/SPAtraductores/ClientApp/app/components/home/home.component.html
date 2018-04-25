@@ -10,7 +10,7 @@
     <form (ngSubmit)="search(CP)">
         <div class="form-group">
             <label for="CP"> Postal Code </label>
-            <input required pattern="[0-9]{5}" ngModel name="CP" #CP="ngModel" (change)="search(CP)" type="text" id="CP" class="form-control" />
+            <input required pattern="[0-9]{5}" ngModel name="CP" #CP="ngModel" type="text" id="CP" class="form-control" />
             <div class="alert alert-danger" *ngIf="CP.touched && !CP.valid">
                 A correct postal code is required. <br />
                 A correct CP has to be a number of 5 digits length.
