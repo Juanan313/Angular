@@ -141,21 +141,28 @@ namespace SPAtraductores.Models
                 Traductor traductor = new Traductor();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT * FROM Traductores WHERE CP = " + CP;
-                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    //string sqlQuery = "SELECT * FROM Traductores WHERE CP = " + CP;
+                    //SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    //con.Open();
+                    //SqlDataReader rdr = cmd.ExecuteReader();
+                    //while (rdr.Read())
+                    //{
+                    //    traductor.ID = Convert.ToInt32(rdr["idTraductores"]);
+                    //    traductor.Name = rdr["Name"].ToString();
+                    //    traductor.LastName = rdr["LastName"].ToString();
+                    //    traductor.Email = rdr["Email"].ToString();
+                    //    traductor.Usuario = rdr["Usuario"].ToString();
+                    //    traductor.Pass = rdr["Pass"].ToString();
+                    //    traductor.CP = rdr["CP"].ToString();
+                    //    traductor.Tlfn = rdr["Tlfn"].ToString();
+                    //}
+                    SqlCommand cmd = new SqlCommand("GetTraductoresByCp", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CP", CP);
                     con.Open();
-                    SqlDataReader rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
-                        traductor.ID = Convert.ToInt32(rdr["idTraductores"]);
-                        traductor.Name = rdr["Name"].ToString();
-                        traductor.LastName = rdr["LastName"].ToString();
-                        traductor.Email = rdr["Email"].ToString();
-                        traductor.Usuario = rdr["Usuario"].ToString();
-                        traductor.Pass = rdr["Pass"].ToString();
-                        traductor.CP = rdr["CP"].ToString();
-                        traductor.Tlfn = rdr["Tlfn"].ToString();
-                    }
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
                 }
                 return traductor;
             }

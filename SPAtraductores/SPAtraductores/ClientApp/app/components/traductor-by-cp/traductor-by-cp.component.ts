@@ -22,11 +22,12 @@ export class TraductorByCpComponent {
 
     getTraductorsByCp(cp) {
 
-        this._traductorService.getTraductorByCP(cp).subscribe(
+        this._traductorService.getTraductorByCP("07001").subscribe(
             data => this.tradList = data
         )  
             
     }
+
 
 
 }
