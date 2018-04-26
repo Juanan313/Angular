@@ -36,6 +36,12 @@ export class TraductorService {
         return this._http.get(this.myAppUrl + "api/Traductor/Details/" + id)  
             .map((response: Response) => response.json())  
             .catch(this.errorHandler)  
+    }
+
+    getTraductorId(usuario: string) {
+        return this._http.get(this.myAppUrl + "api/Traductor/DetailsID/" + usuario)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler)
     } 
 
     

@@ -72,6 +72,13 @@ namespace SPAtraductores.Controllers
         }
 
         [HttpGet]
+        [Route("api/Traductor/DetailsId/{usuario}")]
+        public int DetailsId(string usuario)
+        {
+            return objtraduct.GetTraductorId(usuario);
+        }
+
+        [HttpGet]
         [Route("api/Traductor/DetailsCP/{CP}")]
         public IEnumerable<Traductor> DetailsByCP(String CP)
         {

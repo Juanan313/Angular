@@ -78,6 +78,7 @@ namespace SPAtraductores.Models
         {
             try
             {
+
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     SqlCommand cmd = new SqlCommand("UpdateTraductor", con);
@@ -126,6 +127,33 @@ namespace SPAtraductores.Models
                     }
                 }
                 return traductor;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+        //Get the ID of a particular translator
+        public int GetTraductorId(string usuario)
+        {
+            try
+            {   
+                int ID = 0;
+                Traductor traductor = new Traductor();
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = "SELECT idTraductores FROM Traductores WHERE Usuario = " + "'"+usuario+"'";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        ID = Convert.ToInt32(rdr["idTraductores"]);
+                    }
+                }
+                return ID;
             }
             catch
             {

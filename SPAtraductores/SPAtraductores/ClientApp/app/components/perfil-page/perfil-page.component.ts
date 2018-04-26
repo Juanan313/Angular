@@ -2,6 +2,7 @@
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
+import { usuario } from '../translator-login/translator-login.component';
 
 @Component({
     selector: 'perfil-page',
@@ -11,16 +12,26 @@ import { TraductorService } from '../../services/traductorservice.service';
 /** perfilPage component*/
 export class PerfilPageComponent {
 
-
+    private id: number;
     public trad: TraductorData;
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
         this.getTraductors();
     }
+
     getTraductors() {
-        this._traductorService.getTraductorById(10006).subscribe(
+        this._traductorService.getTraductorById(this.id).subscribe(
             data => this.trad = data
         )
     }
+
+    loadId() {
+       this._traductorService.getTraductorId(usuario).subscribe(
+           data => this.id = data
+      )
+
+        this.getTraductors();
+    }
+
     delete(idTraductores) {
         var ans = confirm("Do you want to delete customer with Id: " + idTraductores);
         if (ans) {
