@@ -1,0 +1,28 @@
+﻿<h1>Profile</h1>
+
+<p *ngIf="!trad"><em>Loading...</em></p>
+<table class='table' *ngIf="trad">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>CP</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ trad.id }}</td>
+            <td>{{ trad.name }}</td>
+            <td>{{ trad.lastName }}</td>
+            <td>{{ trad.email }}</td>
+            <td>{{ trad.cp }}</td>
+            <td>{{ trad.tlfn }}</td>
+            <td>
+                <a [routerLink]="" (click)="delete(traductor.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

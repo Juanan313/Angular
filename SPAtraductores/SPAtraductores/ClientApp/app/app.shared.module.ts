@@ -15,6 +15,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
 import { TranslatorLoginComponent } from './components/translator-login/translator-login.component';
 import { ServiciosFetchComponent } from './components/servicios-fetch/servicios-fetch.component';
 import { TraductorByCpComponent } from './components/traductor-by-cp/traductor-by-cp.component';
+import { PerfilPageComponent } from './components/perfil-page/perfil-page.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { TraductorByCpComponent } from './components/traductor-by-cp/traductor-b
         IdiomasFecthComponent,
         AdminPageComponent,
         ServiciosFetchComponent,
-        TraductorByCpComponent
+        TraductorByCpComponent,
+        PerfilPageComponent
     ],
     imports: [
         CommonModule,
@@ -43,7 +45,8 @@ import { TraductorByCpComponent } from './components/traductor-by-cp/traductor-b
             { path: 'translator-login', component: TranslatorLoginComponent },
             { path: 'admin-page', component: AdminPageComponent },
             { path: 'servicios-fetch', component: ServiciosFetchComponent },
-            { path: 'traductor-bycp' , component: TraductorByCpComponent },
+            { path: 'traductor-bycp', component: TraductorByCpComponent },
+            { path: 'perfil-page' , component: PerfilPageComponent },
             { path: '**', redirectTo: 'home' },
 
             
