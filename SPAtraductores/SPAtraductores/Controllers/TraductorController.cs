@@ -82,7 +82,7 @@ namespace SPAtraductores.Controllers
         [Route("api/Traductor/DetailsDatos/{CP},{idioma},{servicio}")]
         public IEnumerable<DatosTraductor> DetailsDatos(string CP, string idioma,  string servicio)
         {
-            return objtraduct.GetTraductorDatos(CP, servicio, idioma);
+            return objtraduct.GetTraductorDatos(CP, idioma, servicio);
         }
 
         // Edit traductor data

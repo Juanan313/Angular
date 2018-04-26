@@ -53,6 +53,6 @@ interface TraductorData {
     email: string;
     cp: number;
     tlfn: number;
-    language: string;
-    service: string;
+    idioma: string;
+    servicio: string;
 }
