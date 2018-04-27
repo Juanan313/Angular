@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
 import { usuario } from '../translator-login/translator-login.component';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
     selector: 'perfil-page',
@@ -10,15 +11,22 @@ import { usuario } from '../translator-login/translator-login.component';
     styleUrls: ['./perfil-page.component.css']
 })
 /** perfilPage component*/
-export class PerfilPageComponent {
+export class PerfilPageComponent implements OnInit {
+
 
     private id: number;
     public trad: TraductorData;
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
-        this.getTraductors();
+
+        
+    }
+
+    ngOnInit() {
+        this.loadId();
     }
 
     getTraductors() {
+        console.log("Mostrando datos...")
         this._traductorService.getTraductorById(this.id).subscribe(
             data => this.trad = data
         )
@@ -29,7 +37,6 @@ export class PerfilPageComponent {
            data => this.id = data
       )
 
-        this.getTraductors();
     }
 
     delete(idTraductores) {

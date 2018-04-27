@@ -9,6 +9,7 @@ namespace SPAtraductores.Models
     {
 
         public String lenguage { get; set; }
+        public int id { get; set; }
 
     }
 }

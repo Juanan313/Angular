@@ -1,0 +1,21 @@
+﻿
+body {
+    padding: 20px;
+}
+
+form {
+    padding: 15px;
+    margin: 0px auto;
+}
+
+.form-control.ng-touched.ng-invalid {
+    border: 2px solid red;
+}
+
+.alert.alert-danger {
+    -moz-border-radius-topleft: 0px !important;
+    -moz-border-radius-topright: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-top-Right-radius: 0px !important;
+}
+

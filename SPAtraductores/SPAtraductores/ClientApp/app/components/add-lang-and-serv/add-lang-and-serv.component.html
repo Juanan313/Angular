@@ -1,0 +1,19 @@
+﻿<form (ngSubmit)="search(CP, language, service)">
+
+    <div class="form-group">
+        <label for="language">Language for translate</label>
+        <select class="form-control" id="language" reqiored ngModel #language="ngModel" name="language">
+            <option> --Language-- </option>
+            <option *ngFor="let language of lenguageList"> {{ language.lenguage }}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="service">Why do you need a translator?</label>
+        <select class="form-control" id="service" reqiored ngModel #service="ngModel" name="service">
+            <option> --Service-- </option>
+            <option *ngFor="let service of serviceList"> {{ service.service }}</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary"> Search </button>
+</form>

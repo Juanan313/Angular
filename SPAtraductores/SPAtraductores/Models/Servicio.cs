@@ -9,5 +9,6 @@ namespace SPAtraductores.Models
     {
 
         public String service { get; set; }
+        public int id { get; set; }
     }
 }
