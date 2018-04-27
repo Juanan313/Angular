@@ -294,7 +294,7 @@ namespace SPAtraductores.Models
                     {
                         Idioma idioma = new Idioma();
                         idioma.lenguage = rdr["Idioma"].ToString();
-
+                        idioma.id = Convert.ToInt32(rdr["IdIdioma"]);
                         listLenguages.Add(idioma);
                     }
 
@@ -371,6 +371,7 @@ namespace SPAtraductores.Models
                     {
                         Servicio servicio = new Servicio();
                         servicio.service = rdr["Servicio"].ToString();
+                        servicio.id = Convert.ToInt32(rdr["IdServicio"]);
 
                         serviceList.Add(servicio);
                     }

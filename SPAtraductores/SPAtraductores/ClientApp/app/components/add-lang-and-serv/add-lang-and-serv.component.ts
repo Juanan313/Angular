@@ -55,8 +55,10 @@ export class AddLangAndServComponent {
 
 interface IdiomaData {
     Idioma: string;
+    id: number;
 }
 
 interface ServicioData {
     Servicio: string;
+    id: number;
 }
