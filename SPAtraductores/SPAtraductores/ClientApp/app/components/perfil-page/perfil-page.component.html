@@ -21,8 +21,10 @@
             <td>{{ trad.cp }}</td>
             <td>{{ trad.tlfn }}</td>
             <td>
-                <a [routerLink]="" (click)="delete(traductor.id)">Delete</a>
+                <!--<a [routerLink]="['/Traductor/edit/', traductor.id]">Edit</a> |-->
             </td>
         </tr>
     </tbody>
 </table>
+
+<button (click)="message()"></button>

@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
 import { usuario } from '../translator-login/translator-login.component';
+import { IdService } from '../../Services/id.service';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
     selector: 'perfil-page',
@@ -10,36 +12,35 @@ import { usuario } from '../translator-login/translator-login.component';
     styleUrls: ['./perfil-page.component.css']
 })
 /** perfilPage component*/
-export class PerfilPageComponent {
+export class PerfilPageComponent implements OnInit {
 
-    private id: number;
     public trad: TraductorData;
-    constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
+    constructor(public http: Http, private _router: Router, private _traductorService: TraductorService, private data: IdService) {
+        
         this.getTraductors();
     }
 
+    id: number;
+
+    ngOnInit() {
+        this.data.currentId.subscribe(id => this.id = id)
+    }
+
     getTraductors() {
+
         this._traductorService.getTraductorById(this.id).subscribe(
             data => this.trad = data
         )
     }
 
-    loadId() {
-       this._traductorService.getTraductorId(usuario).subscribe(
-           data => this.id = data
-      )
 
-        this.getTraductors();
-    }
+    //loadId() {
+    //   this._traductorService.getTraductorId(usuario).subscribe(
+    //      data => this.id = data
+    // )
+    //}
 
-    delete(idTraductores) {
-        var ans = confirm("Do you want to delete customer with Id: " + idTraductores);
-        if (ans) {
-            this._traductorService.deleteTraductor(idTraductores).subscribe((data) => {
-                this.getTraductors();
-            }, error => console.error(error))
-        }
-    }
+    
 }
 interface TraductorData {
     id: number;
@@ -50,5 +51,9 @@ interface TraductorData {
     lastname: string;
     cp: number;
     tlfn: number;
+}
+
+interface idData {
+    id: number;
 }
 

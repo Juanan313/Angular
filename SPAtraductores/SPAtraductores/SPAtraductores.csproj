@@ -21,10 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\Services\id.service.ts" />
     <None Remove="ClientApp\app\Services\traductorService.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\Services\id.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\Services\traductorService.service.ts" />
   </ItemGroup>
 

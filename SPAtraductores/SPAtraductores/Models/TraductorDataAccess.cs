@@ -139,7 +139,7 @@ namespace SPAtraductores.Models
         public int GetTraductorId(string usuario)
         {
             try
-            {   
+            {
                 int ID = 0;
                 Traductor traductor = new Traductor();
                 using (SqlConnection con = new SqlConnection(connectionString))

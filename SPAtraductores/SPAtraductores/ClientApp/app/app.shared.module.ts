@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { createtraductor } from './components/addtraductor/addtraductor.component';
 import { FetchTraductorComponent } from './components/fetchtraductor/fetchtraductor.component'
 import { TraductorService } from './services/traductorservice.service';
+import { IdService } from './Services/id.service';
 import { IdiomasFecthComponent } from './components/idiomas-fecth/idiomas-fecth.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { TranslatorLoginComponent } from './components/translator-login/translator-login.component';
@@ -52,7 +53,7 @@ import { PerfilPageComponent } from './components/perfil-page/perfil-page.compon
             
         ])
     ],
-    providers: [TraductorService]
+    providers: [TraductorService, IdService]
 })
 export class AppModuleShared {
 }
