@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
 import { usuario } from '../translator-login/translator-login.component';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Directive } from '@angular/core/src/metadata/directives';
+
 
 @Component({
     selector: 'perfil-page',

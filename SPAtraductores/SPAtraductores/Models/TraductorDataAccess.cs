@@ -330,6 +330,30 @@ namespace SPAtraductores.Models
             }
         }
 
+        // Añade Idioma al traductor, tabla intermedia
+        public int AddIdiomaToTranslator(int idIdioma, int idTraductor)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("AddIdiomaToTrad", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdIdioma", idIdioma);
+                    cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
         //To Delete the record on a particular employee
         public string DeleteLanguage(String idioma)
         {
@@ -408,6 +432,29 @@ namespace SPAtraductores.Models
             }
         }
 
+        // Añade Servicio al traductor, tabla intermedia
+        public int AddServiceToTranslator(int idService, int idTraductor)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("AddServToTrad", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdServicio", idService);
+                    cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
 
 
         //To Delete the record of a service
@@ -431,6 +478,8 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
+
+
 
 
 

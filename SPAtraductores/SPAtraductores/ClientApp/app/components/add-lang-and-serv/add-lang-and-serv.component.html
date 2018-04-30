@@ -1,53 +1,53 @@
 ﻿<form (ngSubmit)="addLangServ()">
-
-    <div class="form-group  col-md-6">
-        <!--<label for="language">Language for translate</label>
+    <section class="main row">
+        <div class="form-group  col-md-6">
+            <!--<label for="language">Language for translate</label>
         <select class="form-control" id="language" reqiored ngModel #language="ngModel" name="language">
             <option> --Language-- </option>
             <option *ngFor="let language of lenguageList"> {{ language.lenguage }}</option>
         </select>-->
 
-        <table class="table" *ngIf="lenguageList">
-            <thead>
-                <tr >
-                    <th>Select what languages you talk</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let language of lenguageList">
-                    <td>
-                        <label class="container">
-                            {{language.lenguage}}
-                            <input type="checkbox" class="chkbxi checkbox-inline" value="{{language.id}}" />
-                            <span class="checkmark"></span>
-                        </label>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="form-group col-md-6">
-        <table class="table " *ngIf="serviceList">
-            <thead>
-                <tr>
-                    <th>Select for what service you work</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let service of serviceList">
-                    <td>
-                        <label class="container">
-                            {{service.service}}
-                            <input type="checkbox" class="chkbxi checkbox-inline" value="{{ service.id}}" />
-                            <span class="checkmark"></span>
-                        </label>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            <table class="table" *ngIf="lenguageList">
+                <thead>
+                    <tr>
+                        <th>Select what languages you talk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let language of lenguageList">
+                        <td>
+                            <label class="container">
+                                {{language.lenguage}}
+                                <input type="checkbox" class="chkbxidioma checkbox-inline" value="{{language.id}}" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group col-md-6">
+            <table class="table " *ngIf="serviceList">
+                <thead>
+                    <tr>
+                        <th>Select for what service you work</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let service of serviceList">
+                        <td>
+                            <label class="container">
+                                {{service.service}}
+                                <input type="checkbox" class="chkbxservicio checkbox-inline" value="{{ service.id}}" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-    
     <!--div class="form-group">
         <label for="service">Why do you need a translator?</label>
         <select class="form-control" id="service" reqiored ngModel #service="ngModel" name="service">
@@ -55,5 +55,5 @@
             <option *ngFor="let service of serviceList"> {{ service.service }}</option>
         </select>
     </div>-->
-    <button type="submit" class="btn btn-success"> Add Languages & Services </button>
+    <button type="submit" class="btn btn-success" ng-click="addLangServ(10003)"> Add Languages & Services </button>
 </form>

@@ -62,6 +62,21 @@ namespace SPAtraductores.Controllers
             return objtraduct.AddService(servicio);
         }
 
+        [HttpPost]
+        [Route("api/Servicio/AddServTrad")]
+        public int AddServiceToTrad([FromBody] int idServicio, int idTraductor)
+        {
+            return objtraduct.AddServiceToTranslator(idServicio, idTraductor);
+        }
+
+        [HttpPost]
+        [Route("api/Servicio/AddLangTrad")]
+        public int AddLangToTrad([FromBody] int idIdioma, int idTraductor)
+        {
+            return objtraduct.AddServiceToTranslator(idIdioma, idTraductor);
+        }
+
+
         // Get the data of a traductor by id
 
         [HttpGet]
