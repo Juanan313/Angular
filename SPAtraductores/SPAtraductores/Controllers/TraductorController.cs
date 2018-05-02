@@ -70,10 +70,10 @@ namespace SPAtraductores.Controllers
         }
 
         [HttpPost]
-        [Route("api/Servicio/AddLangTrad")]
+        [Route("api/Idioma/AddLangTrad")]
         public int AddLangToTrad([FromBody] int idIdioma, int idTraductor)
         {
-            return objtraduct.AddServiceToTranslator(idIdioma, idTraductor);
+            return objtraduct.AddIdiomaToTranslator(idIdioma, idTraductor);
         }
 
 

@@ -65,7 +65,7 @@ export class AddLangAndServComponent {
         //for (var i = 0; i < idiomas.length; i++) {
         //    console.log(idiomas[i])
         //}
-
+        alert(this.id);
         this._traductorService.saveLangTrad(4, 10003);
     }
    

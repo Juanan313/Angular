@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
 import { usuario } from '../translator-login/translator-login.component';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { OnInit, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Directive } from '@angular/core/src/metadata/directives';
 
 
@@ -13,9 +13,9 @@ import { Directive } from '@angular/core/src/metadata/directives';
     styleUrls: ['./perfil-page.component.css']
 })
 /** perfilPage component*/
-export class PerfilPageComponent implements OnInit {
+export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
 
-
+    private show: boolean = false;
     private id: number;
     public trad: TraductorData;
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
@@ -26,6 +26,10 @@ export class PerfilPageComponent implements OnInit {
     ngOnInit() {
         this.loadId();
     }
+
+    //ngOnChanges() {
+    //    this.getTraductors();
+    //}
 
     getTraductors() {
         console.log("Mostrando datos...")
@@ -48,6 +52,10 @@ export class PerfilPageComponent implements OnInit {
                 this.getTraductors();
             }, error => console.error(error))
         }
+    }
+
+    mostrar() {
+        this.show = !this.show;
     }
 }
 interface TraductorData {

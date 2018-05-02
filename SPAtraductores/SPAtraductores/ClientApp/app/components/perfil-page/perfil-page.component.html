@@ -27,7 +27,15 @@
             </tr>
         </tbody>
     </table>
-    <add-lang-and-serv [id]="id"></add-lang-and-serv>
+
+    <hr>
+
+    <button class="btn btn-primary" (click)="mostrar()" *ngIf="show == false">AddServLang</button>
+    <div *ngIf="show == true">
+        <button class="btn btn-danger cerrar" (click)="mostrar()" >X</button>
+        <hr>
+        <add-lang-and-serv [id]="id"></add-lang-and-serv>
+    </div>
 </div>
 
 <button class="btn btn-success" *ngIf="!trad" (click)="getTraductors()">Show profile</button>

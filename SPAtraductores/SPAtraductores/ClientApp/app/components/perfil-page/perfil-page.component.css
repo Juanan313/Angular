@@ -21,3 +21,8 @@ p { display: inline-block;}
         transform: rotate(360deg);
     }
 }
+
+.cerrar {
+    float: right;
+    
+}
