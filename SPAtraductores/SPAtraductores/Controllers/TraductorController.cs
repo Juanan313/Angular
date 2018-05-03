@@ -63,15 +63,15 @@ namespace SPAtraductores.Controllers
         }
 
         [HttpPost]
-        [Route("api/Servicio/AddServTrad")]
-        public int AddServiceToTrad([FromBody] int idServicio, int idTraductor)
+        [Route("api/Servicio/AddServTrad/{idServicio},{idTraductor}")]
+        public int AddServiceToTrad(/*[FromBody]*/ int idServicio, int idTraductor)
         {
             return objtraduct.AddServiceToTranslator(idServicio, idTraductor);
         }
 
         [HttpPost]
-        [Route("api/Idioma/AddLangTrad")]
-        public int AddLangToTrad([FromBody] int idIdioma, int idTraductor)
+        [Route("api/Idioma/AddLangTrad/{idIdioma},{idTraductor}")]
+        public int AddLangToTrad(/*[FromBody]*/ int idIdioma, int idTraductor)
         {
             return objtraduct.AddIdiomaToTranslator(idIdioma, idTraductor);
         }

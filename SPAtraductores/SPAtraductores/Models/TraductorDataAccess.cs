@@ -337,7 +337,7 @@ namespace SPAtraductores.Models
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("AddIdiomaToTrad", con);
+                    SqlCommand cmd = new SqlCommand("addIdiomaToTrad", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdIdioma", idIdioma);
                     cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
@@ -354,7 +354,7 @@ namespace SPAtraductores.Models
         }
 
 
-        //To Delete the record on a particular employee
+        //To Delete the record of a particular language
         public string DeleteLanguage(String idioma)
         {
             try

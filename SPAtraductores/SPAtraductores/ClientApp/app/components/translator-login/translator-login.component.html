@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                <button class="btn">sumbit</button>
+                <button class="btn" [disabled]="!user.valid || !pass.valid ">sumbit</button>
             </form>
         </div>
         <br /><br /><br />

@@ -79,13 +79,13 @@ export class TraductorService {
     }
 
     saveServiceTrad(idService, idTraductor) {
-        return this._http.post(this.myAppUrl + 'api/Servicio/AddServTrad', idService + ',' + idTraductor)
+        return this._http.post(this.myAppUrl + 'api/Servicio/AddServTrad/', idService , idTraductor)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
 
     saveLangTrad(idIdioma, idTraductor) {
-        return this._http.post(this.myAppUrl + 'api/Idioma/AddLangTrad', idIdioma + ',' + idTraductor)
+        return this._http.post(this.myAppUrl + 'api/Idioma/AddLangTrad/', idIdioma ,idTraductor)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
