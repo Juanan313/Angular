@@ -439,7 +439,7 @@ namespace SPAtraductores.Models
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("AddServToTrad", con);
+                    SqlCommand cmd = new SqlCommand("addServToTrad", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdServicio", idService);
                     cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);

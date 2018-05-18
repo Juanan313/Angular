@@ -2,5 +2,12 @@
 <h1> Admin page </h1>
 
 <FetchTraductorComponent class="col-md-12"></FetchTraductorComponent>
-<idiomas-fetch class="col-md-6"></idiomas-fetch>
-<servicios-fetch class="col-md-6"></servicios-fetch>
+<a data-target="#collapseLangServ" data-toggle="collapse">
+    <span class="label label-primary">
+        Show languages and services
+    </span>
+</a>
+<div id="collapseLangServ" class="collapse">
+    <idiomas-fetch class="col-md-6"></idiomas-fetch>
+    <servicios-fetch class="col-md-6"></servicios-fetch>
+</div>
