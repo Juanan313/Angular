@@ -66,7 +66,7 @@ export class AddLangAndServComponent {
         //    console.log(idiomas[i])
         //}
         alert(this.id);
-        this._traductorService.saveLangTrad(4, 10003);
+        this._traductorService.saveTraductorServicios(4, 10003).subscribe((data) => { });
     }
    
 }

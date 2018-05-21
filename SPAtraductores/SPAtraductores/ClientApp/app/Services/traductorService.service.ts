@@ -78,11 +78,20 @@ export class TraductorService {
             .catch(this.errorHandler)  
     }
 
-    saveServiceTrad(idService, idTraductor) {
-        return this._http.post(this.myAppUrl + 'api/Servicio/AddServTrad/', idService , idTraductor)
+    //saveServiceTrad(idService, idTraductor) {
+    //    return this._http.post(this.myAppUrl + 'api/Servicio/AddServTrad/', idService , idTraductor)
+    //        .map((response: Response) => response.json())
+    //        .catch(this.errorHandler)
+    //}
+
+
+    //Añadir servicio a traductor: enric
+    saveTraductorServicios(idservicios: number, idtraductor: number) {
+        return this._http.get(this.myAppUrl + 'api/Traductor/Createservicio/' + idservicios + "," + idtraductor)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
+
 
     saveLangTrad(idIdioma, idTraductor) {
         return this._http.post(this.myAppUrl + 'api/Idioma/AddLangTrad/', idIdioma ,idTraductor)
