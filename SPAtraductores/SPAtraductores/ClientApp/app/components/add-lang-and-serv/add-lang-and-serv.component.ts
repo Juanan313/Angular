@@ -5,7 +5,7 @@ import { TraductorService } from '../../services/traductorservice.service'
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { Directive } from '@angular/core/src/metadata/directives';
-import { idioma } from '../home/home.component';
+import { idioma, servicio } from '../home/home.component';
 
 @Component({
     selector: 'add-lang-and-serv',
@@ -53,21 +53,34 @@ export class AddLangAndServComponent {
 
 
     addLangServ(tradId) {
-        //if ( tradId == 0 ) {
-        //    return false;
-        //} 
+        if ( tradId == 0 ) {
+            return false;
+        } 
 
-        //alert(this.id);
-
-        //var idiomas = document.getElementsByClassName('chkbxidioma');
-        //var servicios = document.getElementsByClassName('chkbxservicio');
-
-        //for (var i = 0; i < idiomas.length; i++) {
-        //    console.log(idiomas[i])
-        //}
         alert(this.id);
-        this._traductorService.saveTraductorServicios(4, 10003).subscribe((data) => { });
-        this._traductorService.saveTraductorIdioma(1, 10003).subscribe((data) => { });
+
+        var idiomas = <any>document.getElementsByClassName('chkbxidioma');
+        var servicios = <any>document.getElementsByClassName('chkbxservicio');
+
+        for (var i = 0; i < idiomas.length; i++) {
+            var idioma = idiomas[i];
+
+            if (idioma.checked) {
+                this._traductorService.saveTraductorIdioma( idioma.value, this.id).subscribe((data) => { });
+            }
+        }
+
+        for (var i = 0; i < servicios.length; i++) {
+            var servicio = servicios[i];
+
+            if (servicio.checked) {
+                this._traductorService.saveTraductorServicios(servicio.value, this.id, ).subscribe((data) => { });
+            }
+           
+        }
+
+        //this._traductorService.saveTraductorServicios(4, 10003).subscribe((data) => { });
+        //this._traductorService.saveTraductorIdioma(1, 10003).subscribe((data) => { });
     }
    
 }
