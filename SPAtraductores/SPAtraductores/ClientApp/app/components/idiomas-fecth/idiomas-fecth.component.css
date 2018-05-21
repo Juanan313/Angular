@@ -1,8 +1,24 @@
 ﻿table {
-    background-color: slategrey;
+    background-color: #bababa;
 }
 
+
+
 table a {
-    color: white;
+    color: black;
+}
+
+table td {
+        background-color: #bad6ff;
+        font-style: oblique;
+        font-weight: bold;
+}
+
+tr:hover {
+    background-color: #bababa;
+}
+
+tr:hover td{
+    background-color: transparent;
 }
 

@@ -1,7 +1,19 @@
 ﻿
 
-table {
-    background-color: cadetblue;
+table th {
+    background-color: #a0bebf;
+}
+
+table td {
+    background-color: #c5c5c5;
+}
+
+.fila:hover {
+    background-color: #a0bebf;
+}
+
+.fila:hover td{
+    background-color: transparent;
 }
 
 table a {

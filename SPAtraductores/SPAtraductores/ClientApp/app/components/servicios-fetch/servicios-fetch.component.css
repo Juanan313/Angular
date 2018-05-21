@@ -1,9 +1,23 @@
-﻿
-table {
-
-    background-color: slategrey;
+﻿table {
+    background-color: #bababa;
 }
 
-a {
-    color: white;
+
+
+    table a {
+        color: black;
+    }
+
+    table td {
+        background-color: #bad6ff;
+        font-style: oblique;
+        font-weight: bold;
+    }
+
+tr:hover {
+    background-color: #bababa;
 }
+
+    tr:hover td {
+        background-color: transparent;
+    }

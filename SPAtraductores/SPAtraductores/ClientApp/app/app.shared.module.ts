@@ -47,6 +47,7 @@ import { AddLangAndServComponent } from './components/add-lang-and-serv/add-lang
             { path: 'translator-login', component: TranslatorLoginComponent },
             { path: 'admin-page', component: AdminPageComponent },
             { path: 'servicios-fetch', component: ServiciosFetchComponent },
+            { path: 'idiomas-fetch', component: IdiomasFecthComponent },
             { path: 'traductor-bycp', component: TraductorByCpComponent },
             { path: 'perfil-page', component: PerfilPageComponent },
             { path: 'addLang-Serv', component: AddLangAndServComponent },
