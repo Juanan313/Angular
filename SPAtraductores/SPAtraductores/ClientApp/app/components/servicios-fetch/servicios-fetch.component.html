@@ -8,7 +8,7 @@
         <div class="form-group">
             <label for="Service">Add new service: </label>
             <input id="service" formControlName="service" type="text" name="service" />
-            <button type="submit" class="btn btn-sm btn-primary">sumbit</button>
+            <button type="submit" class="btn btn-sm btn-primary"> <i class="glyphicon glyphicon-plus"></i> </button>
         </div>
         
     </form>
@@ -24,7 +24,7 @@
             <tr *ngFor="let service of serviceList">
                 <td>{{ service.service }}</td>
                 <td>
-                    <a [routerLink]="" (click)="delete(service.service)">Delete</a>
+                    <a [routerLink]="" (click)="delete(service.service)"><i class="glyphicon glyphicon-trash"></i>Delete</a>
                 </td>
             </tr>
         </tbody>

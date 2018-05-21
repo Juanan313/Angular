@@ -65,6 +65,7 @@ export class ServiciosFetchComponent {
         var ans = confirm("Do you want to delete this service: " + servicio);
         if (ans) {
             this._traductorService.deleteService(servicio).subscribe((data) => {
+                this._router.navigate(['/admin-page']);
                 this.getServices();
             }, error => console.error(error))
         }

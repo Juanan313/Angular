@@ -7,7 +7,7 @@
         <div class="form-group">
             <label for="Lenguage">Add new language: </label>
             <input id="lenguage" formControlName="lenguage" type="text" name="lenguage" />
-            <button type="submit" class="btn btn-sm btn-primary" >sumbit</button>
+            <button type="submit" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i> </button>
         </div>
         
     </form>
@@ -25,7 +25,7 @@
             <tr *ngFor="let language of lenguageList">
                 <td>{{ language.lenguage }}</td>
                 <td>
-                    <a [routerLink]="" (click)="delete(language.lenguage)">Delete</a>
+                    <a [routerLink]="" (click)="delete(language.lenguage)"> <i class="glyphicon glyphicon-trash"></i>Delete</a>
                 </td>
             </tr>
         </tbody>

@@ -18,3 +18,11 @@ form {
     border-top-Right-radius: 0px !important;
     
 }
+
+.logoPagina {
+    width: 12%;
+}
+
+hr {
+    border-bottom: 1px solid gray;
+}
