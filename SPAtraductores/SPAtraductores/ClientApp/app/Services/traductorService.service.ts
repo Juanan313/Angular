@@ -92,12 +92,18 @@ export class TraductorService {
             .catch(this.errorHandler)
     }
 
-
-    saveLangTrad(idIdioma, idTraductor) {
-        return this._http.post(this.myAppUrl + 'api/Idioma/AddLangTrad/', idIdioma ,idTraductor)
+    //Añadir idioma a un traductor
+    saveTraductorIdioma(ididioma: number, idtraductor: number) {
+        return this._http.get(this.myAppUrl + 'api/Traductor/Createidioma/' + ididioma + "," + idtraductor)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
+
+    //saveLangTrad(idIdioma, idTraductor) {
+    //    return this._http.post(this.myAppUrl + 'api/Idioma/AddLangTrad/', idIdioma ,idTraductor)
+    //        .map((response: Response) => response.json())
+    //        .catch(this.errorHandler)
+    //}
 
 
     // UPDATE DATA

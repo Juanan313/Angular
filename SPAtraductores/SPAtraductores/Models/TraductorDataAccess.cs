@@ -331,7 +331,8 @@ namespace SPAtraductores.Models
         }
 
         // Añade Idioma al traductor, tabla intermedia
-        public int AddIdiomaToTranslator(int idIdioma, int idTraductor)
+
+        public int AddTraductorIdioma(int parIDIdioma, int parIDTraductor)
         {
             try
             {
@@ -339,8 +340,8 @@ namespace SPAtraductores.Models
                 {
                     SqlCommand cmd = new SqlCommand("addIdiomaToTrad", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@IdIdioma", idIdioma);
-                    cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
+                    cmd.Parameters.AddWithValue("@IdIdioma", parIDIdioma);
+                    cmd.Parameters.AddWithValue("@IdTraductor", parIDTraductor);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -352,6 +353,28 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
+
+        //public int AddIdiomaToTranslator(int idIdioma, int idTraductor)
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection con = new SqlConnection(connectionString))
+        //        {
+        //            SqlCommand cmd = new SqlCommand("addIdiomaToTrad", con);
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@IdIdioma", idIdioma);
+        //            cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
+        //            con.Open();
+        //            cmd.ExecuteNonQuery();
+        //            con.Close();
+        //        }
+        //        return 1;
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
 
 
         //To Delete the record of a particular language
