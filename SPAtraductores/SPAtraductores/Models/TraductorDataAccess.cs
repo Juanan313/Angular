@@ -376,6 +376,38 @@ namespace SPAtraductores.Models
         //    }
         //}
 
+        // devuelve una lista de los idiomas hablados por un traductor
+
+        public IEnumerable<Idioma> getIdiomasHablados( int idTraductor)
+        {
+            try
+            {
+                List<Idioma> listLenguages = new List<Idioma>();
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = "SELECT idioma FROM Idiomas INNER JOIN dbo.TraductoresQueHablan ON Idiomas_IdIdioma = IdIdioma WHERE Traductores_idTraductores = "+ idTraductor;
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        Idioma idioma = new Idioma();
+                        idioma.lenguage = rdr["Idioma"].ToString();
+                        idioma.id = Convert.ToInt32(rdr["IdIdioma"]);
+                        listLenguages.Add(idioma);
+                    }
+
+                    con.Close();
+
+                }
+                return listLenguages;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
 
         //To Delete the record of a particular language
         public string DeleteLanguage(String idioma)
@@ -501,7 +533,40 @@ namespace SPAtraductores.Models
         //    }
         //}
 
-        
+
+        // Servicios para los que se especializa X traductor
+
+        public IEnumerable<Servicio> getServiciosTraductor(int idTraductor)
+        {
+            try
+            {
+                List<Servicio> serviceList = new List<Servicio>();
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = "SELECT servicio FROM TraductoresServicio inner join Servicio ON IdServicio = Servicio_IdServicio WHERE Traductores_idTraductores = " + idTraductor;
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        Servicio servicio = new Servicio();
+                        servicio.service = rdr["Servicio"].ToString();
+                        servicio.id = Convert.ToInt32(rdr["IdServicio"]);
+
+                        serviceList.Add(servicio);
+                    }
+
+                    con.Close();
+
+                }
+                return serviceList;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
 
 
         //To Delete the record of a service
