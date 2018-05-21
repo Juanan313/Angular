@@ -331,7 +331,8 @@ namespace SPAtraductores.Models
         }
 
         // Añade Idioma al traductor, tabla intermedia
-        public int AddIdiomaToTranslator(int idIdioma, int idTraductor)
+
+        public int AddTraductorIdioma(int parIDIdioma, int parIDTraductor)
         {
             try
             {
@@ -339,8 +340,8 @@ namespace SPAtraductores.Models
                 {
                     SqlCommand cmd = new SqlCommand("addIdiomaToTrad", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@IdIdioma", idIdioma);
-                    cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
+                    cmd.Parameters.AddWithValue("@IdIdioma", parIDIdioma);
+                    cmd.Parameters.AddWithValue("@IdTraductor", parIDTraductor);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -352,6 +353,28 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
+
+        //public int AddIdiomaToTranslator(int idIdioma, int idTraductor)
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection con = new SqlConnection(connectionString))
+        //        {
+        //            SqlCommand cmd = new SqlCommand("addIdiomaToTrad", con);
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@IdIdioma", idIdioma);
+        //            cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
+        //            con.Open();
+        //            cmd.ExecuteNonQuery();
+        //            con.Close();
+        //        }
+        //        return 1;
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
 
 
         //To Delete the record of a particular language
@@ -433,7 +456,8 @@ namespace SPAtraductores.Models
         }
 
         // Añade Servicio al traductor, tabla intermedia
-        public int AddServiceToTranslator(int idService, int idTraductor)
+
+        public int AddTraductoServicio(int parIDServicios, int parIDTraductor)
         {
             try
             {
@@ -441,8 +465,8 @@ namespace SPAtraductores.Models
                 {
                     SqlCommand cmd = new SqlCommand("addServToTrad", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@IdServicio", idService);
-                    cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
+                    cmd.Parameters.AddWithValue("@IdServicio", parIDServicios);
+                    cmd.Parameters.AddWithValue("@IdTraductor", parIDTraductor);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -454,6 +478,28 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
+
+        //public int AddServiceToTranslator(int idService, int idTraductor)
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection con = new SqlConnection(connectionString))
+        //        {
+        //            SqlCommand cmd = new SqlCommand("AddServToTrad", con);
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@IdServicio", idService);
+        //            cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
+        //            con.Open();
+        //            cmd.ExecuteNonQuery();
+        //            con.Close();
+        //        }
+        //        return 1;
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
 
 
 
