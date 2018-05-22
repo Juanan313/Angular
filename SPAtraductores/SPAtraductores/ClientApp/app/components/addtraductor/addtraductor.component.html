@@ -8,19 +8,26 @@
     <h1>{{title}}</h1>
     <h3>Translator</h3>
     <hr />
-    <form [formGroup]="traductorForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    <form [formGroup]="traductorForm" class="col-md-8 col-md-offset-2" (ngSubmit)="save()" #formDir="ngForm" novalidate>
         <div class="form-group row">
-            <label class=" control-label col-md-12" for="Email"> <i class="glyphicon glyphicon-envelope"></i> Email</label>
-            <div class="col-md-4">
+            <label class=" control-label col-md-3 col-md-offset-2" for="Email"> <i class="glyphicon glyphicon-envelope"></i> Email</label>
+            <span class="label label-danger " *ngIf="traductorForm.hasError('pattern', 'email')">
+                Email has to respect the following format text@domain.com
+            </span>
+            <div class="col-md-8 col-md-offset-2">
                 <input class="form-control" type="text" formControlName="email">
             </div>
             <span class="text-danger" *ngIf="traductorForm.hasError('required', 'email') && formDir.submitted">
                 Email is required.
             </span>
+            
         </div>
         <div class="form-group row">
-            <label class=" control-label col-md-12" for="Usuario">  <i class="glyphicon glyphicon-user"></i>  User</label>
-            <div class="col-md-4">
+            <label class=" control-label col-md-3 col-md-offset-2" for="Usuario">  <i class="glyphicon glyphicon-user"></i>  User</label>
+            <span class="label label-danger " *ngIf="traductorForm.hasError('pattern', 'usuario')">
+                User has to be 6 length and has to have atleast 1 letter and 1 number.
+            </span>
+            <div class="col-md-8 col-md-offset-2">
                 <input class="form-control" type="text" formControlName="usuario">
             </div>
             <span class="text-danger" *ngIf="traductorForm.hasError('required', 'usuario') && formDir.submitted">
@@ -28,8 +35,11 @@
             </span>
         </div>
         <div class="form-group row">
-            <label class=" control-label col-md-12" for="Pass">  <i class="glyphicon glyphicon-lock"></i>  Password</label>
-            <div class="col-md-4">
+            <label class=" control-label col-md-2 col-md-offset-2" for="Pass">  <i class="glyphicon glyphicon-lock"></i>  Password</label>
+            <span class="label label-danger " *ngIf="traductorForm.hasError('pattern', 'pass')">
+                Password has to be 6 length and has to have atleast 1 letter and 1 number.
+            </span>
+            <div class="col-md-8 col-md-offset-2">
                 <input class="form-control" type="text" formControlName="pass">
             </div>
             <span class="text-danger" *ngIf="traductorForm.hasError('required', 'pass') && formDir.submitted">
@@ -37,8 +47,8 @@
             </span>
         </div>
         <div class="form-group row">
-            <label class=" control-label col-md-12" for="Name">Name</label>
-            <div class="col-md-4">
+            <label class=" control-label col-md-8 col-md-offset-2" for="Name">Name</label>
+            <div class="col-md-8 col-md-offset-2">
                 <input class="form-control" type="text" formControlName="name">
             </div>
             <span class="text-danger" *ngIf="traductorForm.hasError('required', 'name') && formDir.submitted">
@@ -46,8 +56,8 @@
             </span>
         </div>
         <div class="form-group row">
-            <label class=" control-label col-md-12" for="LastName">LastName</label>
-            <div class="col-md-4">
+            <label class=" control-label col-md-8 col-md-offset-2" for="LastName">LastName</label>
+            <div class="col-md-8 col-md-offset-2">
                 <input class="form-control" type="text" formControlName="lastName">
             </div>
             <span class="text-danger" *ngIf="traductorForm.hasError('required', 'lastName') && formDir.submitted">
@@ -55,8 +65,8 @@
             </span>
         </div>
         <div class="form-group row">
-            <label class=" control-label col-md-12" for="CP">Postal Code</label>
-            <div class="col-md-4">
+            <label class=" control-label col-md-8 col-md-offset-2" for="CP">Postal Code</label>
+            <div class="col-md-8 col-md-offset-2">
                 <input class="form-control" type="text" formControlName="cp">
             </div>
             <span class="text-danger" *ngIf="traductorForm.hasError('required', 'cp') && formDir.submitted">
@@ -64,8 +74,8 @@
             </span>
         </div>
         <div class="form-group row">
-            <label class=" control-label col-md-12" for="Tlfn">  <i class="glyphicon glyphicon-phone"></i>  Phone number</label>
-            <div class="col-md-4">
+            <label class=" control-label col-md-8 col-md-offset-2" for="Tlfn">  <i class="glyphicon glyphicon-phone"></i>  Phone number</label>
+            <div class="col-md-8 col-md-offset-2">
                 <input class="form-control" type="text" formControlName="tlfn">
             </div>
             <span class="text-danger" *ngIf="traductorForm.hasError('required', 'tlfn') && formDir.submitted">

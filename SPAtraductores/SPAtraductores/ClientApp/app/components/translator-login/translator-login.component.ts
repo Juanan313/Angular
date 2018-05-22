@@ -19,7 +19,7 @@ export class TranslatorLoginComponent {
     login(user, pass) {
         usuario = user.value;
         var contraseña = pass.value;
-        alert("Usuario: " + usuario + ", Contraseña: " + contraseña);
+        //alert("Usuario: " + usuario + ", Contraseña: " + contraseña);
 
         this.goToProfile();
 

@@ -27,13 +27,19 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
 
     ngOnInit() {
         this.loadId();
-        this.getIdiomasHablados(this.id);
-        this.getServiciosTrad(this.id);
+        
     }
 
     //ngOnChanges() {
     //    this.getTraductors();
     //}
+
+    cargarPerfil() {
+        this.getTraductors();
+        this.getIdiomasHablados();
+        this.getServiciosTrad();
+        
+    }
 
     getTraductors() {
         console.log("Mostrando datos...")
@@ -44,7 +50,12 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
 
     loadId() {
        this._traductorService.getTraductorId(usuario).subscribe(
-           data => this.id = data
+           data => {
+               this.id = data;
+               this.getTraductors();
+               this.getServiciosTrad();
+               this.getIdiomasHablados();
+           }
       )
 
     }
@@ -58,13 +69,13 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
         }
     }
 
-    getIdiomasHablados(id) {
+    getIdiomasHablados() {
         this._traductorService.getIdiomasHablados(this.id).subscribe(
             data => this.langList = data
         )
     }
 
-    getServiciosTrad(id) {
+    getServiciosTrad() {
         this._traductorService.getServiciosTrad(this.id).subscribe(
             data => this.servList = data
         )
@@ -72,6 +83,12 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
 
     mostrar() {
         this.show = !this.show;
+    }
+
+    prueba() {
+        console.log(
+            this.langList 
+        )
     }
 }
 interface TraductorData {

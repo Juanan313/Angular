@@ -34,14 +34,21 @@
         <hr />
         <a [routerLink]="['/translator-login']">Login Form</a>
     </div>
+    <div class="thumbnail col-lg-6">
+        <h3> Languages</h3>
+        <span class="label label-success p-3 m-3" *ngFor="let idioma of langList"> {{idioma.lenguage}}</span>
+    </div>
+    <div class="thumbnail col-lg-6">
+        <h3> Services</h3>
+        <span class="label label-success p-3 m-3" *ngFor="let servicio of servList"> {{servicio.service}}</span>
+    </div>
     <button class="btn btn-primary" (click)="mostrar()" *ngIf="show == false && id > 0">AddServLang</button>
     <div *ngIf="show == true">
-        <button class="btn btn-danger cerrar" (click)="mostrar()" >X</button>
+        <button class="btn btn-danger cerrar" (click)="mostrar()">X</button>
         <div style="clear:both"></div>
         <hr>
         <add-lang-and-serv [id]="id"></add-lang-and-serv>
     </div>
 </div>
 
-<button class="btn btn-success" *ngIf="!trad" (click)="getTraductors()">Show profile</button>
-
+<button class="btn btn-success" *ngIf="!trad" (click)="cargarPerfil()">Show profile</button>

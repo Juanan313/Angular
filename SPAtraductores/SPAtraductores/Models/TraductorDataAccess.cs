@@ -385,7 +385,7 @@ namespace SPAtraductores.Models
                 List<Idioma> listLenguages = new List<Idioma>();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT idioma FROM Idiomas INNER JOIN dbo.TraductoresQueHablan ON Idiomas_IdIdioma = IdIdioma WHERE Traductores_idTraductores = "+ idTraductor;
+                    string sqlQuery = "SELECT Idioma, IdIdioma FROM Idiomas INNER JOIN dbo.TraductoresQueHablan ON Idiomas_IdIdioma = IdIdioma WHERE Traductores_idTraductores = "+ idTraductor;
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
@@ -543,7 +543,7 @@ namespace SPAtraductores.Models
                 List<Servicio> serviceList = new List<Servicio>();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT servicio FROM TraductoresServicio inner join Servicio ON IdServicio = Servicio_IdServicio WHERE Traductores_idTraductores = " + idTraductor;
+                    string sqlQuery = "SELECT Servicio, IdServicio FROM TraductoresServicio inner join Servicio ON IdServicio = Servicio_IdServicio WHERE Traductores_idTraductores = " + idTraductor;
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
