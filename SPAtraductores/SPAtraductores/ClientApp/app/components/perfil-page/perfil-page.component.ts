@@ -18,6 +18,8 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     private show: boolean = false;
     private id: number;
     public trad: TraductorData;
+    public langList: Idioma[];
+    public servList: Servicio[];
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
 
         
@@ -25,6 +27,8 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
 
     ngOnInit() {
         this.loadId();
+        this.getIdiomasHablados(this.id);
+        this.getServiciosTrad(this.id);
     }
 
     //ngOnChanges() {
@@ -54,6 +58,18 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
         }
     }
 
+    getIdiomasHablados(id) {
+        this._traductorService.getIdiomasHablados(this.id).subscribe(
+            data => this.langList = data
+        )
+    }
+
+    getServiciosTrad(id) {
+        this._traductorService.getServiciosTrad(this.id).subscribe(
+            data => this.servList = data
+        )
+    }
+
     mostrar() {
         this.show = !this.show;
     }
@@ -67,5 +83,15 @@ interface TraductorData {
     lastname: string;
     cp: number;
     tlfn: number;
+}
+
+interface Idioma {
+    id: number;
+    idioma: string;
+}
+
+interface Servicio {
+    id: number;
+    servicio: string;
 }
 

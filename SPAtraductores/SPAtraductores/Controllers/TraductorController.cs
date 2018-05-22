@@ -120,11 +120,30 @@ namespace SPAtraductores.Controllers
         }
 
         [HttpGet]
+        [Route("api/Traductor/Services/{id}")]
+        public IEnumerable<Servicio> tradServices(int id)
+        {
+            return objtraduct.getServiciosTraductor(id);
+        }
+
+        [HttpGet]
+        [Route("api/Traductor/Languages/{id}")]
+        public IEnumerable<Idioma> tradLanguages(int id)
+        {
+            return objtraduct.getIdiomasHablados(id);
+        }
+
+
+        /* Datos de traductor buscando por CP , idioma y servicio */
+        [HttpGet]
         [Route("api/Traductor/DetailsDatos/{CP},{idioma},{servicio}")]
         public IEnumerable<DatosTraductor> DetailsDatos(string CP, string idioma,  string servicio)
         {
             return objtraduct.GetTraductorDatos(CP, idioma, servicio);
         }
+
+        
+
 
         // Edit traductor data
         [HttpPut]

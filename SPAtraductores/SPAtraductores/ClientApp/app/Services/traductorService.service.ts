@@ -57,6 +57,18 @@ export class TraductorService {
             .catch(this.errorHandler)
     }
 
+    getIdiomasHablados(id: number) {
+        return this._http.get(this.myAppUrl + 'api/Traductor/Languages/' + id)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);  
+    }
+
+    getServiciosTrad(id: number) {
+        return this._http.get(this.myAppUrl + 'api/Traductor/Services/' + id)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }
+
 
     // SAVES NEW DATA
 
