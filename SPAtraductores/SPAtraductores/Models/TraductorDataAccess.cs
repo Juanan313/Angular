@@ -385,7 +385,7 @@ namespace SPAtraductores.Models
                 List<Idioma> listLenguages = new List<Idioma>();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT Idioma, IdIdioma FROM Idiomas INNER JOIN dbo.TraductoresQueHablan ON Idiomas_IdIdioma = IdIdioma WHERE Traductores_idTraductores = "+ idTraductor;
+                    string sqlQuery = "SELECT Idioma, IdIdioma FROM Idiomas INNER JOIN dbo.TraductoresQueHablan ON Idiomas_IdIdioma = IdIdioma WHERE Traductores_idTraductores = "+ idTraductor +"ORDER BY Idioma";
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
@@ -425,6 +425,29 @@ namespace SPAtraductores.Models
                 }
                 return idioma;
             }
+            catch
+            {
+                throw;
+            }
+        }
+
+        //Borra todos los idiomas hablados por un traductor
+
+        public int DeleteLanguageTalk( int idTraductor)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = "DELETE FROM TraductoresServicio WHERE Traductores_idTraductores =" + idTraductor;
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return 1; 
+            }
+
             catch
             {
                 throw;

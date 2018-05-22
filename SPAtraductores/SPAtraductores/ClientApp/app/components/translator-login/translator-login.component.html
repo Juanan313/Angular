@@ -9,10 +9,10 @@
             <form  bg-success (ngSubmit)="login(user, pass)">
                 <div class="form-group">
                     <label for="user">User name</label>
-                    <input required pattern="^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}$" ngModel #user="ngModel" id="user" type="text" name="user" class="form-control" />
+                    <input required pattern="^(?=.*[a-zA-Z])[a-zA-Z\d]{6,}$" ngModel #user="ngModel" id="user" type="text" name="user" class="form-control" />
                     <div class="alert alert-danger" *ngIf="user.touched && !user.valid">
                         A correct username is required. The username has to be 6 length. <br />
-                        An has to have at least one uppercase letter, onelowercase letter.
+                  
                     </div>
                 </div>
 

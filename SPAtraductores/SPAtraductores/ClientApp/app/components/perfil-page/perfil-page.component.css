@@ -26,3 +26,10 @@ p { display: inline-block;}
     float: right;
     
 }
+
+span {
+    margin: 0px 10px 10px !important;
+    padding: 5px !important;
+    font-size: 12px;
+    display: inline-block;
+}

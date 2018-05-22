@@ -2,7 +2,7 @@
 
 <p *ngIf="!tradList"><em>Loading...</em></p>
 
-<table class='table' *ngIf="tradList">
+<!--<table class='table' *ngIf="tradList">
     <thead>
         <tr>
             <th>Name</th>
@@ -25,4 +25,13 @@
             <td>{{ traductorData.servicio }}</td>
         </tr>
     </tbody>
-</table>
+</table>-->
+<header>
+    Translators for {{tradList[0].cp}} {{tradList[0].idioma}} {{tradList[0].servicio}}
+</header>
+<div class="bg-success col-lg-4" *ngFor="let traductor of tradList">
+    <h3>{{traductor.name}} {{traductor.lastName}}</h3>
+    <h4>Email : {{traductor.email}}</h4>
+    
+
+</div>

@@ -52,8 +52,10 @@ export class AddLangAndServComponent {
     }
 
 
-    addLangServ(tradId) {
-        if ( tradId == 0 ) {
+
+
+    addLangServ() {
+        if ( this.id == 0 ) {
             return false;
         } 
 
@@ -78,6 +80,8 @@ export class AddLangAndServComponent {
             }
            
         }
+
+        this._router.navigate(['/perfil-page']);
 
         //this._traductorService.saveTraductorServicios(4, 10003).subscribe((data) => { });
         //this._traductorService.saveTraductorIdioma(1, 10003).subscribe((data) => { });
