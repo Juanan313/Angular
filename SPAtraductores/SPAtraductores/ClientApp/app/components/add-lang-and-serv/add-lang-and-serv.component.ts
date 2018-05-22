@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { Directive } from '@angular/core/src/metadata/directives';
 import { idioma, servicio } from '../home/home.component';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
     selector: 'add-lang-and-serv',
@@ -23,10 +24,12 @@ import { idioma, servicio } from '../home/home.component';
 })
 
 /** addLangAndServ component*/
-export class AddLangAndServComponent {
+export class AddLangAndServComponent implements OnInit{
 
     public lenguageList: IdiomaData[];
     public serviceList: ServicioData[];
+    public langTalkList: IdiomaData[];
+    public servWorkList: ServicioData[];
 
     @Input() id: number;
 
@@ -34,21 +37,91 @@ export class AddLangAndServComponent {
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
         this.getLanguages();
         this.getServices();
-        var codigoPostal = "";
-        var idioma = "";
-        var servicio = "";
+        
+
+
+        
+        //var codigoPostal = "";
+        //var idioma = "";
+        //var servicio = "";
+        
+    }
+
+    ngOnInit() {
+        
+    }
+
+    getServicesWork() {
+        this._traductorService.getServiciosTrad(this.id).subscribe(
+            data => this.servWorkList = data
+        )
+    }
+
+    getLanguagesTalk() {
+        this._traductorService.getIdiomasHablados(this.id).subscribe(
+            data => {
+                this.langTalkList = data;
+            }
+        )
     }
 
     getServices() {
         this._traductorService.getServices().subscribe(
-            data => this.serviceList = data
+            data => {
+                this.serviceList = data;
+                this.getServicesWork();
+            }
         )
     }
 
     getLanguages() {
         this._traductorService.getLanguages().subscribe(
-            data => this.lenguageList = data
+            data => {
+                this.lenguageList = data;
+                this.getLanguagesTalk();
+            }
         )
+    }
+
+    chargeLangServ() {
+        //console.log("IdLangs:");
+        //console.log("__________");
+        //for (var i = 0; i < this.langTalkList.length; i++) {
+        //    var idLang = this.langTalkList[i].id;
+            
+        //    console.log(idLang);
+        //}
+        //console.log("IdServs:");
+        //console.log("__________");
+        //for (var i = 0; i < this.servWorkList.length; i++) {
+        //    var idServ = this.servWorkList[i].id;
+            
+        //    console.log(idServ);
+        //}
+        var checkboxServ = <any>document.getElementsByClassName("chkbxservicio");
+
+        // for que recorre el array de servicio del tradcutor
+        for (var i = 0; i < this.servWorkList.length; i++) {
+
+
+            // Encapsulo id del servicio del traductor
+            var idServ = this.servWorkList[i].id;
+            console.log("Id Serv: " + idServ);
+
+
+            // for que recorre los checkbox de servicios (todos)
+            for (var j = 0; j < checkboxServ.lenght; j++) {
+
+                //encapsulo el id del servicio del checkbox
+                var checkbox = checkboxServ[j];
+                console.log("CheckBox id:" + checkbox);
+
+                // Compoaracion de ids
+                if (checkbox.value == idServ) {
+                    checkbox.disabled = true;
+                }
+            }
+        }
     }
 
 
@@ -92,11 +165,13 @@ export class AddLangAndServComponent {
 // Interfaces para dar formato a los datos obtenidos de sql
 
 interface IdiomaData {
-    Idioma: string;
     id: number;
+    Idioma: string;
+    
 }
 
 interface ServicioData {
-    Servicio: string;
     id: number;
+    Servicio: string;
+    
 }

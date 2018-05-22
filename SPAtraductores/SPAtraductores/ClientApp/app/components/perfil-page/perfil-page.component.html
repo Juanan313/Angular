@@ -44,6 +44,8 @@
         <span class="label label-success" *ngFor="let servicio of servList"> {{servicio.service}}</span>
     </div>
         </div>
+    <br /><br /><br /><br />
+    <hr />
     <button class="btn btn-primary" (click)="mostrar()" *ngIf="show == false && id > 0">AddServLang</button>
     <div *ngIf="show == true">
         <button class="btn btn-danger cerrar" (click)="mostrar()">X</button>
