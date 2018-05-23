@@ -152,9 +152,18 @@ export class AddLangAndServComponent implements OnInit, AfterContentInit{
         }
     }
 
+    prepareInsert() {
+
+        this._traductorService.deleteLangServFromTrad(this.id).subscribe(data => {
+
+            this.addLangServ();
+            
+        }, error => console.error(error)) 
+
+}
 
     // Añade los idiomas y servicios seleccionados al traductor
-    addLangServ() {
+     addLangServ() {
         if ( this.id == 0 ) {
             return false;
         } 
@@ -193,14 +202,14 @@ export class AddLangAndServComponent implements OnInit, AfterContentInit{
 
     }
 
+
+    // Borra todos los registros de idioma y servicios del traductor
     deleteAll() {
-        var ans = confirm("Do you want to delete all the Languages and services your offer");
-        if (ans) {
+    
             this._traductorService.deleteLangServFromTrad(this.id).subscribe((data) => {
                 this.refreshData();
             }, error => console.error(error))
-        } 
-        
+ 
     }
    
 }

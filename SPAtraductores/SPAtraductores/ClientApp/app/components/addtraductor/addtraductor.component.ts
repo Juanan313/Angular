@@ -32,9 +32,9 @@ export class createtraductor implements OnInit {
         this.traductorForm = this._fb.group({
             id: 0,
             email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")]],
-            usuario: ['', [Validators.required, Validators.pattern("^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}$")]],
+            usuario: ['', [Validators.required, Validators.pattern("^([a-zA-Z0-9]+){6,}$")]],
             name: ['', [Validators.required]],
-            pass: ['', [Validators.required, Validators.pattern("^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}$") ]],
+            pass: ['', [Validators.required, Validators.pattern("^([a-zA-Z0-9]+){6,}$")]],
             lastName: ['', [Validators.required]],
             cp: ['', [Validators.required]],
             tlfn: ['', [Validators.required]]
