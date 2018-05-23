@@ -24,6 +24,8 @@ export class createtraductor implements OnInit {
     title: string = "Create an Account";
     id: number;
     errorMessage: any;
+
+
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _traductorService: TraductorService, private _router: Router) {
         if (this._avRoute.snapshot.params["id"]) {
@@ -40,6 +42,8 @@ export class createtraductor implements OnInit {
             tlfn: ['', [Validators.required]]
         })
     }
+
+
     ngOnInit() {
         if (this.id > 0) {
             this.title = "Edit";
@@ -48,6 +52,7 @@ export class createtraductor implements OnInit {
                 , error => this.errorMessage = error);
         }
     }
+
     save() {
         if (!this.traductorForm.valid) {
             return;
@@ -55,7 +60,7 @@ export class createtraductor implements OnInit {
         if (this.title == "Create an Account") {
             this._traductorService.saveTraductor(this.traductorForm.value)
                 .subscribe((data) => {
-                    this._router.navigate(['/admin-page']);
+                    this.loadId();
                 }, error => this.errorMessage = error)
         }
         else if (this.title == "Edit") {
@@ -65,6 +70,17 @@ export class createtraductor implements OnInit {
                 }, error => this.errorMessage = error)
         }
     }
+
+    loadId() {
+        this._traductorService.getTraductorId(this.traductorForm.value.usuario).subscribe(
+            data => {
+                var id = data;
+                this._router.navigate(['/addLang-Serv/', id]);
+            }
+        )
+
+    }
+
     cancel() {
         this._router.navigate(['/admin-page']);
     }

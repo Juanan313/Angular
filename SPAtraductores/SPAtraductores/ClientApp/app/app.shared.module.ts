@@ -52,6 +52,7 @@ import { AddLangAndServComponent } from './components/add-lang-and-serv/add-lang
             { path: 'perfil-page', component: PerfilPageComponent },
             { path: 'perfil-page/:id', component: PerfilPageComponent },
             { path: 'addLang-Serv', component: AddLangAndServComponent },
+            { path: 'addLang-Serv/:id', component: AddLangAndServComponent },
             { path: '**', redirectTo: 'home' },
 
             

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TraductorService } from '../../services/traductorservice.service'
 import { Http } from '@angular/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Directive } from '@angular/core/src/metadata/directives';
 import { idioma, servicio } from '../home/home.component';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -24,18 +24,24 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 
 /** addLangAndServ component*/
-export class AddLangAndServComponent implements OnInit, AfterContentInit{
+export class AddLangAndServComponent implements OnInit {
 
     public lenguageList: IdiomaData[];
     public serviceList: ServicioData[];
     public langTalkList: IdiomaData[];
     public servWorkList: ServicioData[];
+    public insert: Boolean;
 
     @Input() id: number;
 
     /** addLangAndServ ctor */
-    constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
-       
+    constructor(public http: Http, private _avRoute: ActivatedRoute, private _router: Router, private _traductorService: TraductorService) {
+
+        if (this._avRoute.snapshot.params["id"]) {
+            this.insert = true;
+            this.id = this._avRoute.snapshot.params["id"];
+        }
+
         this.refreshData();
         
     }
@@ -44,16 +50,23 @@ export class AddLangAndServComponent implements OnInit, AfterContentInit{
        
     }
 
-    ngAfterContentInit() {
-        this.chargeLangServ();
-    }
+    //ngAfterContentInit() {
+    //    if (!this.insert) {
+    //        this.chargeLangServ();
+    //    }
+        
+    //}
 
     // Carga lista de todos los servicios que ofrece el traductor
     getServicesWork() {
         this._traductorService.getServiciosTrad(this.id).subscribe(
             data => {
                 this.servWorkList = data;
-                this.chargeServices();
+
+                if (!this.insert) {
+                    this.chargeServices();
+                }
+                
             }
         )
     }
@@ -63,7 +76,11 @@ export class AddLangAndServComponent implements OnInit, AfterContentInit{
         this._traductorService.getIdiomasHablados(this.id).subscribe(
             data => {
                 this.langTalkList = data;
-                this.chargeLanguages();
+
+                if (!this.insert) {
+                    this.chargeLanguages();
+                }
+    
             }
         )
     }
@@ -168,8 +185,6 @@ export class AddLangAndServComponent implements OnInit, AfterContentInit{
             return false;
         } 
 
-        alert(this.id);
-
         var idiomas = <any>document.getElementsByClassName('chkbxidioma');
         var servicios = <any>document.getElementsByClassName('chkbxservicio');
 
@@ -190,7 +205,12 @@ export class AddLangAndServComponent implements OnInit, AfterContentInit{
            
         }
 
-        this.refreshData();
+         if (this.insert) {
+             this._router.navigate(['/admin-page']);
+         } else {
+             this.refreshData();
+         }
+        
 
     }
 
