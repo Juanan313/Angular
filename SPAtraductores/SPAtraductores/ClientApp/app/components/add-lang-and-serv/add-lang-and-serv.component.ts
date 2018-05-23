@@ -181,7 +181,7 @@ export class AddLangAndServComponent implements OnInit, AfterContentInit{
            
         }
 
-        this._router.navigate(['/perfil-page']);
+        this.refreshData();
 
     }
 
@@ -191,6 +191,16 @@ export class AddLangAndServComponent implements OnInit, AfterContentInit{
         this.getLanguages();
         this.getServices();
 
+    }
+
+    deleteAll() {
+        var ans = confirm("Do you want to delete all the Languages and services your offer");
+        if (ans) {
+            this._traductorService.deleteLangServFromTrad(this.id).subscribe((data) => {
+                this.refreshData();
+            }, error => console.error(error))
+        } 
+        
     }
    
 }

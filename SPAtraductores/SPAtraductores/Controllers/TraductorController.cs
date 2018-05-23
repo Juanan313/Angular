@@ -177,5 +177,13 @@ namespace SPAtraductores.Controllers
             return objtraduct.DeleteService(servicio);
         }
 
+        // Elimina todos los registros de idiomas y servicios de un traductor
+        [HttpDelete]
+        [Route("api/Traducotr/DeleteLangServ/{idTraductor}")]
+        public int DeleteLangServFromTrad(int idTraductor) 
+        {
+            return objtraduct.DeleteLangServFromTRad(idTraductor);
+        }
+
     }
 }

@@ -143,7 +143,13 @@ export class TraductorService {
         return this._http.delete(this.myAppUrl + "api/Service/Delete/" + servicio)
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
-    }  
+    } 
+
+    deleteLangServFromTrad(idTraductor) {
+        return this._http.delete(this.myAppUrl + "api/Traducotr/DeleteLangServ/" + idTraductor)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }
 
 
     // ERROR HANDLER

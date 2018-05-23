@@ -189,11 +189,6 @@ namespace SPAtraductores.Models
                     }
 
 
-                    //SqlCommand cmd = new SqlCommand("GetTraductoresByCp", con);
-                    //cmd.CommandType = CommandType.StoredProcedure;
-                    //cmd.Parameters.AddWithValue("@CP", CP);
-                    //con.Open();
-                    //cmd.ExecuteNonQuery();
                     con.Close();
 
                 }
@@ -236,12 +231,6 @@ namespace SPAtraductores.Models
                         lsttraductores.Add(datosTraductor);
                     }
 
-
-                    //SqlCommand cmd = new SqlCommand("GetTraductoresByCp", con);
-                    //cmd.CommandType = CommandType.StoredProcedure;
-                    //cmd.Parameters.AddWithValue("@CP", CP);
-                    //con.Open();
-                    //cmd.ExecuteNonQuery();
                     con.Close();
 
                 }
@@ -354,27 +343,6 @@ namespace SPAtraductores.Models
             }
         }
 
-        //public int AddIdiomaToTranslator(int idIdioma, int idTraductor)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection con = new SqlConnection(connectionString))
-        //        {
-        //            SqlCommand cmd = new SqlCommand("addIdiomaToTrad", con);
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.AddWithValue("@IdIdioma", idIdioma);
-        //            cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
-        //            con.Open();
-        //            cmd.ExecuteNonQuery();
-        //            con.Close();
-        //        }
-        //        return 1;
-        //    }
-        //    catch
-        //    {
-        //        throw;
-        //    }
-        //}
 
         // devuelve una lista de los idiomas hablados por un traductor
 
@@ -433,7 +401,7 @@ namespace SPAtraductores.Models
 
         //Borra todos los idiomas hablados por un traductor
 
-        public int DeleteLanguageTalk( int idTraductor)
+        public int DeleteLangServFromTRad(int idTraductor)
         {
             try
             {
@@ -442,6 +410,8 @@ namespace SPAtraductores.Models
                     string sqlQuery = "DELETE FROM TraductoresServicio WHERE Traductores_idTraductores =" + idTraductor;
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
                     con.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = "DELETE FROM TraductoresQueHablan WHERE Traductores_idTraductores =" + idTraductor;
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
@@ -457,7 +427,7 @@ namespace SPAtraductores.Models
 
         // DATA ACCESS SERVICIOS
 
-
+        // Lista todos los servicios de la BD
         public IEnumerable<Servicio> GetAllServices()
         {
             try
@@ -489,6 +459,7 @@ namespace SPAtraductores.Models
             }
         }
 
+        // Añade un servicio
         public string AddService(Servicio servicio)
         {
             try
@@ -533,28 +504,6 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
-
-        //public int AddServiceToTranslator(int idService, int idTraductor)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection con = new SqlConnection(connectionString))
-        //        {
-        //            SqlCommand cmd = new SqlCommand("AddServToTrad", con);
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.AddWithValue("@IdServicio", idService);
-        //            cmd.Parameters.AddWithValue("@IdTraductor", idTraductor);
-        //            con.Open();
-        //            cmd.ExecuteNonQuery();
-        //            con.Close();
-        //        }
-        //        return 1;
-        //    }
-        //    catch
-        //    {
-        //        throw;
-        //    }
-        //}
 
 
         // Servicios para los que se especializa X traductor
