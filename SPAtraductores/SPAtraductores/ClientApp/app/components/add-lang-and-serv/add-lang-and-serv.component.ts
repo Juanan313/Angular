@@ -1,4 +1,4 @@
-﻿import { Component, NgModule, Input } from '@angular/core';
+﻿import { Component, NgModule, Input, AfterContentInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TraductorService } from '../../services/traductorservice.service'
@@ -24,7 +24,7 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 
 /** addLangAndServ component*/
-export class AddLangAndServComponent implements OnInit{
+export class AddLangAndServComponent implements OnInit, AfterContentInit{
 
     public lenguageList: IdiomaData[];
     public serviceList: ServicioData[];
@@ -35,36 +35,40 @@ export class AddLangAndServComponent implements OnInit{
 
     /** addLangAndServ ctor */
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
-        this.getLanguages();
-        this.getServices();
-        
-
-
-        
-        //var codigoPostal = "";
-        //var idioma = "";
-        //var servicio = "";
+       
+        this.refreshData();
         
     }
 
     ngOnInit() {
-        
+       
     }
 
+    ngAfterContentInit() {
+        this.chargeLangServ();
+    }
+
+    // Carga lista de todos los servicios que ofrece el traductor
     getServicesWork() {
         this._traductorService.getServiciosTrad(this.id).subscribe(
-            data => this.servWorkList = data
-        )
-    }
-
-    getLanguagesTalk() {
-        this._traductorService.getIdiomasHablados(this.id).subscribe(
             data => {
-                this.langTalkList = data;
+                this.servWorkList = data;
+                this.chargeServices();
             }
         )
     }
 
+    // Carga lista de todos los idiomas hablados por el traductor
+    getLanguagesTalk() {
+        this._traductorService.getIdiomasHablados(this.id).subscribe(
+            data => {
+                this.langTalkList = data;
+                this.chargeLanguages();
+            }
+        )
+    }
+
+     // Carga lista de todos los servicios que tenemos en la base de datos para lista checkbox
     getServices() {
         this._traductorService.getServices().subscribe(
             data => {
@@ -74,6 +78,7 @@ export class AddLangAndServComponent implements OnInit{
         )
     }
 
+    // Carga lista de todos los idiomas que tenemos en la base de datos para lista checkbox
     getLanguages() {
         this._traductorService.getLanguages().subscribe(
             data => {
@@ -83,21 +88,15 @@ export class AddLangAndServComponent implements OnInit{
         )
     }
 
+    // Encapsula la llamada a ambas funciones
     chargeLangServ() {
-        //console.log("IdLangs:");
-        //console.log("__________");
-        //for (var i = 0; i < this.langTalkList.length; i++) {
-        //    var idLang = this.langTalkList[i].id;
-            
-        //    console.log(idLang);
-        //}
-        //console.log("IdServs:");
-        //console.log("__________");
-        //for (var i = 0; i < this.servWorkList.length; i++) {
-        //    var idServ = this.servWorkList[i].id;
-            
-        //    console.log(idServ);
-        //}
+        this.chargeLanguages();
+        this.chargeServices();
+    }
+
+    // Carga las lista de servicios que ofrece el traductor en los checkbox
+    chargeServices() {
+
         var checkboxServ = <any>document.getElementsByClassName("chkbxservicio");
 
         // for que recorre el array de servicio del tradcutor
@@ -110,7 +109,7 @@ export class AddLangAndServComponent implements OnInit{
 
 
             // for que recorre los checkbox de servicios (todos)
-            for (var j = 0; j < checkboxServ.lenght; j++) {
+            for (var j = 0; j < checkboxServ.length; j++) {
 
                 //encapsulo el id del servicio del checkbox
                 var checkbox = checkboxServ[j];
@@ -118,15 +117,43 @@ export class AddLangAndServComponent implements OnInit{
 
                 // Compoaracion de ids
                 if (checkbox.value == idServ) {
-                    checkbox.disabled = true;
+                    checkbox.checked = true;
+                }
+            }
+        }
+    }
+
+    // Carga las lista de idiomas hablados por el traductor en los checkbox
+    chargeLanguages() {
+
+        var checkboxLang = <any>document.getElementsByClassName("chkbxidioma");
+
+        // for que recorre el array de servicio del tradcutor
+        for (var i = 0; i < this.langTalkList.length; i++) {
+
+
+            // Encapsulo id del servicio del traductor
+            var idLang = this.langTalkList[i].id;
+            console.log("Id Serv: " + idLang);
+
+
+            // for que recorre los checkbox de servicios (todos)
+            for (var j = 0; j < checkboxLang.length; j++) {
+
+                //encapsulo el id del servicio del checkbox
+                var checkbox = checkboxLang[j];
+                console.log("CheckBox id:" + checkbox);
+
+                // Compoaracion de ids
+                if (checkbox.value == idLang) {
+                    checkbox.checked = true;
                 }
             }
         }
     }
 
 
-
-
+    // Añade los idiomas y servicios seleccionados al traductor
     addLangServ() {
         if ( this.id == 0 ) {
             return false;
@@ -156,8 +183,14 @@ export class AddLangAndServComponent implements OnInit{
 
         this._router.navigate(['/perfil-page']);
 
-        //this._traductorService.saveTraductorServicios(4, 10003).subscribe((data) => { });
-        //this._traductorService.saveTraductorIdioma(1, 10003).subscribe((data) => { });
+    }
+
+    // Actualiza los datos según el perfil
+    refreshData() {
+
+        this.getLanguages();
+        this.getServices();
+
     }
    
 }
