@@ -1,1 +1,15 @@
 ﻿
+#sorry {
+    padding: 15px !important;
+    margin: 15px !important;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0 gray;
+}
+
+h1 {
+    padding: 10px !important;
+    margin: 15px !important;
+    border-radius: 5px;
+    box-shadow: 1px 1px 0 #a6a7a8;
+
+}

@@ -564,9 +564,37 @@ namespace SPAtraductores.Models
         }
 
 
+        /* ----- PETICIONES ------*/
 
+        // Añadir peticion a base de datos
+        public int AddRequest(Peticion request)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("AddRequest", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdIdioma", request.IdIdioma);
+                    cmd.Parameters.AddWithValue("@IdServicio", request.IdServicio);
+                    cmd.Parameters.AddWithValue("@IdTraductor", request.idTraductor);
+                    cmd.Parameters.AddWithValue("@Name", request.NombreSolicitante);
+                    cmd.Parameters.AddWithValue("@Description", request.Descripcion);
+                    cmd.Parameters.AddWithValue("@Email", request.Email);
+                    cmd.Parameters.AddWithValue("@Tlfn", request.Tlfn);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
-
+        /* ----- ALTA USUARIO -------*/
     }
 
 

@@ -1,37 +1,28 @@
-﻿<h1>Translators DataBase</h1>
+﻿<p *ngIf="!tradList"><em>Loading...</em></p>
+<div>
+    <header>
+        <h1 class="bg-primary p-5">Translators DataBase</h1>
 
-<p *ngIf="!tradList"><em>Loading...</em></p>
+        <h3>Translators for this Postal Code: {{cp}}</h3>
+        <p>
+            That talks:{{language}} and works on: {{service}}.
+        </p>
+    </header>
 
-<!--<table class='table' *ngIf="tradList">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>CP</th>
-            <th>Phone Number</th>
-            <th>Language</th>
-            <th>Service</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let traductorData of tradList">
-            <td>{{ traductorData.name }}</td>
-            <td>{{ traductorData.lastName }}</td>
-            <td>{{ traductorData.email }}</td>
-            <td>{{ traductorData.cp }}</td>
-            <td>{{ traductorData.tlfn }}</td>
-            <td>{{ traductorData.idioma }}</td>
-            <td>{{ traductorData.servicio }}</td>
-        </tr>
-    </tbody>
-</table>-->
-<header>
-    Translators for {{tradList[0].cp}} {{tradList[0].idioma}} {{tradList[0].servicio}}
-</header>
-<div class="bg-success col-lg-4" *ngFor="let traductor of tradList">
-    <h3>{{traductor.name}} {{traductor.lastName}}</h3>
-    <h4>Email : {{traductor.email}}</h4>
-    
 
+    <div *ngIf="tradList ==''">
+        <div id="sorry" class="bg-info">
+            <h3>We're Sorry </h3>
+            <h4>There are no translators that meet these conditions in our database.</h4>
+        </div>
+    </div>
+
+    <div *ngIf="tradList != ''">
+
+
+        <div class="bg-success col-lg-4" *ngFor="let traductor of tradList">
+            <h3>{{traductor.name}} {{traductor.lastName}}</h3>
+            <h4>Email : {{traductor.email}}</h4>
+        </div>
+    </div>
 </div>

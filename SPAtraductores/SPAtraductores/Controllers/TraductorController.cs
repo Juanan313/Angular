@@ -62,6 +62,14 @@ namespace SPAtraductores.Controllers
             return objtraduct.AddService(servicio);
         }
 
+        // Añadir peticion
+        [HttpPost]
+        [Route("api/Peticion/Create")]
+        public int CreateRequest([FromBody] Peticion request)
+        {
+            return objtraduct.AddRequest(request);
+        }
+
         /* Añadir servicio a un traductor con post no funciona
 
         [HttpPost]

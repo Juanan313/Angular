@@ -18,7 +18,8 @@ export class TraductorByCpComponent {
     cp: string;
     language: string;
     service: string;
-    public tradList: TraductorData[]; 
+    public tradList: TraductorData[];
+    public showTrads: Boolean;
     /** traductorByCP ctor */
     constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService) {
         this.cp = codigoPostal;
@@ -31,7 +32,10 @@ export class TraductorByCpComponent {
 
         console.log(this.cp);
         this._traductorService.getTraductorByCP(this.cp).subscribe(
-            data => this.tradList = data
+            data => {
+                this.tradList = data;
+                
+            }
         )  
             
     }

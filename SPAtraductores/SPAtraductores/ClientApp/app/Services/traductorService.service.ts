@@ -90,6 +90,12 @@ export class TraductorService {
             .catch(this.errorHandler)  
     }
 
+    saveRequest(request) {
+        return this._http.post(this.myAppUrl + 'api/Peticion/Create', request)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler)  
+    }
+
     //saveServiceTrad(idService, idTraductor) {
     //    return this._http.post(this.myAppUrl + 'api/Servicio/AddServTrad/', idService , idTraductor)
     //        .map((response: Response) => response.json())
@@ -116,6 +122,7 @@ export class TraductorService {
     //        .map((response: Response) => response.json())
     //        .catch(this.errorHandler)
     //}
+
 
 
     // UPDATE DATA

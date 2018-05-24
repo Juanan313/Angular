@@ -26,7 +26,8 @@
             <td>{{ traductor.tlfn }}</td>
             <td>
                 <a [routerLink]="['/Traductor/edit/', traductor.id]"><i class="glyphicon glyphicon-edit"></i>Edit</a> |
-                <a [routerLink]="" (click)="delete(traductor.id)"><i class="glyphicon glyphicon-trash"></i>Delete</a>
+                <a [routerLink]="" (click)="delete(traductor.id)"><i class="glyphicon glyphicon-trash"></i>Delete</a> |
+                <a [routerLink]="['/addLang-Serv/', traductor.id]" ><i class="glyphicon glyphicon-plus"></i>AddLS</a> 
             </td>
         </tr>
     </tbody>
