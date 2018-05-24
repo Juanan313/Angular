@@ -9,3 +9,8 @@ form {
 button {
     color: black;
 }
+
+alert {
+    padding: 5px !important;
+    margin-bottom: 3px !important;
+}

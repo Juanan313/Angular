@@ -39,7 +39,8 @@ export class createtraductor implements OnInit {
             pass: ['', [Validators.required, Validators.pattern("^([a-zA-Z0-9]+){6,}$")]],
             lastName: ['', [Validators.required]],
             cp: ['', [Validators.required]],
-            tlfn: ['', [Validators.required]]
+            tlfn: ['', [Validators.required]],
+            img: ['', [Validators.required]]
         })
     }
 

@@ -62,10 +62,8 @@ export class AddLangAndServComponent implements OnInit {
         this._traductorService.getServiciosTrad(this.id).subscribe(
             data => {
                 this.servWorkList = data;
-
-                if (!this.insert) {
-                    this.chargeServices();
-                }
+                this.chargeServices();
+                
                 
             }
         )
@@ -76,11 +74,8 @@ export class AddLangAndServComponent implements OnInit {
         this._traductorService.getIdiomasHablados(this.id).subscribe(
             data => {
                 this.langTalkList = data;
+                this.chargeLanguages();
 
-                if (!this.insert) {
-                    this.chargeLanguages();
-                }
-    
             }
         )
     }
