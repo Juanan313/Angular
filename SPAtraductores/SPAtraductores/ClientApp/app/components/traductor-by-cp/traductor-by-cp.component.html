@@ -20,9 +20,13 @@
     <div *ngIf="tradList != ''">
 
 
-        <div class="bg-success col-lg-4" *ngFor="let traductor of tradList">
+        <div class="bg-success col-lg-4 tradThumbnail" *ngFor="let traductor of tradList">
             <h3>{{traductor.name}} {{traductor.lastName}}</h3>
+            <hr />
             <h4>Email : {{traductor.email}}</h4>
+            <h4>Phone Number: {{traductor.tlfn}}</h4>
+            <hr />
+            <button class="btn btn-primary pull-right"> <i class="glyphicon glyphicon-plus"></i> Create Request </button>
         </div>
     </div>
 </div>
