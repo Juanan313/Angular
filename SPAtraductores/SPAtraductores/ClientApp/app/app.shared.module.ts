@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 /* --- Mis imports --- */
 // POPUPS
-
+import { PopupModule } from 'ng2-opd-popup';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -44,6 +44,7 @@ import { AddRequestComponent } from './components/add-request/add-request.compon
         HttpModule,
         FormsModule,
         ReactiveFormsModule,
+        PopupModule.forRoot(),
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },

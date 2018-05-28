@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TraductorService } from '../../services/traductorservice.service' 
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
+import { Popup } from 'ng2-opd-popup';
 
 
 @Component({
@@ -54,6 +55,7 @@ export class HomeComponent {
         console.log("codigo postal: " + codigoPostal + " idioma: " + idioma + " servicio: " + servicio);
         this._router.navigate(['/traductor-bycp']);
     }
+
 }
 
 export var codigoPostal;

@@ -1,10 +1,11 @@
 ﻿import { Component, Inject } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TraductorService } from '../../services/traductorservice.service'
-import { codigoPostal } from '../home/home.component'
-import { idioma } from '../home/home.component'
-import { servicio } from '../home/home.component'
+import { TraductorService } from '../../services/traductorservice.service';
+import { codigoPostal } from '../home/home.component';
+import { idioma } from '../home/home.component';
+import { servicio } from '../home/home.component';
+import { Popup } from 'ng2-opd-popup';
 
 @Component({
     selector: 'traductor-by-cp',
@@ -20,12 +21,16 @@ export class TraductorByCpComponent {
     service: string;
     public tradList: TraductorData[];
     public showTrads: Boolean;
+    public traductorName: string;
+    public traductorEmail: string;
     /** traductorByCP ctor */
-    constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService) {
+    constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService, private popup: Popup) {
         this.cp = codigoPostal;
         this.language = idioma;
         this.service = servicio;
         this.getTraductorsData();
+        this.traductorName = ""; 
+        this.traductorEmail = ""; 
     }
 
     getTraductorsByCp() {
@@ -48,6 +53,22 @@ export class TraductorByCpComponent {
     }
 
 
+    pruebaPopup(name, email ) {
+        this.traductorName = name;
+        this.traductorEmail = email;
+
+        this.popup.options = {
+            color: "#337ab7",
+            confirmBtnContent: "Add a request",
+            cancleBtnContent: "Cancel",
+            confirmBtnClass: "hide",
+            cancleBtnClass: "btn btn-secondary",
+            header: "Add a Request for our translator",
+            widthProsentage: 70,
+            animation: "fadeInDown"
+        }
+        this.popup.show();
+    }
 
 }
 

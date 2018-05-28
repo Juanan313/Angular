@@ -4,15 +4,15 @@
 
 
 
-table a {
+/*table a {
     color: black;
-}
+}*/
 
-table td {
-        background-color: #bad6ff;
+    table td {
+        background-color: #a0bebf;
         font-style: oblique;
         font-weight: bold;
-}
+    }
 
 tr:hover {
     background-color: #bababa;

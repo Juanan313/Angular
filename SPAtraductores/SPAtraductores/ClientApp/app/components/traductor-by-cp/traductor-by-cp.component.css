@@ -15,7 +15,7 @@ h1 {
 }
 
 .tradThumbnail {
-    margin: 10px !important;
+    margin: 5px !important;
     padding: 5px !important;
     border-radius: 10px;
     min-height: 250px;
@@ -27,4 +27,12 @@ h1 {
 
 .tradThumbnail hr {
     border-top: 1px solid gray;
+}
+
+.noPadding {
+    padding: 0px !important;
+}
+
+.modal {
+    background: rgba(0,0,0,0.6);
 }

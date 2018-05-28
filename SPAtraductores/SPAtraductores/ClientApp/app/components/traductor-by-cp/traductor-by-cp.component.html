@@ -2,13 +2,11 @@
 <div>
     <header>
         <h1 class="bg-primary p-5">Translators DataBase</h1>
-
-        <h3>Translators for this Postal Code: {{cp}}</h3>
+        <h3>Translators for this Postal Code: <strong>{{cp}}</strong></h3>
         <p>
-            That talks:{{language}} and works on: {{service}}.
+            That talks: <strong>{{language}}</strong> and works on: <strong>{{service}}</strong>.
         </p>
     </header>
-
 
     <div *ngIf="tradList ==''">
         <div id="sorry" class="bg-info">
@@ -16,17 +14,28 @@
             <h4>There are no translators that meet these conditions in our database.</h4>
         </div>
     </div>
-
     <div *ngIf="tradList != ''">
 
+        <div class="col-lg-4 noPadding"  *ngFor="let traductor of tradList">
+            <div class="bg-success tradThumbnail">
+                <h3>{{traductor.name}} {{traductor.lastName}}</h3>
+                <hr />
+                <h4>Email : {{traductor.email}}</h4>
+                <h4>Phone Number: {{traductor.tlfn}}</h4>
+                <hr />
+                <button class="btn btn-primary pull-right" (click)="pruebaPopup(traductor.name, traductor.email)"> <i class="glyphicon glyphicon-plus"></i> Create Request </button>
 
-        <div class="bg-success col-lg-4 tradThumbnail" *ngFor="let traductor of tradList">
-            <h3>{{traductor.name}} {{traductor.lastName}}</h3>
-            <hr />
-            <h4>Email : {{traductor.email}}</h4>
-            <h4>Phone Number: {{traductor.tlfn}}</h4>
-            <hr />
-            <button class="btn btn-primary pull-right"> <i class="glyphicon glyphicon-plus"></i> Create Request </button>
+            </div>
         </div>
     </div>
 </div>
+
+<popup (confirmClick)="probar()">
+    <app-add-request 
+                     [idioma]="language"
+                     [servicio]="service"
+                     [nombre]="traductorName"
+                     [email]="traductorEmail">
+    </app-add-request>
+</popup>
+
