@@ -227,6 +227,9 @@ namespace SPAtraductores.Models
                         datosTraductor.Tlfn = rdr["Tlfn"].ToString();
                         datosTraductor.Idioma = rdr["Idioma"].ToString();
                         datosTraductor.Servicio = rdr["Servicio"].ToString();
+                        datosTraductor.idTraductor = Convert.ToInt32(rdr["idTraductores"]);
+                        datosTraductor.idIdioma = Convert.ToInt32(rdr["idIdioma"]);
+                        datosTraductor.idServicio = Convert.ToInt32(rdr["idServicio"]);
 
                         lsttraductores.Add(datosTraductor);
                     }

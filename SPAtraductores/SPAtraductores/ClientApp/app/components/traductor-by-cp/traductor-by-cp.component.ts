@@ -21,16 +21,19 @@ export class TraductorByCpComponent {
     service: string;
     public tradList: TraductorData[];
     public showTrads: Boolean;
-    public traductorName: string;
-    public traductorEmail: string;
+    public traductorId: number;
+    public idIdioma: number;
+    public idServicio: number;
+    
     /** traductorByCP ctor */
     constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService, private popup: Popup) {
         this.cp = codigoPostal;
         this.language = idioma;
         this.service = servicio;
         this.getTraductorsData();
-        this.traductorName = ""; 
-        this.traductorEmail = ""; 
+        this.traductorId = 0;
+        this.idIdioma = 0;
+        this.idServicio = 0;
     }
 
     getTraductorsByCp() {
@@ -53,9 +56,16 @@ export class TraductorByCpComponent {
     }
 
 
-    pruebaPopup(name, email ) {
-        this.traductorName = name;
-        this.traductorEmail = email;
+    pruebaPopup(idTraductor, idServicio, idIdioma) {
+        this.traductorId = idTraductor;
+        this.idServicio = idServicio;
+        this.idIdioma = idIdioma;
+
+        //alert(
+        //    "Id traductor: " + this.traductorId +
+        //    ", idIdioma: " + this.idIdioma +
+        //    ", idServicio: " + this.idServicio
+        //);
 
         this.popup.options = {
             color: "#337ab7",
@@ -80,4 +90,7 @@ interface TraductorData {
     tlfn: number;
     idioma: string;
     servicio: string;
+    idTraductor: number;
+    idIdioma: number;
+    idServicio: number;
 }

@@ -28,12 +28,13 @@ export class AddRequestComponent {
 
     public titulo: string;
     public request: Peticion;
+    errorMessage: any;
 
     // Input data
-    @Input() nombre: string;
-    @Input() email: string;
-    @Input() idioma: string;
-    @Input() servicio: string;
+    @Input() idTraductor: number;
+    @Input() idIdioma: number;
+    @Input() idServicio: number;
+
 
     /** AddRequest ctor */
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
@@ -44,12 +45,29 @@ export class AddRequestComponent {
 
     onSubmit() {
         console.log(this.request);
+        this.saveNewRequest();
+    }
+
+    saveNewRequest() {
+        this.request.idIdioma = this.idIdioma;
+        this.request.idServicio = this.idServicio;
+        this.request.idTraductor = this.idTraductor;
+
+        this._traductorService.saveRequest(this.request).subscribe((data) => {
+            this._router.navigate(['/home']);
+        }, error => {
+            this.errorMessage = error;
+            console.log(this.errorMessage);
+        })
     }
 
 
     probar() {
         alert(
-            "Petición para: " + this.nombre+", con Email: "+this.email+", Servicio: " + this.servicio +", Idioma: "+this.idioma+"."
+            "Id traductor: " + this.idTraductor +
+            ", idIdioma: " + this.idIdioma +
+            ", idServicio: " + this.idServicio
         );
+        
     }
 }

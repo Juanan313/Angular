@@ -8,7 +8,7 @@
             <i class="glyphicon glyphicon-user"></i> Name
             <span *ngIf="!nombre.valid && nombre.touched" class="label label-danger"> Name is required</span>
         </label>
-        <input type="text" #nombre='ngModel' name="nombre" [(ngModel)]="request.nombre" class="form-control" required />
+        <input type="text" #nombre='ngModel' name="nombre" [(ngModel)]="request.nombreSolicitante" class="form-control" required />
     </div>
 
     <div class="form-group">
@@ -38,6 +38,7 @@
         </label>
         <input type="text" #tlfn="ngModel" name="tlfn" [(ngModel)]="request.tlfn" class="form-control" required />
     </div>
-    <!--<button class="btn btn-success" (click)="probar()"> <i class="glyphicon glyphicon-plus"></i></button>-->
+    
     <input type="submit" value="{{titulo}}" class="btn btn-primary" [disabled]='!formPeticion.valid'>
 </form>
+<!--<button class="btn btn-success" (click)="probar()"> <i class="glyphicon glyphicon-plus"></i></button>-->

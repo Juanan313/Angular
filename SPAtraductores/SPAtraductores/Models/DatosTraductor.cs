@@ -15,6 +15,9 @@ namespace SPAtraductores.Models
         public String Tlfn { get; set; }
         public String Idioma { get; set; }
         public String Servicio { get; set; }
+        public int idTraductor { get; set; }
+        public int idIdioma { get; set; }
+        public int idServicio { get; set; }
 
     }
 }

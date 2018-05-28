@@ -16,14 +16,14 @@
     </div>
     <div *ngIf="tradList != ''">
 
-        <div class="col-lg-4 noPadding"  *ngFor="let traductor of tradList">
+        <div class="col-lg-4 noPadding" *ngFor="let traductor of tradList">
             <div class="bg-success tradThumbnail">
                 <h3>{{traductor.name}} {{traductor.lastName}}</h3>
                 <hr />
                 <h4>Email : {{traductor.email}}</h4>
                 <h4>Phone Number: {{traductor.tlfn}}</h4>
                 <hr />
-                <button class="btn btn-primary pull-right" (click)="pruebaPopup(traductor.name, traductor.email)"> <i class="glyphicon glyphicon-plus"></i> Create Request </button>
+                <button class="btn btn-primary pull-right" (click)="pruebaPopup(traductor.idTraductor, traductor.idServicio, traductor.idIdioma)"> <i class="glyphicon glyphicon-plus"></i> Create Request </button>
 
             </div>
         </div>
@@ -31,11 +31,10 @@
 </div>
 
 <popup (confirmClick)="probar()">
-    <app-add-request 
-                     [idioma]="language"
-                     [servicio]="service"
-                     [nombre]="traductorName"
-                     [email]="traductorEmail">
+    <app-add-request
+                     [idTraductor]="traductorId"
+                     [idIdioma]="idIdioma"
+                     [idServicio]="idServicio">
     </app-add-request>
 </popup>
 
