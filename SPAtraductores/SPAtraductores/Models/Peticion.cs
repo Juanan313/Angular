@@ -14,5 +14,7 @@ namespace SPAtraductores.Models
         public String Descripcion { get; set; }
         public String Email { get; set; }
         public String Tlfn { get; set; }
+        public String Idioma { get; set;}
+        public String Servicio { get; set;}
     }
 }

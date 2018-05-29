@@ -51,6 +51,12 @@ export class TraductorService {
     .catch(this.errorHandler)
     }
 
+    getRequestForTranslator(idTraductor: number) {
+        return this._http.get(this.myAppUrl + "api/Peticion/Pendiente/"+  idTraductor)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler)
+    }
+
     getTraductorsDatos(CP: string, idioma: string, servicio: string) {
         return this._http.get(this.myAppUrl + "api/Traductor/DetailsDatos/" + CP + ","+idioma+"," + servicio)
             .map((response: Response) => response.json())

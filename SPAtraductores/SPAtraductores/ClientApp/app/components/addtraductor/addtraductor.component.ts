@@ -40,7 +40,7 @@ export class createtraductor implements OnInit {
             lastName: ['', [Validators.required]],
             cp: ['', [Validators.required]],
             tlfn: ['', [Validators.required]],
-            img: ['', [Validators.required]]
+            //img: ['', [Validators.required]]
         })
     }
 

@@ -54,6 +54,7 @@ export class AddRequestComponent {
         this.request.idTraductor = this.idTraductor;
 
         this._traductorService.saveRequest(this.request).subscribe((data) => {
+            alert("Su solicitud se ha creado correctamente");
             this._router.navigate(['/home']);
         }, error => {
             this.errorMessage = error;

@@ -597,7 +597,43 @@ namespace SPAtraductores.Models
             }
         }
 
-        /* ----- ALTA USUARIO -------*/
+        public IEnumerable<MostrarPeticion> getRequestForTranslator(int idTraductor)
+        {
+            try
+            {
+                List<MostrarPeticion> requestList = new List<MostrarPeticion>();
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = "SELECT NombreSolicitante, Email, Descripcion, Telefono, Idioma, Servicio FROM Peticiones inner join Idiomas " +
+                        "on Peticiones.IdIdioma = Idiomas.IdIdioma inner join Servicio ON Servicio.IdServicio = Peticiones.IdServicio WHERE idTraductor =" + idTraductor;
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        MostrarPeticion request = new MostrarPeticion();
+                        request.NombreSolicitante = rdr["NombreSolicitante"].ToString();
+                        request.Email = rdr["Email"].ToString();
+                        request.Descripcion = rdr["Descripcion"].ToString();
+                        request.Tlfn = rdr["Telefono"].ToString();
+                        request.Idioma = rdr["Idioma"].ToString();
+                        request.Servicio = rdr["Servicio"].ToString();
+                        
+
+                        requestList.Add(request);
+                    }
+
+                    con.Close();
+
+                }
+                return requestList;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
     }
 
 

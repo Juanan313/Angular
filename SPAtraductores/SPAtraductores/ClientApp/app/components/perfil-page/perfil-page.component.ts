@@ -5,6 +5,8 @@ import { TraductorService } from '../../services/traductorservice.service';
 import { usuario } from '../translator-login/translator-login.component';
 import { OnInit, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Directive } from '@angular/core/src/metadata/directives';
+import { Popup } from 'ng2-opd-popup';
+//import { Peticion } from '../../Models/Peticion';
 
 
 @Component({
@@ -20,9 +22,17 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     public trad: TraductorData;
     public langList: Idioma[];
     public servList: Servicio[];
-    constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
-
-        
+    public requestList: Peticion[];
+    public request: Peticion;
+    constructor(public http: Http, private _router: Router, private _traductorService: TraductorService, private popup: Popup) {
+        //this.request.descripcion = "";
+        //this.request.idioma = "";
+        //this.request.servicio = "";
+        //this.request.nombreSolicitante = "";
+        //this.request.email = "";
+        //this.request.tlfn = "";
+        //this.request.descripcion = "";
+       
     }
 
     ngOnInit() {
@@ -55,6 +65,7 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
                this.getTraductors();
                this.getServiciosTrad();
                this.getIdiomasHablados();
+               this.getRequests();
            }
       )
 
@@ -81,14 +92,37 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
         )
     }
 
+    getRequests() {
+        this._traductorService.getRequestForTranslator(this.id).subscribe(
+            data => this.requestList = data
+        )
+    }
+
     mostrar() {
         this.show = !this.show;
     }
 
     prueba() {
-        console.log(
-            this.langList 
+       alert(
+            this.requestList
         )
+    }
+
+    mostrarDetalles(request) {
+
+        this.request = request;
+
+        this.popup.options = {
+            color: "#337ab7",
+            cancleBtnContent: "",
+            confirmBtnClass: "hide",
+            cancleBtnClass: "btn btn-sm btn-danger glyphicon glyphicon-remove",
+            header: "Applicant Name: "+request.nombreSolicitante,
+            widthProsentage: 70,
+            animation: "fadeInDown"
+        }
+
+        this.popup.show();
     }
 }
 interface TraductorData {
@@ -109,6 +143,15 @@ interface Idioma {
 
 interface Servicio {
     id: number;
+    servicio: string;
+}
+
+interface Peticion {
+    nombreSolicitante: string;
+    email: string;
+    descripcion: string;
+    tlfn: string;
+    idioma: string;
     servicio: string;
 }
 

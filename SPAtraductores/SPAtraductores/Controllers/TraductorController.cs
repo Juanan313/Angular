@@ -38,6 +38,13 @@ namespace SPAtraductores.Controllers
             return objtraduct.GetAllServices();
         }
 
+        [HttpGet]
+        [Route("api/Peticion/Pendiente/{idTraductor}")]
+        public IEnumerable<MostrarPeticion> IndexPeticiones(int idTraductor)
+        {
+            return objtraduct.getRequestForTranslator(idTraductor);
+        }
+
 
         // HttpPost DATA Create
 

@@ -33,3 +33,32 @@ span {
     font-size: 12px;
     display: inline-block;
 }
+
+#show {
+    margin-top: 20px !important;
+}
+
+#langServ {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+
+}
+
+hr {
+    border-bottom: 1px solid gray;
+    margin: 15px !important;
+}
+
+.thumbnail {
+    min-height: 325px !important;
+    border: 1px solid gray !important;
+}
+
+.langServ{
+    padding: 10px !important;
+    padding-bottom: 0px !important;
+}
+
+.request {
+    background-color: silver;
+}
