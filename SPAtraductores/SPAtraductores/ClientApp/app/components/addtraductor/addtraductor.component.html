@@ -93,6 +93,36 @@
                Upload a Img is required
             </span>
         </div>-->
+        
+                <!--INTRODUCIR Imagen-->
+        <div class="form-group row">
+        <label class="letra control-label col-md-8 col-md-offset-2" for="Imagen">
+            <i class="glyphicon glyphicon-picture"></i>
+            Imagen de perfil
+            <span class="label-danger label" *ngIf="traductorForm.hasError('required', 'imagen') && formDir.submitted">
+                Añade una imagen de perfil".
+            </span>
+        </label>
+        <div class="col-md-8 col-md-offset-2">
+            <select class="form-control tam imagenel" formControlName="imagen" (change)="cargaimg()">
+                <option disabled>**Selecciona una foto de perfil**</option>
+                <option value="{{imagen[0]}}" selected="selected">Bart Simpson</option>
+                <option value="{{imagen[1]}}">Lisa Simpson</option>
+                <option value="{{imagen[2]}}">Homer Simpson</option>
+                <option value="{{imagen[3]}}">Maggie Simpson</option>
+                <option value="{{imagen[4]}}">Marge Simpson</option>
+                <option value="{{imagen[5]}}">Batman</option>
+                <option value="{{imagen[6]}}">Gandalf</option>
+                <option value="{{imagen[7]}}">Mickey</option>
+                <option value="{{imagen[8]}}">R2D2</option>
+                <option value="{{imagen[9]}}">Vader</option>
+            </select>
+
+            <div *ngIf="imgvalue">
+                <img src="data:image/jpeg;base64,{{imgvalue}}" alt="no carga" />
+            </div>
+        </div>
+    </div>
 
         <div class="form-group">
             <button type="submit" class="btn btn-default" >Save</button>

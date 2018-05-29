@@ -1,5 +1,4 @@
 ﻿<h1>Profile <a (click)="cargarPerfil()"> <i class="glyphicon glyphicon-refresh	"></i> </a></h1>
-
 <!--<div  *ngIf="!trad"><p><em>Loading..., if the page doesn't charges click in the button.</em></p><div class="loader"></div></div>-->
 <div *ngIf="trad">
 
@@ -40,40 +39,40 @@
         <add-lang-and-serv [id]="id"></add-lang-and-serv>
     </div>
 </div>
-    <!-- Div que contiene lista de peticiones del traductor -->
-    <div class="container col-md-12">
-        <div class="col-md-6 " *ngFor="let request of requestList">
-            <div class="thumbnail request">
-                <h3>Request for: <strong>{{request.nombreSolicitante}}</strong></h3>
-                <hr />
-                <table class="table">
-                        <tr>
-                            <th>Language</th>
-                            <td>{{request.idioma}}</td>
-                        </tr>
-                        <tr>
-                            <th>Servicio</th>
-                            <td>{{request.servicio}}</td>
-                        </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td>{{request.email}}</td>
-                        </tr>
-                        <tr>
-                            <th>Phone</th>
-                            <td>{{request.tlfn}}</td>
-                        </tr>
-                </table>
-                <hr />
-                <a (click)="mostrarDetalles(request)" class="pull-right"> <i class="glyphicon glyphicon-plus"></i> Show more </a>
-            </div>
-        </div>
-    </div>
-    <popup>
-        <div *ngIf="request">
-            <h3>Applicant name: <strong>{{request.nombreSolicitante}}</strong></h3>
 
-            <p>{{request.descripcion}}</p>
+<popup>
+    <div *ngIf="request">
+        <h3>Applicant name: <strong>{{request.nombreSolicitante}}</strong></h3>
+
+        <p>{{request.descripcion}}</p>
+        <table class="table">
+            <tr>
+                <th>Language</th>
+                <td>{{request.idioma}}</td>
+            </tr>
+            <tr>
+                <th>Servicio</th>
+                <td>{{request.servicio}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{request.email}}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{request.tlfn}}</td>
+            </tr>
+        </table>
+    </div>
+</popup>
+
+
+<!-- Div que contiene lista de peticiones del traductor -->
+<div class="container col-md-12">
+    <div class="col-md-6 " *ngFor="let request of requestList">
+        <div class="thumbnail request">
+            <h3>Request for: <strong>{{request.nombreSolicitante}}</strong></h3>
+            <hr />
             <table class="table">
                 <tr>
                     <th>Language</th>
@@ -92,32 +91,34 @@
                     <td>{{request.tlfn}}</td>
                 </tr>
             </table>
+            <hr />
+            <a (click)="mostrarDetalles(request)" class="pull-right"> <i class="glyphicon glyphicon-plus"></i> Show more </a>
         </div>
-    </popup>
-
-    <div *ngIf="id == 0">
-        <p> No se ha cargado correctamente su perfil, vuelve a introducirlo en el login ... </p><div class="loader"></div>
-        <hr />
-        <a [routerLink]="['/translator-login']">Login Form</a>
     </div>
+</div>
 
- 
+<div *ngIf="id == 0">
+    <p> No se ha cargado correctamente su perfil, vuelve a introducirlo en el login ... </p><div class="loader"></div>
+    <hr />
+    <a [routerLink]="['/translator-login']">Login Form</a>
+</div>
 
-    <!--<div class="col-lg-12">
-        <div class="bg-success col-lg-6">
-            <h3> Languages</h3>
-            <span class="label label-success" *ngFor="let idioma of langList"> {{idioma.lenguage}}</span>
-        </div>
-        <div class="bg-success col-lg-6">
-            <h3> Services</h3>
-            <span class="label label-success" *ngFor="let servicio of servList"> {{servicio.service}}</span>
-        </div>
-    </div>-->
 
-    
-        <hr>
-    
-    
+
+<!--<div class="col-lg-12">
+    <div class="bg-success col-lg-6">
+        <h3> Languages</h3>
+        <span class="label label-success" *ngFor="let idioma of langList"> {{idioma.lenguage}}</span>
+    </div>
+    <div class="bg-success col-lg-6">
+        <h3> Services</h3>
+        <span class="label label-success" *ngFor="let servicio of servList"> {{servicio.service}}</span>
+    </div>
+</div>-->
+
+
+<hr>
+
 
 
 <!--<button class="btn btn-success" *ngIf="!trad" (click)="cargarPerfil()">Show profile</button>-->
