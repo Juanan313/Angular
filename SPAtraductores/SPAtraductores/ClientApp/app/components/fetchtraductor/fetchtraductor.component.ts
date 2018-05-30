@@ -35,4 +35,5 @@ interface TraductorData {
     lastname: string;
     cp: number;
     tlfn: number;
+    imagen: string;
 }

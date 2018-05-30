@@ -235,7 +235,7 @@ namespace SPAtraductores.Models
                         datosTraductor.idTraductor = Convert.ToInt32(rdr["idTraductores"]);
                         datosTraductor.idIdioma = Convert.ToInt32(rdr["idIdioma"]);
                         datosTraductor.idServicio = Convert.ToInt32(rdr["idServicio"]);
-                        datosTraductor.Img = rdr["Img"].ToString();
+                        datosTraductor.Imagen = rdr["Img"].ToString();
 
                         lsttraductores.Add(datosTraductor);
                     }
