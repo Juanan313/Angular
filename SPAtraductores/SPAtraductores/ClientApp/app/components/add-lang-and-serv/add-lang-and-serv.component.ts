@@ -195,6 +195,8 @@ export class AddLangAndServComponent implements OnInit {
             var servicio = servicios[i];
 
             if (servicio.checked) {
+
+
                 this._traductorService.saveTraductorServicios(servicio.value, this.id, ).subscribe((data) => { });
             }
            

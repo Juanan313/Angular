@@ -110,8 +110,8 @@ export class TraductorService {
 
 
     //Añadir servicio a traductor: enric
-    saveTraductorServicios(idservicios: number, idtraductor: number) {
-        return this._http.get(this.myAppUrl + 'api/Traductor/Createservicio/' + idservicios + "," + idtraductor)
+    saveTraductorServicios(body:string) {
+        return this._http.post(this.myAppUrl + 'api/Servicio/AddServTrad',body)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }

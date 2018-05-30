@@ -77,21 +77,23 @@ namespace SPAtraductores.Controllers
             return objtraduct.AddRequest(request);
         }
 
-        /* Añadir servicio a un traductor con post no funciona
+        //Añadir servicio a un traductor con post no funciona
 
-        [HttpPost]
-        [Route("api/Servicio/AddServTrad/{idServicio},{idTraductor}")]
-        public int AddServiceToTrad([FromBody] int idServicio, int idTraductor)
-        {
-            return objtraduct.AddServiceToTranslator(idServicio, idTraductor);
-        } */
+        
 
-        [HttpGet]
-        [Route("api/Traductor/Createservicio/{idservicios},{idtraductor}")]
-        public int Createservicio(int idservicios, int idtraductor)
+       [HttpPost]
+       [Route("api/Servicio/AddServTrad")]
+        public int AddServiceToTrad([FromBody] objetoClase objeto)
         {
-            return objtraduct.AddTraductoServicio(idservicios, idtraductor);
+            return objtraduct.AddTraductoServicio(objeto.IdServicio, objeto.idTraductor);
         }
+
+        //[HttpGet]
+        //[Route("api/Traductor/Createservicio/{idservicios},{idtraductor}")]
+        //public int Createservicio(int idservicios, int idtraductor)
+        //{
+        //    return objtraduct.AddTraductoServicio(idservicios, idtraductor);
+        //}
 
         // Añadir idioma a un traductor
 
@@ -201,4 +203,11 @@ namespace SPAtraductores.Controllers
         }
 
     }
+}
+
+public class objetoClase
+{
+    public int IdServicio;
+
+    public int idTraductor;
 }
