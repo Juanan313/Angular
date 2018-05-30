@@ -116,7 +116,7 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
             color: "#337ab7",
             cancleBtnContent: "",
             confirmBtnClass: "hide",
-            cancleBtnClass: "btn btn-sm btn-danger glyphicon glyphicon-remove",
+            cancleBtnClass: "btn btn-sm btn-danger glyphicon glyphicon-remove botonCerrarPopup",
             header: "Applicant Name: "+request.nombreSolicitante,
             widthProsentage: 70,
             animation: "fadeInDown"

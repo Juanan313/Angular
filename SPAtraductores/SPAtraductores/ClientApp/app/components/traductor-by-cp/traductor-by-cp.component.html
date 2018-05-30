@@ -20,7 +20,8 @@
             <div class="bg-success tradThumbnail">
                 <h3>{{traductor.name}} {{traductor.lastName}}</h3>
                 <hr />
-                <h4>Email : {{traductor.email}}</h4>
+                <h4>Email : <a href="mailto:{{traductor.email}}?Subject= Request of a translator. Service: {{language}} & Language: {{service}}">
+                    <strong>{{traductor.email}}</strong> </a></h4>
                 <h4>Phone Number: {{traductor.tlfn}}</h4>
                 <hr />
                 <button class="btn btn-primary pull-right" (click)="pruebaPopup(traductor.idTraductor, traductor.idServicio, traductor.idIdioma)"> <i class="glyphicon glyphicon-plus"></i> Create Request </button>

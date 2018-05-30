@@ -28,7 +28,7 @@
                     <span class="label label-success" *ngFor="let servicio of servList"> {{servicio.service}}</span>
                 </div>
             </div>
-            <button id="show" class="btn btn-primary btn-sm pull-right" (click)="mostrar()" *ngIf="show == false && id > 0"> <i class="glyphicon glyphicon-plus"></i> Language / Service</button>
+            <button id="show" class="btn btn-primary btn-sm pull-right" (click)="mostrar()" *ngIf="show == false && id > 0"> <i class="glyphicon glyphicon-edit"></i> Language / Service</button>
         </div>
     </div>
     <hr>
@@ -56,7 +56,7 @@
             </tr>
             <tr>
                 <th>Email</th>
-                <td>{{request.email}}</td>
+                <td> <a href="mailto:{{request.email}}?Subject= Accept your request of a translator. Service: {{request.servicio}} & Language: {{request.idioma}}"> <strong>{{request.email}}</strong> </a></td>
             </tr>
             <tr>
                 <th>Phone</th>
@@ -84,7 +84,8 @@
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td>{{request.email}}</td>
+                    <td><a href="mailto:{{request.email}}?Subject= Accept your request of a translator. Service: {{request.servicio}} & Language: {{request.idioma}}">
+                        <strong>{{request.email}}</strong> </a></td>
                 </tr>
                 <tr>
                     <th>Phone</th>
