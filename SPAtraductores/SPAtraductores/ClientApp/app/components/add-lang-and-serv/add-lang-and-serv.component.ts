@@ -117,7 +117,7 @@ export class AddLangAndServComponent implements OnInit {
 
             // Encapsulo id del servicio del traductor
             var idServ = this.servWorkList[i].id;
-            console.log("Id Serv: " + idServ);
+            //console.log("Id Serv: " + idServ);
 
 
             // for que recorre los checkbox de servicios (todos)
@@ -125,7 +125,7 @@ export class AddLangAndServComponent implements OnInit {
 
                 //encapsulo el id del servicio del checkbox
                 var checkbox = checkboxServ[j];
-                console.log("CheckBox id:" + checkbox);
+                //console.log("CheckBox id:" + checkbox);
 
                 // Compoaracion de ids
                 if (checkbox.value == idServ) {
@@ -146,7 +146,7 @@ export class AddLangAndServComponent implements OnInit {
 
             // Encapsulo id del servicio del traductor
             var idLang = this.langTalkList[i].id;
-            console.log("Id Serv: " + idLang);
+            //console.log("Id Serv: " + idLang);
 
 
             // for que recorre los checkbox de servicios (todos)
@@ -154,7 +154,7 @@ export class AddLangAndServComponent implements OnInit {
 
                 //encapsulo el id del servicio del checkbox
                 var checkbox = checkboxLang[j];
-                console.log("CheckBox id:" + checkbox);
+                //console.log("CheckBox id:" + checkbox);
 
                 // Compoaracion de ids
                 if (checkbox.value == idLang) {
@@ -187,7 +187,13 @@ export class AddLangAndServComponent implements OnInit {
             var idioma = idiomas[i];
 
             if (idioma.checked) {
-                this._traductorService.saveTraductorIdioma( idioma.value, this.id).subscribe((data) => { });
+
+                let objToSend = {
+                    "idIdioma": idioma.value,
+                    "idTraductor": this.id
+                }
+
+                this._traductorService.saveTraductorIdioma(objToSend).subscribe((data) => { });
             }
         }
 
@@ -196,8 +202,12 @@ export class AddLangAndServComponent implements OnInit {
 
             if (servicio.checked) {
 
+                let objToSend = {
+                    "idServicio": servicio.value,
+                    "idTraductor": this.id
+                }
 
-                this._traductorService.saveTraductorServicios(servicio.value, this.id, ).subscribe((data) => { });
+                this._traductorService.saveTraductorServicios(objToSend).subscribe((data) => { });
             }
            
         }

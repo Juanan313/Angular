@@ -79,13 +79,40 @@ namespace SPAtraductores.Controllers
 
         //Añadir servicio a un traductor con post no funciona
 
-        
+       //       int.TryParse(objeto.IdServicio.ToString(),out numero1))
+       
 
        [HttpPost]
-       [Route("api/Servicio/AddServTrad")]
+       [Route("api/Traductor/CreateServicio")]
         public int AddServiceToTrad([FromBody] objetoClase objeto)
         {
-            return objtraduct.AddTraductoServicio(objeto.IdServicio, objeto.idTraductor);
+            int result;
+
+            try
+            {
+                if (objeto.idServicio != null
+                    && objeto.idTraductor != null)
+                {
+                    result = objtraduct.AddTraductoServicio(objeto.idServicio, objeto.idTraductor);
+                }
+                else
+                {
+                    result = -1;
+                }
+
+            }
+            catch (NullReferenceException  nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
 
         //[HttpGet]
@@ -98,19 +125,45 @@ namespace SPAtraductores.Controllers
         // Añadir idioma a un traductor
 
         //Añadir idioma a un traductor
-        [HttpGet]
-        [Route("api/Traductor/Createidioma/{ididioma},{idtraductor}")]
-        public int Createidioma(int ididioma, int idtraductor)
-        {
-            return objtraduct.AddTraductorIdioma(ididioma, idtraductor);
-        }
-
-        //[HttpPost]
-        //[Route("api/Idioma/AddLangTrad/{idIdioma},{idTraductor}")]
-        //public int AddLangToTrad(/*[FromBody]*/ int idIdioma, int idTraductor)
+        //[HttpGet]
+        //[Route("api/Traductor/Createidioma/{ididioma},{idtraductor}")]
+        //public int Createidioma(int ididioma, int idtraductor)
         //{
-        //    return objtraduct.AddIdiomaToTranslator(idIdioma, idTraductor);
+        //    return objtraduct.AddTraductorIdioma(ididioma, idtraductor);
         //}
+
+        [HttpPost]
+        [Route("api/Traductor/CreateIdioma")]
+        public int AddLangToTrad([FromBody] objetoClase objeto)
+        {
+            int result;
+
+            try
+            {
+                if (objeto.idIdioma != null
+                    && objeto.idTraductor != null)
+                {
+                    result = objtraduct.AddIdiomaToTranslator(objeto.idIdioma, objeto.idTraductor);
+                }
+                else
+                {
+                    result = -1;
+                }
+
+            }
+            catch (NullReferenceException nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
+        }
 
 
         // Get the data of a traductor by id
@@ -207,7 +260,9 @@ namespace SPAtraductores.Controllers
 
 public class objetoClase
 {
-    public int IdServicio;
+    public int idServicio;
 
     public int idTraductor;
+
+    public int idIdioma;
 }
