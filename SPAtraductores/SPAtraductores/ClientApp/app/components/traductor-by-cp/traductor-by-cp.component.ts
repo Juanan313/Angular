@@ -93,4 +93,5 @@ interface TraductorData {
     idTraductor: number;
     idIdioma: number;
     idServicio: number;
+    imagen: string;
 }

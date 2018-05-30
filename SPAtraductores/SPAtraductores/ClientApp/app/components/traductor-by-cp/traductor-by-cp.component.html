@@ -1,7 +1,7 @@
 ﻿<p *ngIf="!tradList"><em>Loading...</em></p>
 <div>
     <header>
-        <h1 class="bg-primary p-5">Translators DataBase</h1>
+        <!--<h1 class="bg-primary p-5">Translators DataBase</h1>-->
         <h3>Translators for this Postal Code: <strong>{{cp}}</strong></h3>
         <p>
             That talks: <strong>{{language}}</strong> and works on: <strong>{{service}}</strong>.
@@ -17,14 +17,18 @@
     <div *ngIf="tradList != ''">
 
         <div class="col-lg-4 noPadding" *ngFor="let traductor of tradList">
-            <div class="bg-success tradThumbnail">
+            <div class="bg-success thumbnail container-fluid">
+                <img class="img-circle" src="data:image/jpeg;base64,{{traductor.imagen}}" alt="Profile Img" />
                 <h3>{{traductor.name}} {{traductor.lastName}}</h3>
                 <hr />
-                <h4>Email : <a href="mailto:{{traductor.email}}?Subject= Request of a translator. Service: {{language}} & Language: {{service}}">
-                    <strong>{{traductor.email}}</strong> </a></h4>
+                <h4>
+                    Email : <a href="mailto:{{traductor.email}}?Subject= Request of a translator. Service: {{language}} & Language: {{service}}">
+                        <strong>{{traductor.email}}</strong>
+                    </a>
+                </h4>
                 <h4>Phone Number: {{traductor.tlfn}}</h4>
                 <hr />
-                <button class="btn btn-primary pull-right" (click)="pruebaPopup(traductor.idTraductor, traductor.idServicio, traductor.idIdioma)"> <i class="glyphicon glyphicon-plus"></i> Create Request </button>
+                <button class="bg-primary pull-right" (click)="pruebaPopup(traductor.idTraductor, traductor.idServicio, traductor.idIdioma)"> <i class="glyphicon glyphicon-plus"></i> Create Request </button>
 
             </div>
         </div>

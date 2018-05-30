@@ -13,6 +13,7 @@
             <th>Email</th>
             <th>CP</th>
             <th>Phone Number</th>
+            <th>Profile Image</th>
             <th>
         </tr>
     </thead>
@@ -24,10 +25,11 @@
             <td>{{ traductor.email }}</td>
             <td>{{ traductor.cp }}</td>
             <td>{{ traductor.tlfn }}</td>
+            <td><img class="profileImgXS" src="data:image/jpeg;base64,{{traductor.imagen}}" alt="Profile Img" /></td>
             <td>
                 <a [routerLink]="['/Traductor/edit/', traductor.id]"><i class="glyphicon glyphicon-edit"></i>Edit</a> |
-                <a [routerLink]="" (click)="delete(traductor.id)"><i class="glyphicon glyphicon-trash"></i>Delete</a> |
-                <a [routerLink]="['/addLang-Serv/', traductor.id]" ><i class="glyphicon glyphicon-plus"></i>AddLS</a> 
+                <a [routerLink]="" (click)="delete(traductor.id)"><i class="glyphicon glyphicon-trash"></i>Delete</a> <!--|
+                <a [routerLink]="['/addLang-Serv/', traductor.id]" ><i class="glyphicon glyphicon-plus"></i>AddLS</a>--> 
             </td>
         </tr>
     </tbody>
