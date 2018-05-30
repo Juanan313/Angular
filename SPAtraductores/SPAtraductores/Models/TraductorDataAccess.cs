@@ -34,6 +34,7 @@ namespace SPAtraductores.Models
                         traductor.Pass = rdr["Pass"].ToString();
                         traductor.CP = rdr["CP"].ToString();
                         traductor.Tlfn = rdr["Tlfn"].ToString();
+                        traductor.Imagen = rdr["Img"].ToString();
 
                         lsttraductores.Add(traductor);
                     }
@@ -62,6 +63,7 @@ namespace SPAtraductores.Models
                     cmd.Parameters.AddWithValue("@Pass", traductor.Pass);
                     cmd.Parameters.AddWithValue("@CP", traductor.CP);
                     cmd.Parameters.AddWithValue("@Tlfn", traductor.Tlfn);
+                    cmd.Parameters.AddWithValue("@Img", traductor.Imagen);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -91,6 +93,7 @@ namespace SPAtraductores.Models
                     cmd.Parameters.AddWithValue("@Pass", traductor.Pass);
                     cmd.Parameters.AddWithValue("@CP", traductor.CP);
                     cmd.Parameters.AddWithValue("@Tlfn", traductor.Tlfn);
+                    cmd.Parameters.AddWithValue("@Img", traductor.Imagen);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -124,6 +127,7 @@ namespace SPAtraductores.Models
                         traductor.Pass = rdr["Pass"].ToString();
                         traductor.CP = rdr["CP"].ToString(); 
                         traductor.Tlfn = rdr["Tlfn"].ToString();
+                        traductor.Imagen = rdr["Img"].ToString();
                     }
                 }
                 return traductor;
@@ -184,6 +188,7 @@ namespace SPAtraductores.Models
                         traductor.Pass = rdr["Pass"].ToString();
                         traductor.CP = rdr["CP"].ToString();
                         traductor.Tlfn = rdr["Tlfn"].ToString();
+                        traductor.Imagen = rdr["Img"].ToString();
 
                         lsttraductores.Add(traductor);
                     }
@@ -230,6 +235,7 @@ namespace SPAtraductores.Models
                         datosTraductor.idTraductor = Convert.ToInt32(rdr["idTraductores"]);
                         datosTraductor.idIdioma = Convert.ToInt32(rdr["idIdioma"]);
                         datosTraductor.idServicio = Convert.ToInt32(rdr["idServicio"]);
+                        datosTraductor.Img = rdr["Img"].ToString();
 
                         lsttraductores.Add(datosTraductor);
                     }

@@ -18,6 +18,6 @@ namespace SPAtraductores.Models
         public int idTraductor { get; set; }
         public int idIdioma { get; set; }
         public int idServicio { get; set; }
-
+        public String Img { get; set;  }
     }
 }
