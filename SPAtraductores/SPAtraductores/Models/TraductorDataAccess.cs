@@ -324,7 +324,7 @@ namespace SPAtraductores.Models
 
         // Añade Idioma al traductor, tabla intermedia
 
-        public int AddTraductorIdioma(int parIDIdioma, int parIDTraductor)
+        public int AddIdiomaToTranslator(int parIDIdioma, int parIDTraductor)
         {
             try
             {
@@ -488,6 +488,8 @@ namespace SPAtraductores.Models
 
         public int AddTraductoServicio(int parIDServicios, int parIDTraductor)
         {
+
+
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -502,9 +504,17 @@ namespace SPAtraductores.Models
                 }
                 return 1;
             }
-            catch
+            catch (SqlException sqlEx)
             {
-                throw;
+                throw sqlEx;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } 
+            finally
+            {
+                
             }
         }
 
@@ -536,9 +546,11 @@ namespace SPAtraductores.Models
                 }
                 return serviceList;
             }
-            catch
+            catch(SqlException ex)
             {
-                throw;
+
+
+                throw ex;
             }
         }
 

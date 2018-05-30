@@ -109,16 +109,16 @@ export class TraductorService {
     //}
 
 
-    //Añadir servicio a traductor: enric
-    saveTraductorServicios(idservicios: number, idtraductor: number) {
-        return this._http.get(this.myAppUrl + 'api/Traductor/Createservicio/' + idservicios + "," + idtraductor)
+    //Añadir servicio a traductor
+    saveTraductorServicios(body: any) {
+        return this._http.post(this.myAppUrl + 'api/Traductor/CreateServicio',body)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
 
     //Añadir idioma a un traductor
-    saveTraductorIdioma(ididioma: number, idtraductor: number) {
-        return this._http.get(this.myAppUrl + 'api/Traductor/Createidioma/' + ididioma + "," + idtraductor)
+    saveTraductorIdioma(body: any) {
+        return this._http.post(this.myAppUrl + 'api/Traductor/CreateIdioma', body)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
