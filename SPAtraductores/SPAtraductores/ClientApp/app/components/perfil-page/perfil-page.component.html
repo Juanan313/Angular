@@ -16,14 +16,16 @@
 
         </div>
 
+        <div class="col-md-6 clearfix"></div>
+
         <!-- div que contiene lista de idiomas y servicios del traductor -->
-        <div class="thumbnail col-md-6">
+        <div class="thumbnail  col-md-12">
             <div class="col-lg-12">
-                <div class="langServ bg-success">
+                <div class="langServ">
                     <h3> Languages</h3>
                     <span class="label label-success" *ngFor="let idioma of langList"> {{idioma.lenguage}}</span>
                 </div>
-                <div class="langServ bg-success">
+                <div class="langServ">
                     <h3> Services</h3>
                     <span class="label label-success" *ngFor="let servicio of servList"> {{servicio.service}}</span>
                 </div>
@@ -31,20 +33,24 @@
             <button id="show" class="btn btn-primary btn-sm pull-right" (click)="mostrar()" *ngIf="show == false && id > 0"> <i class="glyphicon glyphicon-edit"></i> Language / Service</button>
         </div>
     </div>
+    <div style="clear:both"></div>
     <hr>
     <div id="langServ" *ngIf="show == true">
         <button class="btn btn-danger btn-sm cerrar" (click)="mostrar()">X</button>
         <div style="clear:both"></div>
-
         <add-lang-and-serv [id]="id"></add-lang-and-serv>
     </div>
 </div>
 
-<popup>
+
+
+<popup class="popup position-sticky">
     <div *ngIf="request">
         <h3>Applicant name: <strong>{{request.nombreSolicitante}}</strong></h3>
+        <div class="thumbnail">
+            <p>{{request.descripcion}}</p>
+        </div>
 
-        <p>{{request.descripcion}}</p>
         <table class="table">
             <tr>
                 <th>Language</th>
@@ -70,7 +76,7 @@
 <!-- Div que contiene lista de peticiones del traductor -->
 <div class="container col-md-12">
     <div class="col-md-6 " *ngFor="let request of requestList">
-        <div class="thumbnail request">
+        <div class="thumbnail request container-fluid">
             <h3>Request for: <strong>{{request.nombreSolicitante}}</strong></h3>
             <hr />
             <table class="table">
@@ -84,8 +90,11 @@
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td><a href="mailto:{{request.email}}?Subject= Accept your request of a translator. Service: {{request.servicio}} & Language: {{request.idioma}}">
-                        <strong>{{request.email}}</strong> </a></td>
+                    <td>
+                        <a href="mailto:{{request.email}}?Subject= Accept your request of a translator. Service: {{request.servicio}} & Language: {{request.idioma}}">
+                            <strong>{{request.email}}</strong>
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <th>Phone</th>
@@ -116,10 +125,4 @@
         <span class="label label-success" *ngFor="let servicio of servList"> {{servicio.service}}</span>
     </div>
 </div>-->
-
-
-<hr>
-
-
-
 <!--<button class="btn btn-success" *ngIf="!trad" (click)="cargarPerfil()">Show profile</button>-->
