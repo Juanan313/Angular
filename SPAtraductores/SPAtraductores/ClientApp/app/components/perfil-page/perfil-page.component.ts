@@ -25,12 +25,14 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     public request: Peticion;
     public content: string;
 
+    public cargaPagina: boolean;
+
     @ViewChild('requestPopup') requestPopup: Popup;
     @ViewChild('messagePopup') messagePopup: Popup;
 
     /*, private requestPopup: Popup, private messagePopup: Popup*/
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
-       
+        this.cargaPagina = false;
     }
 
     ngOnInit() {
@@ -52,7 +54,12 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     getTraductors() {
         console.log("Mostrando datos...")
         this._traductorService.getTraductorById(this.id).subscribe(
-            data => this.trad = data
+            data => { this.trad = data
+
+                if (this.trad.name ) {
+                    this.cargaPagina = true;
+                }
+            }
         )
     }
 
