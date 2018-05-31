@@ -1,5 +1,6 @@
 ﻿table {
-    background-color: #bababa;
+    background-color: #080808;
+    color: white;
 }
 
 
@@ -12,6 +13,7 @@
         background-color: #a0bebf;
         font-style: oblique;
         font-weight: bold;
+        color: black;
     }
 
 tr:hover {
