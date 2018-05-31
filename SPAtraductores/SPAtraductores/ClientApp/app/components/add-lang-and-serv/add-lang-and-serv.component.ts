@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Directive } from '@angular/core/src/metadata/directives';
 import { idioma, servicio } from '../home/home.component';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { PerfilPageComponent } from '../perfil-page/perfil-page.component';
 
 @Component({
     selector: 'add-lang-and-serv',
@@ -35,7 +36,7 @@ export class AddLangAndServComponent implements OnInit {
     @Input() id: number;
 
     /** addLangAndServ ctor */
-    constructor(public http: Http, private _avRoute: ActivatedRoute, private _router: Router, private _traductorService: TraductorService) {
+    constructor(public http: Http, private _avRoute: ActivatedRoute, private _router: Router, private _traductorService: TraductorService, private _profileService: PerfilPageComponent) {
 
         if (this._avRoute.snapshot.params["id"]) {
             this.insert = true;
@@ -216,6 +217,9 @@ export class AddLangAndServComponent implements OnInit {
              this._router.navigate(['/admin-page']);
          } else {
              this.refreshData();
+             this._profileService.getIdiomasHablados();
+             this._profileService.getServiciosTrad();
+             this._profileService.mostrar();
          }
         
 

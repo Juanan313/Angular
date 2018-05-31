@@ -86,7 +86,7 @@ export class createtraductor implements OnInit {
         else if (this.title == "Edit") {
             this._traductorService.updateTraductor(this.traductorForm.value)
                 .subscribe((data) => {
-                    this._router.navigate(['/admin-page']);
+                    this._router.navigate(['/perfil-page/', this.id]);
                 }, error => this.errorMessage = error)
         }
     }
@@ -102,7 +102,12 @@ export class createtraductor implements OnInit {
     }
 
     cancel() {
-        this._router.navigate(['/admin-page']);
+        if (this.title == "Create an Account") {
+            this._router.navigate(['/home']);
+        } else {
+            this._router.navigate(['/perfil-page/', this.id]);
+        }
+       
     }
 
     cargaimg() {

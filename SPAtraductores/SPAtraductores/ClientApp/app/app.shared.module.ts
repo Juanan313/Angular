@@ -68,7 +68,9 @@ import { PruebasPoupComponent } from './components/pruebas-poup/pruebas-poup.com
             
         ])
     ],
-    providers: [TraductorService]
+    providers: [TraductorService,
+        PerfilPageComponent]
+
 })
 export class AppModuleShared {
 }
