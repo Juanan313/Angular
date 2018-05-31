@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, ViewChild } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
@@ -6,7 +6,6 @@ import { usuario } from '../translator-login/translator-login.component';
 import { OnInit, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Directive } from '@angular/core/src/metadata/directives';
 import { Popup } from 'ng2-opd-popup';
-//import { Peticion } from '../../Models/Peticion';
 
 
 @Component({
@@ -24,14 +23,13 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     public servList: Servicio[];
     public requestList: Peticion[];
     public request: Peticion;
-    constructor(public http: Http, private _router: Router, private _traductorService: TraductorService, private popup: Popup) {
-        //this.request.descripcion = "";
-        //this.request.idioma = "";
-        //this.request.servicio = "";
-        //this.request.nombreSolicitante = "";
-        //this.request.email = "";
-        //this.request.tlfn = "";
-        //this.request.descripcion = "";
+    public content: string;
+
+    @ViewChild('requestPopup') requestPopup: Popup;
+    @ViewChild('messagePopup') messagePopup: Popup;
+
+    /*, private requestPopup: Popup, private messagePopup: Popup*/
+    constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
        
     }
 
@@ -103,16 +101,27 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     }
 
     prueba() {
-       alert(
-            this.requestList
-        )
+
+        this.content = "Prueba de mensaje alerta";
+
+        this.messagePopup.options = {
+            color: "#ec971f",
+            cancleBtnContent: "",
+            confirmBtnClass: "hide",
+            cancleBtnClass: "btn btn-sm btn-danger glyphicon glyphicon-remove botonCerrarPopup",
+            header: "Alert",
+            widthProsentage: 70,
+            animation: "bounceIn"
+        }
+
+        this.messagePopup.show(this.messagePopup.options);
     }
 
     mostrarDetalles(request) {
 
         this.request = request;
 
-        this.popup.options = {
+        this.requestPopup.options = {
             color: "#337ab7",
             cancleBtnContent: "",
             confirmBtnClass: "hide",
@@ -122,7 +131,7 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
             animation: "fadeInDown"
         }
 
-        this.popup.show();
+        this.requestPopup.show(this.requestPopup.options);
     }
 }
 interface TraductorData {

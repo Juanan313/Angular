@@ -22,6 +22,7 @@ import { TraductorByCpComponent } from './components/traductor-by-cp/traductor-b
 import { PerfilPageComponent } from './components/perfil-page/perfil-page.component';
 import { AddLangAndServComponent } from './components/add-lang-and-serv/add-lang-and-serv.component';
 import { AddRequestComponent } from './components/add-request/add-request.component';
+import { PruebasPoupComponent } from './components/pruebas-poup/pruebas-poup.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { AddRequestComponent } from './components/add-request/add-request.compon
         TraductorByCpComponent,
         PerfilPageComponent,
         AddLangAndServComponent,
-        AddRequestComponent
+        AddRequestComponent,
+        PruebasPoupComponent
     ],
     imports: [
         CommonModule,

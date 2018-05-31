@@ -1,4 +1,4 @@
-﻿import { Component, Inject } from '@angular/core';
+﻿import { Component, Inject, ViewChild } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
@@ -24,9 +24,11 @@ export class TraductorByCpComponent {
     public traductorId: number;
     public idIdioma: number;
     public idServicio: number;
+
+    @ViewChild('requestFormPopup') requestFormPopup: Popup;
     
     /** traductorByCP ctor */
-    constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService, private popup: Popup) {
+    constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService) {
         this.cp = codigoPostal;
         this.language = idioma;
         this.service = servicio;
@@ -56,7 +58,7 @@ export class TraductorByCpComponent {
     }
 
 
-    pruebaPopup(idTraductor, idServicio, idIdioma) {
+    requestPopup(idTraductor, idServicio, idIdioma) {
         this.traductorId = idTraductor;
         this.idServicio = idServicio;
         this.idIdioma = idIdioma;
@@ -67,17 +69,17 @@ export class TraductorByCpComponent {
         //    ", idServicio: " + this.idServicio
         //);
 
-        this.popup.options = {
+        this.requestFormPopup.options = {
             color: "#337ab7",
             confirmBtnContent: "Add a request",
-            cancleBtnContent: "Cancel",
+            cancleBtnContent: "",
             confirmBtnClass: "hide",
-            cancleBtnClass: "btn btn-secondary",
+            cancleBtnClass: "btn btn-danger botonCerrarPopup glyphicon glyphicon-remove",
             header: "Add a Request for our translator",
             widthProsentage: 70,
             animation: "fadeInDown"
         }
-        this.popup.show();
+        this.requestFormPopup.show(this.requestFormPopup.options);
     }
 
 }

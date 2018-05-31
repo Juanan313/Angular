@@ -63,3 +63,22 @@ a {
     button:hover, a:hover {
         opacity: 0.7;
     }
+
+.popup {
+    word-break: break-word;
+    position: fixed;
+    right: -12%;
+    top: 13%;
+    width: 100%;
+    z-index: 12;
+}
+
+.popupAlert {
+    word-break: break-word;
+    position: fixed;
+    right: 0%;
+    top: 13%;
+    width: 65%;
+    min-height: 300px;
+    z-index: 12;
+}

@@ -20,29 +20,101 @@ namespace SPAtraductores.Controllers
         [Route("api/Traductor/Index")]
         public IEnumerable<Traductor> Index()
         {
-            return objtraduct.GetAllTraductores();
+            IEnumerable<Traductor> traductorList;
+
+            try
+            {
+                traductorList = objtraduct.GetAllTraductores();
+            }
+
+            
+
+            catch (NullReferenceException nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return traductorList;
         }
+ 
 
 
         [HttpGet]
         [Route("api/Idioma/Index")]
         public IEnumerable<Idioma> IndexLanguage()
         {
-            return objtraduct.GetAllLenguages();
+            IEnumerable<Idioma> langList;
+
+            try
+            {
+                langList = objtraduct.GetAllLenguages();
+            }
+            catch (NullReferenceException nullEx)
+            {
+                throw nullEx;
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return langList;
         }
 
         [HttpGet]
         [Route("api/Servicio/Index")]
         public IEnumerable<Servicio> IndexServices()
         {
-            return objtraduct.GetAllServices();
+            IEnumerable<Servicio> serviceList;
+
+            try
+            {
+                serviceList = objtraduct.GetAllServices();
+            }
+            catch (NullReferenceException nullEx)
+            {
+                throw nullEx;
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return serviceList;
         }
 
         [HttpGet]
         [Route("api/Peticion/Pendiente/{idTraductor}")]
         public IEnumerable<MostrarPeticion> IndexPeticiones(int idTraductor)
         {
-            return objtraduct.getRequestForTranslator(idTraductor);
+
+            IEnumerable<MostrarPeticion> requestList;
+
+            try
+            {
+                requestList = objtraduct.getRequestForTranslator(idTraductor);
+            }
+            catch (NullReferenceException nullEx)
+            {
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return requestList;
+
         }
 
 
@@ -84,7 +156,7 @@ namespace SPAtraductores.Controllers
 
        [HttpPost]
        [Route("api/Traductor/CreateServicio")]
-        public int AddServiceToTrad([FromBody] objetoClase objeto)
+        public int AddServiceToTrad([FromBody] objectToSend objeto)
         {
             int result;
 
@@ -134,7 +206,7 @@ namespace SPAtraductores.Controllers
 
         [HttpPost]
         [Route("api/Traductor/CreateIdioma")]
-        public int AddLangToTrad([FromBody] objetoClase objeto)
+        public int AddLangToTrad([FromBody] objectToSend objeto)
         {
             int result;
 
@@ -172,35 +244,123 @@ namespace SPAtraductores.Controllers
         [Route("api/Traductor/Details/{id}")]
         public Traductor Details(int id)
         {
-            return objtraduct.GetTraductorData(id);
+
+            Traductor traductor;
+
+            try
+            {
+                traductor = objtraduct.GetTraductorData(id);
+            }
+            catch (NullReferenceException nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return traductor;
         }
 
         [HttpGet]
         [Route("api/Traductor/DetailsId/{usuario}")]
         public int DetailsId(string usuario)
         {
-            return objtraduct.GetTraductorId(usuario);
+            int idTraductor;
+
+            try
+            {
+                idTraductor = objtraduct.GetTraductorId(usuario);
+            }
+            catch (NullReferenceException nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return idTraductor;
         }
 
         [HttpGet]
         [Route("api/Traductor/DetailsCP/{CP}")]
         public IEnumerable<Traductor> DetailsByCP(String CP)
         {
-            return objtraduct.GetTraductorByCP(CP);
+            
+            IEnumerable<Traductor> traductorList;
+
+            try
+            {
+                traductorList = objtraduct.GetTraductorByCP(CP);
+            }
+            catch (NullReferenceException nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return traductorList;
         }
 
         [HttpGet]
         [Route("api/Traductor/Services/{id}")]
         public IEnumerable<Servicio> tradServices(int id)
         {
-            return objtraduct.getServiciosTraductor(id);
+
+            IEnumerable<Servicio> servicioList;
+
+            try
+            {
+                servicioList = objtraduct.getServiciosTraductor(id);
+            }
+            catch (NullReferenceException nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return servicioList;
         }
 
         [HttpGet]
         [Route("api/Traductor/Languages/{id}")]
         public IEnumerable<Idioma> tradLanguages(int id)
         {
-            return objtraduct.getIdiomasHablados(id);
+            IEnumerable<Idioma> languageList;
+
+            try
+            {
+                languageList = objtraduct.getIdiomasHablados(id);
+            }
+            catch (NullReferenceException nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return languageList;
         }
 
 
@@ -209,7 +369,24 @@ namespace SPAtraductores.Controllers
         [Route("api/Traductor/DetailsDatos/{CP},{idioma},{servicio}")]
         public IEnumerable<DatosTraductor> DetailsDatos(string CP, string idioma,  string servicio)
         {
-            return objtraduct.GetTraductorDatos(CP, idioma, servicio);
+            IEnumerable<DatosTraductor> traductorList;
+
+            try
+            {
+                traductorList = objtraduct.GetTraductorDatos(CP,idioma,servicio);
+            }
+            catch (NullReferenceException nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return traductorList;
         }
 
         
@@ -220,7 +397,19 @@ namespace SPAtraductores.Controllers
         [Route("api/Traductor/Edit")]
         public int Edit([FromBody]Traductor traductor)
         {
-            return objtraduct.UpdateTraductor(traductor);
+            int result;
+
+            try
+            {
+                result = objtraduct.UpdateTraductor(traductor);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
 
 
@@ -230,21 +419,59 @@ namespace SPAtraductores.Controllers
         [Route("api/Traductor/Delete/{id}")]
         public int Delete(int id)
         {
-            return objtraduct.DeleteTraductor(id);
+            int result;
+
+            try
+            {
+                result = objtraduct.DeleteTraductor(id);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
 
         [HttpDelete]
         [Route("api/Idioma/Delete/{idioma}")]
         public string DeleteLenguage(string idioma)
         {
-            return objtraduct.DeleteLanguage(idioma);
+            
+            string result;
+
+            try
+            {
+                result = objtraduct.DeleteLanguage(idioma);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
 
         [HttpDelete]
         [Route("api/Service/Delete/{servicio}")]
         public string DeleteService(string servicio)
         {
-            return objtraduct.DeleteService(servicio);
+
+            string result;
+
+            try
+            {
+                result = objtraduct.DeleteService(servicio);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
 
         // Elimina todos los registros de idiomas y servicios de un traductor
@@ -252,17 +479,30 @@ namespace SPAtraductores.Controllers
         [Route("api/Traducotr/DeleteLangServ/{idTraductor}")]
         public int DeleteLangServFromTrad(int idTraductor) 
         {
-            return objtraduct.DeleteLangServFromTRad(idTraductor);
+
+            int result;
+
+            try
+            {
+                result = objtraduct.DeleteLangServFromTRad(idTraductor);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
 
     }
 }
 
-public class objetoClase
-{
-    public int idServicio;
+//public class objetoClase
+//{
+//    public int idServicio;
 
-    public int idTraductor;
+//    public int idTraductor;
 
-    public int idIdioma;
-}
+//    public int idIdioma;
+//}

@@ -71,7 +71,21 @@ hr {
     width: 100%;
     z-index: 12;
 }
+.popupAlert {
+    word-break: break-word;
+    position: fixed;
+    right: 0%;
+    top: 13%;
+    width: 65%;
+    min-height: 300px;
+    z-index: 12;
+}
 
-.ng2-opd-popup-well {
-   color: purple;
+.profileImg {
+    margin: auto;
+    display: block;
+    width: 45%;
+    border: solid 2px black;
+    border-radius: 6px;
+    box-shadow: 2px 2px 0px silver;
 }

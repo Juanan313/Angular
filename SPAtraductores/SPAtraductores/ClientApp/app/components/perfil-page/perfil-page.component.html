@@ -17,7 +17,7 @@
         </div>
 
         <div class="col-md-6">
-            <img src="data:image/jpeg;base64,{{trad.imagen}}" alt="Profile Img" />
+            <img src="data:image/jpeg;base64,{{trad.imagen}}" alt="Profile Img" class="profileImg"/>
         </div>
 
         <!-- div que contiene lista de idiomas y servicios del traductor -->
@@ -46,7 +46,7 @@
 
 
 
-<popup class="popup position-sticky">
+<popup #requestPopup class="popup position-sticky">
     <div *ngIf="request">
         <h3>Applicant name: <strong>{{request.nombreSolicitante}}</strong></h3>
         <div class="thumbnail">
@@ -115,7 +115,11 @@
     <a [routerLink]="['/translator-login']">Login Form</a>
 </div>
 
+<!--<button class="btn btn-warning btn-lg" (click)="prueba()"> PRUEBAS </button>-->
 
+<popup #messagePopup class="popupAlert position-sticky">
+    {{content}}
+</popup>
 
 <!--<div class="col-lg-12">
     <div class="bg-success col-lg-6">
