@@ -20,22 +20,24 @@
             <span class="label label-danger" *ngIf="traductorForm.hasError('required', 'email') && formDir.submitted">
                 Email is required.
             </span>
+
         </div>
         <div class="form-group row">
             <label class=" control-label col-md-8 col-md-offset-2" for="Usuario">  <i class="glyphicon glyphicon-user"></i>  User</label>
             <div class="col-md-8 col-md-offset-2">
                 <input class="form-control" type="text" formControlName="usuario">
                 <span class="alert alert-danger col-md-8 col-md-offset-2 " *ngIf="traductorForm.hasError('pattern', 'usuario')">
-                    User has to be 6 length and has to have atleast 1 letter and 1 number.
-                </span>
+                User has to be 6 length and has to have atleast 1 letter and 1 number.
+            </span>
             </div>
-
+            
             <span class="label label-danger" *ngIf="traductorForm.hasError('required', 'usuario') && formDir.submitted">
                 User is required.
             </span>
         </div>
         <div class="form-group row">
             <label class=" control-label col-md-8 col-md-offset-2" for="Pass">  <i class="glyphicon glyphicon-lock"></i>  Password</label>
+
             <div class="col-md-8 col-md-offset-2">
                 <input class="form-control" type="text" formControlName="pass">
             </div>
@@ -83,19 +85,20 @@
             </span>
         </div>
         <!--<div class="form-group row">
-        <label class=" control-label col-md-8 col-md-offset-2" for="Img">  <i class="glyphicon glyphicon-picture"></i>  Image</label>
-        <div class="col-md-8 col-md-offset-2">
-            <input class="form-control" type="file" formControlName="img">
-        </div>
-        <span class="label label-danger" *ngIf="traductorForm.hasError('required', 'Img') && formDir.submitted">
-           Upload a Img is required
-        </span>
-    </div>-->
-        <!--INTRODUCIR Imagen-->
+            <label class=" control-label col-md-8 col-md-offset-2" for="Img">  <i class="glyphicon glyphicon-picture"></i>  Image</label>
+            <div class="col-md-8 col-md-offset-2">
+                <input class="form-control" type="file" formControlName="img">
+            </div>
+            <span class="label label-danger" *ngIf="traductorForm.hasError('required', 'Img') && formDir.submitted">
+               Upload a Img is required
+            </span>
+        </div>-->
+        
+                <!--INTRODUCIR Imagen-->
         <div class="form-group row">
         <label class="letra control-label col-md-8 col-md-offset-2" for="Imagen">
             <i class="glyphicon glyphicon-picture"></i>
-           Select a default profile photo
+            Imagen de perfil
             <span class="label-danger label" *ngIf="traductorForm.hasError('required', 'imagen') && formDir.submitted">
                 Añade una imagen de perfil".
             </span>
@@ -115,28 +118,17 @@
                 <option value="{{imagenList[9]}}">Vader</option>
             </select>
 
+            <div *ngIf="imgvalue">
+                <img src="data:image/jpeg;base64,{{imgvalue}}" alt="no carga" />
+            </div>
         </div>
     </div>
-        <div class="form-group row">
-            <label class="letra control-label col-md-8 col-md-offset-2" for="Imagen">
-                <i class="glyphicon glyphicon-picture"></i>
-                Upload your own photo
-                <span class="label-danger label" *ngIf="traductorForm.hasError('required', 'imagen') && formDir.submitted">
-                    Añade una imagen de perfil".
-                </span>
-            </label>
-            <div class="col-md-8 col-md-offset-2">
-                <input type="file" class="form-control" formControlName="imagen" accept="image/*" (change)="changeListener($event)" />
-                <div *ngIf="imgvalue">
-                    <img src="{{imgvalue}}" class="profileImgS" alt="no carga" />
-                </div>
-            </div>
-            <div class="form-group col-md-8 col-md-offset-2">
-                <button type="submit" class="btn btn-default">Save</button>
-                <button class="btn" (click)="cancel()">Cancel</button>
-            </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-default" >Save</button>
+            <button class="btn" (click)="cancel()">Cancel</button>
         </div>
-</form>
+    </form>
     <div class="col-md-2"></div>
     <div class="col-md-12" *ngIf="title == 'Edit'">
         <add-lang-and-serv [id]="id"></add-lang-and-serv>

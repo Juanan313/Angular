@@ -13,6 +13,8 @@ button {
 alert {
     padding: 5px !important;
     margin-bottom: 3px !important;
+<<<<<<< Updated upstream
+=======
 }
 
 .profileImgS {
@@ -20,8 +22,10 @@ alert {
     margin: 10px ;
     border-radius: 8px;
     border: 2px black solid;
+    object-fit: cover;
 }
 
 .btn {
     margin-top: 5px !important;
+>>>>>>> Stashed changes
 }
