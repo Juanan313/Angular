@@ -14,3 +14,14 @@ alert {
     padding: 5px !important;
     margin-bottom: 3px !important;
 }
+
+.profileImgS {
+    max-width: 220px;
+    margin: 10px ;
+    border-radius: 8px;
+    border: 2px black solid;
+}
+
+.btn {
+    margin-top: 5px !important;
+}
