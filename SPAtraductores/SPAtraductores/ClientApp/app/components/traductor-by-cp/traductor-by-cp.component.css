@@ -43,7 +43,6 @@ h1 {
 .img-circle {
     height: 120px !important;
     width: 120px !important;
-    object-fit: cover;
 }
 
 button {
