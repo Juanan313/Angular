@@ -25,5 +25,8 @@ table td {
 }
 
 .profileImgXS {
-    width: 80px;
+    max-width: 80px;
+    border-radius: 5px;
+    border: 1px black solid;
+
 }
