@@ -26,6 +26,12 @@
 
                 <button class="btn btn-primary" [disabled]="!user.valid || !pass.valid ">sumbit</button>
             </form>
+
+            <div *ngIf="logFail">
+                <p class="alert alert-danger">
+                    Something is wrong with your user or email or your password, please try another time.
+                </p>
+            </div>
         </div>
         <br /><br /><br />
         <div class="card-footer text-muted">
