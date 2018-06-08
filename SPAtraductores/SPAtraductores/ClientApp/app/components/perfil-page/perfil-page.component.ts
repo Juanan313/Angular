@@ -2,7 +2,7 @@
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
-import { usuario } from '../translator-login/translator-login.component';
+import { usuario, contraseña } from '../translator-login/translator-login.component';
 import { OnInit, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Directive } from '@angular/core/src/metadata/directives';
 import { Popup } from 'ng2-opd-popup';
@@ -64,7 +64,7 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     }
 
     loadId() {
-       this._traductorService.getTraductorId(usuario).subscribe(
+       this._traductorService.getTraductorId(usuario, contraseña).subscribe(
            data => {
                this.id = data;
                this.getTraductors();

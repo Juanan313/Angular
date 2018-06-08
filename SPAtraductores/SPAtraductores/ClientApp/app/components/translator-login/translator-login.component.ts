@@ -13,12 +13,13 @@ export class TranslatorLoginComponent {
     /** translator-login ctor */
     public idNumber: idNumberDATA;
     public usuario: string;
+    public contraseña: string;
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
     }
 
     login(user, pass) {
         usuario = user.value;
-        var contraseña = pass.value;
+        contraseña = pass.value;
         //alert("Usuario: " + usuario + ", Contraseña: " + contraseña);
 
         this.goToProfile();
@@ -42,6 +43,7 @@ export class TranslatorLoginComponent {
 
 export var idNumber;
 export var usuario;
+export var contraseña;
 
 interface idNumberDATA {
     ID: number;

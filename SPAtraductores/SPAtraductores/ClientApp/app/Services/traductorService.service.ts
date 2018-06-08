@@ -38,8 +38,8 @@ export class TraductorService {
             .catch(this.errorHandler)  
     }
 
-    getTraductorId(usuario: string) {
-        return this._http.get(this.myAppUrl + "api/Traductor/DetailsID/" + usuario)
+    getTraductorId(usuario: string, contraseña: string) {
+        return this._http.get(this.myAppUrl + "api/Traductor/DetailsID/" + usuario +","+contraseña)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     } 

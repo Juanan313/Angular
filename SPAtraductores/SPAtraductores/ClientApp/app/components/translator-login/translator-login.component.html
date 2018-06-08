@@ -8,8 +8,8 @@
         <div class="card-body">
             <form  bg-success (ngSubmit)="login(user, pass)">
                 <div class="form-group">
-                    <label for="user">User name</label>
-                    <input required pattern="^(?=.*[a-zA-Z])[a-zA-Z\d]{6,}$" ngModel #user="ngModel" id="user" type="text" name="user" class="form-control" />
+                    <label for="user">User or Email</label>
+                    <input required ngModel #user="ngModel" id="user" type="text" name="user" class="form-control" />
                     <div class="alert alert-danger" *ngIf="user.touched && !user.valid">
                         A correct username is required. The username has to be 6 length. <br />
                   

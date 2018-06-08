@@ -140,7 +140,7 @@ namespace SPAtraductores.Models
 
 
         //Get the ID of a particular translator
-        public int GetTraductorId(string usuario)
+        public int GetTraductorId(string usuario, string contraseña)
         {
             try
             {   
@@ -148,7 +148,7 @@ namespace SPAtraductores.Models
                 Traductor traductor = new Traductor();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT idTraductores FROM Traductores WHERE Usuario = " + "'"+usuario+"'";
+                    string sqlQuery = "SELECT idTraductores FROM Traductores WHERE (Usuario = '" +usuario+"' OR Email='"+usuario+"') AND Pass='"+contraseña+"'";
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
