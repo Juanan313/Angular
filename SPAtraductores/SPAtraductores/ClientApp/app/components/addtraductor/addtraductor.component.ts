@@ -92,7 +92,7 @@ export class createtraductor implements OnInit {
     }
 
     loadId() {
-        this._traductorService.getTraductorId(this.traductorForm.value.usuario).subscribe(
+        this._traductorService.getTraductorId(this.traductorForm.value.usuario, this.traductorForm.value.pass).subscribe(
             data => {
                 var id = data;
                 this._router.navigate(['/addLang-Serv/', id]);

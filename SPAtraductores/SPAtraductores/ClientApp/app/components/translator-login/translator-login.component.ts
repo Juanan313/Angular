@@ -11,17 +11,30 @@ import { TraductorService } from '../../services/traductorservice.service';
 /** translator-login component*/
 export class TranslatorLoginComponent {
     /** translator-login ctor */
-    public idNumber: idNumberDATA;
-    public usuario: string;
+    public idNumber: number = 0;
+    public usuario: string = "";
+    public contraseña: string = "";
+    public logFail: boolean;
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
+        this.logFail = false;
     }
 
     login(user, pass) {
         usuario = user.value;
-        var contraseña = pass.value;
+        contraseña = pass.value;
         //alert("Usuario: " + usuario + ", Contraseña: " + contraseña);
 
-        this.goToProfile();
+        this._traductorService.getTraductorId(usuario, contraseña).subscribe(
+            data => {
+                this.idNumber = data;
+                if (this.idNumber > 0) {
+                    this.logFail = false;
+                    this.goToProfile();
+                } else {
+                    this.logFail = true;
+                }
+            }
+        )
 
     }
 
@@ -42,7 +55,5 @@ export class TranslatorLoginComponent {
 
 export var idNumber;
 export var usuario;
+export var contraseña;
 
-interface idNumberDATA {
-    ID: number;
-}

@@ -10,7 +10,8 @@ namespace SPAtraductores.Models
 {
     public class TraductorDataAccess
     {
-        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = 'SPA Traductores'; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = 'SPA Traductores'; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connectionString = @"Server=tcp:juanan313.database.windows.net,1433;Initial Catalog=SPATraductores;Persist Security Info=False;User ID=invitado;Password=Contraseña_Prueba3;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         //To View all translator details
         public IEnumerable<Traductor> GetAllTraductores()
         {
@@ -140,7 +141,7 @@ namespace SPAtraductores.Models
 
 
         //Get the ID of a particular translator
-        public int GetTraductorId(string usuario)
+        public int GetTraductorId(string usuario, string contraseña)
         {
             try
             {   
@@ -148,7 +149,7 @@ namespace SPAtraductores.Models
                 Traductor traductor = new Traductor();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT idTraductores FROM Traductores WHERE Usuario = " + "'"+usuario+"'";
+                    string sqlQuery = "SELECT idTraductores FROM Traductores WHERE (Usuario = '" +usuario+"' OR Email='"+usuario+"') AND Pass='"+contraseña+"'";
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();

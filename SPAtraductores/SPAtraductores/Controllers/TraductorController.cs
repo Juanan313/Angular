@@ -266,14 +266,14 @@ namespace SPAtraductores.Controllers
         }
 
         [HttpGet]
-        [Route("api/Traductor/DetailsId/{usuario}")]
-        public int DetailsId(string usuario)
+        [Route("api/Traductor/DetailsId/{usuario},{contraseña}")]
+        public int DetailsId(string usuario, string contraseña)
         {
             int idTraductor;
 
             try
             {
-                idTraductor = objtraduct.GetTraductorId(usuario);
+                idTraductor = objtraduct.GetTraductorId(usuario,contraseña);
             }
             catch (NullReferenceException nullEx)
             {

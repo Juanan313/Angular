@@ -1,6 +1,6 @@
 ﻿<h1>Translators DataBase</h1>
 
-<p *ngIf="!tradList"><em>Loading...</em></p>
+<div class="alert alert-info" *ngIf="!tradList"><em>Loading... </em><div class="loader"></div></div>
 <p>
     <a [routerLink]="['/register-Traductor']">Create New</a>
 </p>
