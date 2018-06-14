@@ -1,24 +1,23 @@
-﻿<h1>Profile <a (click)="cargarPerfil()"> <i class="glyphicon glyphicon-refresh	"></i> </a></h1>
+﻿<!--<a (click)="cargarPerfil()"> <i class="glyphicon glyphicon-refresh	"></i> </a>-->
 <!--<div  *ngIf="!trad"><p><em>Loading..., if the page doesn't charges click in the button.</em></p><div class="loader"></div></div>-->
-<div *ngIf="cargaPagina">
+<div class="perfilCard" *ngIf="cargaPagina">
 
 
     <div class="container-fluid col-md-12">
-        <div class="thumbnail col-md-6">
-            <button class="btn btn-primary btn-sm cerrar" [routerLink]="['/Traductor/edit/', trad.id]"><i class="glyphicon glyphicon-edit"></i></button>
-            <h3><strong>{{trad.name}} {{trad.lastName}}</strong></h3>
-            <hr />
-            <h4><span class="label label-default">Email: </span> <strong>{{trad.email}}</strong></h4>
-            <h4>
-                <span class="label label-default">Phone: </span> <strong>{{trad.tlfn}}</strong>
-                <span class="label label-default">PostalCode: </span> <strong>{{trad.cp}}</strong>
-            </h4>
-
-        </div>
-
-        <div class="col-md-6">
-            <img src="{{trad.imagen}}" alt="Profile Img" class="profileImg"/>
-        </div>
+            <div class="col-md-6">
+                <img src="{{trad.imagen}}" alt="Profile Img" class="profileImg" />
+            </div>
+            <div class="thumbnail col-md-6">
+                <button class="btn btn-primary btn-sm cerrar" [routerLink]="['/Traductor/edit/', trad.id]"><i class="glyphicon glyphicon-edit"></i></button>
+                <h3><strong>{{trad.name}} {{trad.lastName}}</strong></h3>
+                <hr />
+                <h4><span class="label label-default">Email: </span> <strong>{{trad.email}}</strong></h4>
+                <h4>
+                    <span class="label label-default">Phone: </span> <strong>{{trad.tlfn}}</strong>
+                    <span class="label label-default">PostalCode: </span> <strong>{{trad.cp}}</strong>
+                </h4>
+            </div>
+        
 
         <!-- div que contiene lista de idiomas y servicios del traductor -->
         <div class="thumbnail  col-md-12">
@@ -32,15 +31,17 @@
                     <span class="label label-success" *ngFor="let servicio of servList"> {{servicio.service}}</span>
                 </div>
             </div>
-            <button id="show" class="btn btn-primary btn-sm pull-right" (click)="mostrar()" *ngIf="show == false && id > 0"> <i class="glyphicon glyphicon-edit"></i> Language / Service</button>
+            <button id="show" class="btn btn-primary btn-sm pull-md-right" (click)="mostrar()" *ngIf="show == false && id > 0"> <i class="glyphicon glyphicon-edit"></i> Language / Service</button>
         </div>
     </div>
     <div style="clear:both"></div>
-    <hr>
+
     <div id="langServ" *ngIf="show == true">
         <button class="btn btn-danger btn-sm cerrar" (click)="mostrar()">X</button>
         <div style="clear:both"></div>
-        <add-lang-and-serv [id]="id"></add-lang-and-serv>
+        <div class="col-md-10 col-md-offset-1 thumbnail">
+            <add-lang-and-serv [id]="id"></add-lang-and-serv>
+        </div>
     </div>
 </div>
 
@@ -51,26 +52,27 @@
         <h3>Applicant name: <strong>{{request.nombreSolicitante}}</strong></h3>
         <div class="thumbnail">
             <p>{{request.descripcion}}</p>
-        </div>
 
-        <table class="table">
-            <tr>
-                <th>Language</th>
-                <td>{{request.idioma}}</td>
-            </tr>
-            <tr>
-                <th>Servicio</th>
-                <td>{{request.servicio}}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td> <a href="mailto:{{request.email}}?Subject= Accept your request of a translator. Service: {{request.servicio}} & Language: {{request.idioma}}"> <strong>{{request.email}}</strong> </a></td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{request.tlfn}}</td>
-            </tr>
-        </table>
+            <hr />
+            <table class="table">
+                <tr>
+                    <th>Language</th>
+                    <td>{{request.idioma}}</td>
+                </tr>
+                <tr>
+                    <th>Servicio</th>
+                    <td>{{request.servicio}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td> <a href="mailto:{{request.email}}?Subject= Accept your request of a translator. Service: {{request.servicio}} & Language: {{request.idioma}}"> <strong>{{request.email}}</strong> </a></td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{request.tlfn}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </popup>
 
@@ -109,8 +111,8 @@
     </div>
 </div>
 
-<div *ngIf="id == 0">
-    <p> No se ha cargado correctamente su perfil, vuelve a introducirlo en el login ... </p><div class="loader"></div>
+<div *ngIf="id == 0" class="mensajeAlerta alert alert-warning">
+    <p> You're profile has not been loaded correctly, re-enter your data on the login. </p><div class="loader"></div>
     <hr />
     <a [routerLink]="['/translator-login']">Login Form</a>
 </div>

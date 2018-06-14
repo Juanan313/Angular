@@ -70,7 +70,7 @@ export class TraductorByCpComponent {
         //);
 
         this.requestFormPopup.options = {
-            color: "#337ab7",
+            color: "#576775",
             confirmBtnContent: "Add a request",
             cancleBtnContent: "",
             confirmBtnClass: "hide",

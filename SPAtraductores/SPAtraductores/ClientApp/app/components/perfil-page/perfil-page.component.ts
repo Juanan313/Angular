@@ -129,7 +129,7 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
         this.request = request;
 
         this.requestPopup.options = {
-            color: "#337ab7",
+            color: "silver",
             cancleBtnContent: "",
             confirmBtnClass: "hide",
             cancleBtnClass: "btn btn-sm btn-danger glyphicon glyphicon-remove botonCerrarPopup",

@@ -214,7 +214,7 @@ export class AddLangAndServComponent implements OnInit {
         }
 
          if (this.insert) {
-             this._router.navigate(['/admin-page']);
+             this._router.navigate(['/translator-login']);
          } else {
              this.refreshData();
              this._profileService.getIdiomasHablados();

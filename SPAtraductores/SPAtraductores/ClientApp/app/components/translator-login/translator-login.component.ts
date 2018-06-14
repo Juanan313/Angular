@@ -11,9 +11,9 @@ import { TraductorService } from '../../services/traductorservice.service';
 /** translator-login component*/
 export class TranslatorLoginComponent {
     /** translator-login ctor */
-    public idNumber: number;
-    public usuario: string;
-    public contraseña: string;
+    public idNumber: number = 0;
+    public usuario: string = "";
+    public contraseña: string = "";
     public logFail: boolean;
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
         this.logFail = false;
