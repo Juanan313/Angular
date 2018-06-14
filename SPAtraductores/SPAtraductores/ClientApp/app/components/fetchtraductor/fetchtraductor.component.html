@@ -1,37 +1,38 @@
 ﻿<h1>Translators DataBase</h1>
 
 <div class="alert alert-info" *ngIf="!tradList"><em>Loading... </em><div class="loader"></div></div>
-<p>
-    <a [routerLink]="['/register-Traductor']">Create New</a>
-</p>
-<table class='table' *ngIf="tradList">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>CP</th>
-            <th>Phone Number</th>
-            <th>Profile Image</th>
-            <th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="fila" *ngFor="let traductor of tradList">
-            <td>{{ traductor.id }}</td>
-            <td>{{ traductor.name }}</td>
-            <td>{{ traductor.lastName }}</td>
-            <td>{{ traductor.email }}</td>
-            <td>{{ traductor.cp }}</td>
-            <td>{{ traductor.tlfn }}</td>
-            <td><img class="profileImgXS" src="{{traductor.imagen}}" alt="Profile Img" /></td>
-            <td>
-                <a [routerLink]="['/Traductor/edit/', traductor.id]"><i class="glyphicon glyphicon-edit"></i>Edit</a> |
-                <a [routerLink]="" (click)="delete(traductor.id)"><i class="glyphicon glyphicon-trash"></i>Delete</a> <!--|
-                <a [routerLink]="['/addLang-Serv/', traductor.id]" ><i class="glyphicon glyphicon-plus"></i>AddLS</a>--> 
-            </td>
-        </tr>
-    </tbody>
+<div *ngIf="tradList">
+    <p><a [routerLink]="['/register-Traductor']">Create New</a></p>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>CP</th>
+                <th>Phone Number</th>
+                <th>Profile Image</th>
+                <th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="fila" *ngFor="let traductor of tradList">
+                <td>{{ traductor.id }}</td>
+                <td>{{ traductor.name }}</td>
+                <td>{{ traductor.lastName }}</td>
+                <td>{{ traductor.email }}</td>
+                <td>{{ traductor.cp }}</td>
+                <td>{{ traductor.tlfn }}</td>
+                <td><img class="profileImgXS" src="{{traductor.imagen}}" alt="Profile Img" /></td>
+                <td>
+                    <a [routerLink]="['/Traductor/edit/', traductor.id]"><i class="glyphicon glyphicon-edit"></i>Edit</a> |
+                    <a [routerLink]="" (click)="delete(traductor.id)"><i class="glyphicon glyphicon-trash"></i>Delete</a>
+                    <!--|
+                    <a [routerLink]="['/addLang-Serv/', traductor.id]" ><i class="glyphicon glyphicon-plus"></i>AddLS</a>-->
+                </td>
+            </tr>
+        </tbody>
 
-</table>
+    </table>
+</div>
