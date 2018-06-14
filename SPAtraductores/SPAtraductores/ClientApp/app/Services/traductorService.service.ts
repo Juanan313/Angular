@@ -75,6 +75,12 @@ export class TraductorService {
             .catch(this.errorHandler);
     }
 
+    getTranslatorBio(id: number) {
+        return this._http.get(this.myAppUrl + 'api/Traductor/Bio/' + id)
+            .map((response: Response) => response)
+            .catch(this.errorHandler);
+    }
+
 
     // SAVES NEW DATA
 

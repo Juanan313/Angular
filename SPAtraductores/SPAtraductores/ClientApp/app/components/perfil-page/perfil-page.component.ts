@@ -24,6 +24,7 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     public requestList: Peticion[];
     public request: Peticion;
     public content: string;
+    public bio: string;
 
     public cargaPagina: boolean;
 
@@ -33,6 +34,7 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     /*, private requestPopup: Popup, private messagePopup: Popup*/
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
         this.cargaPagina = false;
+        this.bio = "";
     }
 
     ngOnInit() {
@@ -71,6 +73,7 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
                this.getServiciosTrad();
                this.getIdiomasHablados();
                this.getRequests();
+               this.getBio();
            }
       )
 
@@ -139,6 +142,12 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
         }
 
         this.requestPopup.show(this.requestPopup.options);
+    }
+
+   getBio() {
+        this._traductorService.getTranslatorBio(this.id).subscribe(
+            data => this.bio = data._body
+        )
     }
 }
 interface TraductorData {

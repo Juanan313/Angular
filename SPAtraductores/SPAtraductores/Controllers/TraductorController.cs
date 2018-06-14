@@ -495,8 +495,29 @@ namespace SPAtraductores.Controllers
             return result;
         }
 
+
+        // Bio Get Text
+        [HttpGet]
+        [Route("api/Traductor/Bio/{idTraductor}")]
+        public String getBioText(int idTraductor)
+        {
+            String result;
+
+            try
+            {
+                result = objtraduct.getTranslatorBio(idTraductor);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
+        }
     }
-}
+    }
+
 
 //public class objetoClase
 //{
