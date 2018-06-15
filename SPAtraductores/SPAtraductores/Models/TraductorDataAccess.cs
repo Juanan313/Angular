@@ -10,8 +10,8 @@ namespace SPAtraductores.Models
 {
     public class TraductorDataAccess
     {
-        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = 'SPA Traductores'; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        //string connectionString = @"Server=tcp:juanan313.database.windows.net,1433;Initial Catalog=SPATraductores;Persist Security Info=False;User ID=invitado;Password=Contraseña_Prueba3;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        //string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = 'SPA Traductores'; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connectionString = @"Server=tcp:juanan313.database.windows.net,1433;Initial Catalog=SPATraductores;Persist Security Info=False;User ID=invitado;Password=Contraseña_Prueba3;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         //To View all translator details
         public IEnumerable<Traductor> GetAllTraductores()
         {

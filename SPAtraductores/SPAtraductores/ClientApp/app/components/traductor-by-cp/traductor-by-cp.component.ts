@@ -2,9 +2,7 @@
 import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
-import { codigoPostal } from '../home/home.component';
-import { idioma } from '../home/home.component';
-import { servicio } from '../home/home.component';
+import { codigoPostal, idioma, servicio } from '../home/home.component';
 import { Popup } from 'ng2-opd-popup';
 
 @Component({
@@ -19,13 +17,14 @@ export class TraductorByCpComponent {
     cp: string;
     language: string;
     service: string;
-    public tradList: TraductorData[];
-    public showTrads: Boolean;
+    public tradList: TraductorData[] | undefined;
+    //public showTrads: Boolean;
     public traductorId: number;
     public idIdioma: number;
     public idServicio: number;
 
-    @ViewChild('requestFormPopup') requestFormPopup: Popup;
+    @ViewChild('requestFormPopup')
+    requestFormPopup: Popup = new Popup;
     
     /** traductorByCP ctor */
     constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService) {
@@ -36,6 +35,7 @@ export class TraductorByCpComponent {
         this.traductorId = 0;
         this.idIdioma = 0;
         this.idServicio = 0;
+        //this.showTrads = false;
     }
 
     getTraductorsByCp() {
