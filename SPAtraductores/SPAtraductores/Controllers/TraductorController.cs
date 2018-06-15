@@ -237,6 +237,30 @@ namespace SPAtraductores.Controllers
             return result;
         }
 
+        [HttpPost]
+        [Route("api/Traductor/CreateBio")]
+        public int AddBioToTrad([FromBody] Bio bio)
+        {
+            int result;
+
+            try
+            {
+                    result = objtraduct.AddBio(bio.idTraductor, bio.text);
+            }
+            catch (NullReferenceException nullEx)
+            {
+
+                throw nullEx;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
+        }
+
 
         // Get the data of a traductor by id
 
@@ -505,7 +529,7 @@ namespace SPAtraductores.Controllers
 
             try
             {
-                result = objtraduct.getTranslatorBio(idTraductor);
+                result = objtraduct.GetTranslatorBio(idTraductor);
             }
             catch (Exception ex)
             {

@@ -657,7 +657,7 @@ namespace SPAtraductores.Models
 
         /* -- ADD BIO -- */
 
-        public int addBio(int id, String text)
+        public int AddBio(int id, String text)
         {
             try
             {
@@ -678,8 +678,9 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
-
-        public String getTranslatorBio(int id)
+        
+        /* --- Get bio of a translator ---*/
+        public String GetTranslatorBio(int id)
         {
             try
             {

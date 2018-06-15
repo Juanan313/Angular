@@ -30,12 +30,12 @@
                 Your profile does not have a biography yet, add one so that users know you better before making a request.
             </p>
             <div class="form-group row">
-            <form [formGroup]='formBio' #formDir="ngForm" (ngSubmit)='onSubmit()'>
-                <label class="control-label"> Bio </label>
-                <input type="submit" name="submit" class="btn btn-primary glyphicon glyphicon-plus pull-right" value="+"/>
-                <input type="text" formControlName="bio"  class="form-control"/>
-            </form>
-                </div>
+                <form [formGroup]='formBio' #formDir="ngForm" (ngSubmit)='onSubmit()'>
+                    <label class="control-label"> Bio </label>
+                    <input type="submit" name="submit" class="btn btn-primary glyphicon glyphicon-plus pull-right" value="+" />
+                    <input type="text" formControlName="bio" class="form-control" />
+                </form>
+            </div>
         </div>
 
         <!-- div que contiene lista de idiomas y servicios del traductor -->
@@ -63,7 +63,6 @@
         </div>
     </div>
 </div>
-
 
 
 <popup #requestPopup class="popup">

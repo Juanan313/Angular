@@ -159,7 +159,14 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
     }
 
     onSubmit() {
-        this.bio = this.formBio.value.bio;
+        let bioToAdd = {
+            "idTraductor": this.id,
+            "text": this.formBio.value.bio
+        }
+
+        this._traductorService.saveBio(bioToAdd).subscribe(
+            data => this.getBio()
+        )
     }
 }
 interface TraductorData {

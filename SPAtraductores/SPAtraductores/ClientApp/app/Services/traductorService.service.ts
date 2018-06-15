@@ -90,30 +90,33 @@ export class TraductorService {
             .catch(this.errorHandler)  
     }
 
+    // añadir Idioma
     saveLanguage(language) {
         return this._http.post(this.myAppUrl + 'api/Idioma/Create', language)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)  
     }
 
+    // añadirServicio
     saveService(service) {
         return this._http.post(this.myAppUrl + 'api/Servicio/Create', service)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)  
     }
 
+    // añadir Peticion
     saveRequest(request) {
         return this._http.post(this.myAppUrl + 'api/Peticion/Create', request)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)  
     }
 
-    //saveServiceTrad(idService, idTraductor) {
-    //    return this._http.post(this.myAppUrl + 'api/Servicio/AddServTrad/', idService , idTraductor)
-    //        .map((response: Response) => response.json())
-    //        .catch(this.errorHandler)
-    //}
-
+    // Añadir Biografia
+    saveBio(bio) {
+        return this._http.post(this.myAppUrl + 'api/Traductor/CreateBio', bio)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler)
+    }
 
     //Añadir servicio a traductor
     saveTraductorServicios(body: any) {
@@ -128,14 +131,6 @@ export class TraductorService {
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
-
-    //saveLangTrad(idIdioma, idTraductor) {
-    //    return this._http.post(this.myAppUrl + 'api/Idioma/AddLangTrad/', idIdioma ,idTraductor)
-    //        .map((response: Response) => response.json())
-    //        .catch(this.errorHandler)
-    //}
-
-
 
     // UPDATE DATA
     updateTraductor(traductor) {  
