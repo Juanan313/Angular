@@ -6,6 +6,7 @@ import { usuario, contraseña } from '../translator-login/translator-login.compo
 import { OnInit, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Directive } from '@angular/core/src/metadata/directives';
 import { Popup } from 'ng2-opd-popup';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -16,25 +17,32 @@ import { Popup } from 'ng2-opd-popup';
 /** perfilPage component*/
 export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
 
+    formBio: FormGroup;
     private show: boolean = false;
-    private id: number;
+    private id: number = 0;
     public trad: TraductorData;
     public langList: Idioma[];
     public servList: Servicio[];
     public requestList: Peticion[];
     public request: Peticion;
-    public content: string;
+    public content: string = "";
     public bio: string;
 
     public cargaPagina: boolean;
 
-    @ViewChild('requestPopup') requestPopup: Popup;
-    @ViewChild('messagePopup') messagePopup: Popup;
+    @ViewChild('requestPopup')
+    requestPopup: Popup = new Popup;
+    @ViewChild('messagePopup')
+    messagePopup: Popup = new Popup;
 
     /*, private requestPopup: Popup, private messagePopup: Popup*/
-    constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {
+    constructor(private _fb: FormBuilder, public http: Http, private _router: Router, private _traductorService: TraductorService) {
         this.cargaPagina = false;
         this.bio = "";
+
+        this.formBio = this._fb.group({
+            bio: ['', Validators.required]
+        })
     }
 
     ngOnInit() {
@@ -148,6 +156,10 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
         this._traductorService.getTranslatorBio(this.id).subscribe(
             data => this.bio = data._body
         )
+    }
+
+    onSubmit() {
+        this.bio = this.formBio.value.bio;
     }
 }
 interface TraductorData {
