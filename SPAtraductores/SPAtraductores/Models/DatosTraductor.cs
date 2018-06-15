@@ -19,5 +19,6 @@ namespace SPAtraductores.Models
         public int idIdioma { get; set; }
         public int idServicio { get; set; }
         public String Imagen { get; set;  }
+        public String Bio { get; set; }
     }
 }

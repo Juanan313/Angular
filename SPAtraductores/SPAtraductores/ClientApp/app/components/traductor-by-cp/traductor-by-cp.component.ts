@@ -18,13 +18,14 @@ export class TraductorByCpComponent {
     language: string;
     service: string;
     public tradList: TraductorData[] | undefined;
-    //public showTrads: Boolean;
     public traductorId: number;
     public idIdioma: number;
     public idServicio: number;
+    public detailTraductor: TraductorData | undefined;
 
-    @ViewChild('requestFormPopup')
-    requestFormPopup: Popup = new Popup;
+    @ViewChild('requestFormPopup') requestFormPopup: Popup;
+
+    @ViewChild('deatilsPopup') detailsPopup: Popup;
     
     /** traductorByCP ctor */
     constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService) {
@@ -35,7 +36,6 @@ export class TraductorByCpComponent {
         this.traductorId = 0;
         this.idIdioma = 0;
         this.idServicio = 0;
-        //this.showTrads = false;
     }
 
     getTraductorsByCp() {
@@ -51,8 +51,7 @@ export class TraductorByCpComponent {
     }
 
     getTraductorsData() {
-        console.log("codigo postal: " + codigoPostal + " idioma: " + idioma + " servicio: " + servicio);
-
+        
         this._traductorService.getTraductorsDatos(codigoPostal, idioma, servicio).subscribe(
             data => this.tradList = data)
     }
@@ -82,6 +81,24 @@ export class TraductorByCpComponent {
         this.requestFormPopup.show(this.requestFormPopup.options);
     }
 
+    openDetailsPopup(traductor) {
+        this.detailTraductor = traductor;
+
+        this.detailsPopup.options = {
+            color: "#576775",
+            confirmBtnContent: "Add a request",
+            cancleBtnContent: "",
+            confirmBtnClass: "hide",
+            cancleBtnClass: "btn btn-danger botonCerrarPopup glyphicon glyphicon-remove",
+            header: "Add a Request for our translator",
+            widthProsentage: 70,
+            animation: "fadeInDown"
+        }
+        this.detailsPopup.show(this.detailsPopup.options);
+    
+
+    }
+
 }
 
 interface TraductorData {
@@ -96,4 +113,5 @@ interface TraductorData {
     idIdioma: number;
     idServicio: number;
     imagen: string;
+    bio: string;
 }

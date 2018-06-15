@@ -43,3 +43,13 @@ table td {
     animation: spin 2s cubic-bezier(0.75, 0.13, 0.27, 0.83) infinite;
     margin-left: 10px;
 }
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
