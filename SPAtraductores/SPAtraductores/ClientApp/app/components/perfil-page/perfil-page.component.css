@@ -112,7 +112,6 @@ hr {
 }
 
 .panel-primary {
-    border: 1px gray solid;
     border-radius: 3px;
     margin-bottom: 5px;
 }
@@ -120,4 +119,10 @@ hr {
 .profileBG {
     background: url(../../../dist/b971aa0417772b6510bbe976d5f0598e.jpg);
     background-position: 63% 59%;
+}
+
+.editBio {
+    top: -5px;
+    right: -10px;
+    position: relative;
 }
