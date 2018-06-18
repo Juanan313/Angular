@@ -2,19 +2,19 @@
 <!--<div  *ngIf="!trad"><p><em>Loading..., if the page doesn't charges click in the button.</em></p><div class="loader"></div></div>-->
 <div class="perfilCard" *ngIf="cargaPagina">
 
-
+    <div class="col-md-12 profileBG">
+        <img src="{{trad.imagen}}" alt="Profile Img" class="profileImg img-circle" />
+    </div>
     <div class="container-fluid col-md-12">
-        <div class="col-md-6">
-            <img src="{{trad.imagen}}" alt="Profile Img" class="profileImg" />
-        </div>
-        <div class="thumbnail col-md-6">
-            <button class="btn btn-primary btn-sm cerrar" [routerLink]="['/Traductor/edit/', trad.id]"><i class="glyphicon glyphicon-edit"></i></button>
+        <div class="col-md-12">
+           
             <h3><strong>{{trad.name}} {{trad.lastName}}</strong></h3>
             <hr />
-            <h4><span class="label label-default">Email: </span> <strong>{{trad.email}}</strong></h4>
             <h4>
+                <span class="label label-default">Email: </span> <strong>{{trad.email}}</strong>
                 <span class="label label-default">Phone: </span> <strong>{{trad.tlfn}}</strong>
                 <span class="label label-default">PostalCode: </span> <strong>{{trad.cp}}</strong>
+                <button class="btn btn-primary btn-sm cerrar" [routerLink]="['/Traductor/edit/', trad.id]"><i class="glyphicon glyphicon-edit"></i></button>
             </h4>
         </div>
         <!--Div que muestra la informacion de la biografia del traductor-->

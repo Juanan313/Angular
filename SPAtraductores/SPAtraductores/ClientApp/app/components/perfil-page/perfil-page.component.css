@@ -86,11 +86,13 @@ hr {
 .profileImg {
     margin: auto;
     display: block;
-    width: 40%;
+    /* width: 40%; */
+    width: 150px;
+    height: 150px;
     border: solid 2px black;
-    border-radius: 6px;
-    box-shadow: 5px 5px 2px silver;
-    margin-bottom: 2vh;
+    /* border-radius: 6px; */
+    box-shadow: 1px 1px 5px;
+    margin-bottom: -1vh;
 }
 
 .perfilCard {
@@ -113,4 +115,9 @@ hr {
     border: 1px gray solid;
     border-radius: 3px;
     margin-bottom: 5px;
+}
+
+.profileBG {
+    background: url(../../../dist/b971aa0417772b6510bbe976d5f0598e.jpg);
+    background-position: 63% 59%;
 }
