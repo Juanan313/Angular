@@ -114,3 +114,8 @@ hr {
     border-radius: 3px;
     margin-bottom: 5px;
 }
+
+.bioTittle {
+    top: -11px;
+    position: relative;
+}
