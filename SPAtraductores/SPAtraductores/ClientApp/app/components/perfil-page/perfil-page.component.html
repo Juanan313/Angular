@@ -19,7 +19,7 @@
         </div>
         <!--Div que muestra la informacion de la biografia del traductor-->
         <div class="col-md-12 panel-primary" *ngIf="bio">
-            <h4 class="panel-heading">Bio: <button class="btn btn-default editBi btn-sm cerrar" [routerLink]="['/Traductor/edit/', trad.id]"><i class="glyphicon glyphicon-edit"></i></button></h4>
+            <h4 class="panel-heading">Bio: <button class="btn btn-default btn-sm pull-right editBio" [routerLink]="['/Traductor/edit/', trad.id]"><i class="glyphicon glyphicon-edit"></i></button></h4>
             <div class="panel-body">
                 <p>{{bio}}</p>
             </div>
