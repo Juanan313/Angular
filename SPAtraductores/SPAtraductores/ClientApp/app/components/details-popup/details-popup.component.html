@@ -1,0 +1,13 @@
+﻿<div *ngIf="detailTraductor" class="panel">
+        <h4 class="panel-heading"> {{detailTraductor.name}}{{detailTraductor.lastName}}</h4>
+        <div class="panel-group">
+            <div class="panel-default">
+                <h4>
+                    <i class="glyphicon glyphicon-envelope"></i><a href="mailto:{{detailTraductor.email}}?Subject= Request of a translator. Service: {{detailTraductor.language}} & Language: {{detailTraductor.service}}">
+                        <strong>{{detailTraductor.email}}</strong>
+                    </a>
+                </h4>
+                <h4> <i class="glyphicon glyphicon-phone"></i>Phone Number: {{detailTraductor.tlfn}}</h4>
+            </div>
+        </div>
+    </div>

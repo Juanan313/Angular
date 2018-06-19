@@ -23,6 +23,7 @@ import { PerfilPageComponent } from './components/perfil-page/perfil-page.compon
 import { AddLangAndServComponent } from './components/add-lang-and-serv/add-lang-and-serv.component';
 import { AddRequestComponent } from './components/add-request/add-request.component';
 import { PruebasPoupComponent } from './components/pruebas-poup/pruebas-poup.component';
+import { DetailsPopupComponent } from './components/details-popup/details-popup.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { PruebasPoupComponent } from './components/pruebas-poup/pruebas-poup.com
         PerfilPageComponent,
         AddLangAndServComponent,
         AddRequestComponent,
-        PruebasPoupComponent
+        PruebasPoupComponent,
+        DetailsPopupComponent
     ],
     imports: [
         CommonModule,
@@ -63,6 +65,7 @@ import { PruebasPoupComponent } from './components/pruebas-poup/pruebas-poup.com
             { path: 'addLang-Serv', component: AddLangAndServComponent },
             { path: 'addLang-Serv/:id', component: AddLangAndServComponent },
             { path: 'addRequest', component: AddRequestComponent },
+            { path: 'details-popup', component: DetailsPopupComponent },
             { path: '**', redirectTo: 'home' },
 
             

@@ -4,20 +4,39 @@
 
 
     <div class="container-fluid col-md-12">
-            <div class="col-md-6">
-                <img src="{{trad.imagen}}" alt="Profile Img" class="profileImg" />
+        <div class="col-md-6">
+            <img src="{{trad.imagen}}" alt="Profile Img" class="profileImg" />
+        </div>
+        <div class="thumbnail col-md-6">
+            <button class="btn btn-primary btn-sm cerrar" [routerLink]="['/Traductor/edit/', trad.id]"><i class="glyphicon glyphicon-edit"></i></button>
+            <h3><strong>{{trad.name}} {{trad.lastName}}</strong></h3>
+            <hr />
+            <h4><span class="label label-default">Email: </span> <strong>{{trad.email}}</strong></h4>
+            <h4>
+                <span class="label label-default">Phone: </span> <strong>{{trad.tlfn}}</strong>
+                <span class="label label-default">PostalCode: </span> <strong>{{trad.cp}}</strong>
+            </h4>
+        </div>
+        <!--Div que muestra la informacion de la biografia del traductor-->
+        <div class="col-md-12 panel-primary" *ngIf="bio">
+            <h4 class="panel-heading">Bio:</h4>
+            <div class="panel-body">
+                <p>{{bio}}</p>
             </div>
-            <div class="thumbnail col-md-6">
-                <button class="btn btn-primary btn-sm cerrar" [routerLink]="['/Traductor/edit/', trad.id]"><i class="glyphicon glyphicon-edit"></i></button>
-                <h3><strong>{{trad.name}} {{trad.lastName}}</strong></h3>
-                <hr />
-                <h4><span class="label label-default">Email: </span> <strong>{{trad.email}}</strong></h4>
-                <h4>
-                    <span class="label label-default">Phone: </span> <strong>{{trad.tlfn}}</strong>
-                    <span class="label label-default">PostalCode: </span> <strong>{{trad.cp}}</strong>
-                </h4>
+        </div>
+
+        <div class="col-md-12 " *ngIf="!bio">
+            <p class="alert-warning alert">
+                Your profile does not have a biography yet, add one so that users know you better before making a request.
+            </p>
+            <div class="form-group row">
+                <form [formGroup]='formBio' #formDir="ngForm" (ngSubmit)='onSubmit()'>
+                    <label class="control-label"> Bio </label>
+                    <input type="submit" name="submit" class="btn btn-primary glyphicon glyphicon-plus pull-right" value="+" />
+                    <input type="text" formControlName="bio" class="form-control" />
+                </form>
             </div>
-        
+        </div>
 
         <!-- div que contiene lista de idiomas y servicios del traductor -->
         <div class="thumbnail  col-md-12">
@@ -44,7 +63,6 @@
         </div>
     </div>
 </div>
-
 
 
 <popup #requestPopup class="popup">

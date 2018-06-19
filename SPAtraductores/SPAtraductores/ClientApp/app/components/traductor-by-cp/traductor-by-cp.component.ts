@@ -2,9 +2,7 @@
 import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TraductorService } from '../../services/traductorservice.service';
-import { codigoPostal } from '../home/home.component';
-import { idioma } from '../home/home.component';
-import { servicio } from '../home/home.component';
+import { codigoPostal, idioma, servicio } from '../home/home.component';
 import { Popup } from 'ng2-opd-popup';
 
 @Component({
@@ -19,13 +17,15 @@ export class TraductorByCpComponent {
     cp: string;
     language: string;
     service: string;
-    public tradList: TraductorData[];
-    public showTrads: Boolean;
+    public tradList: TraductorData[] | undefined;
     public traductorId: number;
     public idIdioma: number;
     public idServicio: number;
+    public detailTraductor: TraductorData | undefined;
 
     @ViewChild('requestFormPopup') requestFormPopup: Popup;
+
+    @ViewChild('deatilsPopup') detailsPopup: Popup;
     
     /** traductorByCP ctor */
     constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute, private _traductorService: TraductorService) {
@@ -51,8 +51,7 @@ export class TraductorByCpComponent {
     }
 
     getTraductorsData() {
-        console.log("codigo postal: " + codigoPostal + " idioma: " + idioma + " servicio: " + servicio);
-
+        
         this._traductorService.getTraductorsDatos(codigoPostal, idioma, servicio).subscribe(
             data => this.tradList = data)
     }
@@ -82,6 +81,24 @@ export class TraductorByCpComponent {
         this.requestFormPopup.show(this.requestFormPopup.options);
     }
 
+    openDetailsPopup(traductor) {
+        this.detailTraductor = traductor;
+
+        this.detailsPopup.options = {
+            color: "#576775",
+            confirmBtnContent: "Add a request",
+            cancleBtnContent: "",
+            confirmBtnClass: "hide",
+            cancleBtnClass: "btn btn-danger botonCerrarPopup glyphicon glyphicon-remove",
+            header: "Add a Request for our translator",
+            widthProsentage: 70,
+            animation: "fadeInDown"
+        }
+        this.detailsPopup.show(this.detailsPopup.options);
+    
+
+    }
+
 }
 
 interface TraductorData {
@@ -96,4 +113,5 @@ interface TraductorData {
     idIdioma: number;
     idServicio: number;
     imagen: string;
+    bio: string;
 }

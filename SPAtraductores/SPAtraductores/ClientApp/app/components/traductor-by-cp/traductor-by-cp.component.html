@@ -1,4 +1,4 @@
-﻿<p *ngIf="!tradList"><em>Loading...</em></p>
+﻿
 <div>
     <header>
         <!--<h1 class="bg-primary p-5">Translators DataBase</h1>-->
@@ -6,6 +6,7 @@
         <p>
             That talks: <strong>{{language}}</strong> and works on: <strong>{{service}}</strong>.
         </p>
+        <div *ngIf="!tradList"><h3><em>Loading...</em></h3><div class="loader"></div></div>
     </header>
 
     <div *ngIf="tradList ==''">
@@ -28,6 +29,13 @@
                 </h4>
                 <h4> <i class="glyphicon glyphicon-phone"></i>Phone Number: {{traductor.tlfn}}</h4>
                 <hr />
+                <!--<a data-target="#1" data-toggle="collapse" class="button"> Bio: </a>
+    <div class="panel-primary" *ngIf="traductor.bio">
+        <div class="panel-body collapse" id="1">
+            <p>{{traductor.bio}}</p>
+        </div>
+    </div>-->
+                <button class="button" (click)="openDetailsPopup(traductor)"> <i class="glyphicon glyphicon-book"></i> Details </button>
                 <button class="bg-primary pull-right" (click)="requestPopup(traductor.idTraductor, traductor.idServicio, traductor.idIdioma)"> <i class="glyphicon glyphicon-briefcase"></i> Contact </button>
 
             </div>
@@ -35,12 +43,20 @@
     </div>
 </div>
 
-<popup #requestFormPopup class="popup" (confirmClick)="probar()">
-    <app-add-request
-                     [idTraductor]="traductorId"
-                     [idIdioma]="idIdioma"
-                     [idServicio]="idServicio" class="col-md-10 col-md-offset-1 formPopup"
-                     class="col-md-10 col-md-offset-1 col-xs-12">
+<popup #requestFormPopup class="popup">
+    <app-add-request 
+        [idTraductor]="traductorId"
+        [idIdioma]="idIdioma"
+        [idServicio]="idServicio" 
+        class="col-md-10 col-md-offset-1 col-xs-12 formPopup">
     </app-add-request>
 </popup>
+
+<popup #detailsPopup class="popup">
+    <app-details-popup 
+        [detailTraductor]="detailTraductor">
+    </app-details-popup>
+</popup>
+
+
 

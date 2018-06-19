@@ -237,6 +237,7 @@ namespace SPAtraductores.Models
                         datosTraductor.idIdioma = Convert.ToInt32(rdr["idIdioma"]);
                         datosTraductor.idServicio = Convert.ToInt32(rdr["idServicio"]);
                         datosTraductor.Imagen = rdr["Img"].ToString();
+                        datosTraductor.Bio = rdr["Bio"].ToString();
 
                         lsttraductores.Add(datosTraductor);
                     }
@@ -653,8 +654,60 @@ namespace SPAtraductores.Models
             }
         }
 
+        /* ----- BIOS -----*/
+
+        /* -- ADD BIO -- */
+
+        public int AddBio(int id, String text)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("addBio", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idTraductor", id);
+                    cmd.Parameters.AddWithValue("@Bio", text);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        
+        /* --- Get bio of a translator ---*/
+        public String GetTranslatorBio(int id)
+        {
+            try
+            {
+                String bio = "";
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = "SELECT Bio FROM Bios WHERE idTraductor =" + id + ";";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        bio = rdr["Bio"].ToString();
+                    }
+
+                    con.Close();
+                }
+
+                return bio;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
     }
-
-
 
 }

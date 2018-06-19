@@ -8,7 +8,7 @@ import { TraductorService } from '../../services/traductorservice.service'
     styleUrls: ['./fetchtraductor.component.css']
 })  
 export class FetchTraductorComponent {  
-    public tradList: TraductorData[];  
+    public tradList: TraductorData[] | undefined;  
     constructor(public http: Http, private _router: Router, private _traductorService: TraductorService) {  
         this.getTraductors();  
     }       
