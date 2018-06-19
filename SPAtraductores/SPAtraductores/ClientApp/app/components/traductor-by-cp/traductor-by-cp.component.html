@@ -44,19 +44,23 @@
 </div>
 
 <popup #requestFormPopup class="popup">
-    <app-add-request 
+    <app-add-request *ngIf="!details"
         [idTraductor]="traductorId"
         [idIdioma]="idIdioma"
         [idServicio]="idServicio" 
         class="col-md-10 col-md-offset-1 col-xs-12 formPopup">
     </app-add-request>
+    <app-details-popup *ngIf="details"
+        [detailTraductor]="detailTraductor">
+    </app-details-popup>
+
 </popup>
 
-<popup #detailsPopup class="popup">
+<!--<popup #detailsPopup class="popup">
     <app-details-popup 
         [detailTraductor]="detailTraductor">
     </app-details-popup>
-</popup>
+</popup>-->
 
 
 
