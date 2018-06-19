@@ -34,4 +34,10 @@ hr {
     display: inline-block;
 }
 
+.row {
+    margin-top: -40px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
 
