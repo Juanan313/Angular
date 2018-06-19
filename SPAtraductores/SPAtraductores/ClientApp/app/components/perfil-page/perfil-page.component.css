@@ -126,3 +126,7 @@ hr {
     right: -10px;
     position: relative;
 }
+
+.row {
+    margin-right: -25px;
+}
