@@ -75,7 +75,7 @@ a {
     word-break: break-word;
     position: fixed;
     left: 10%;
-    top: 13%;
+    top: 5vh;
     width: 80%;
     z-index: 12;
 }

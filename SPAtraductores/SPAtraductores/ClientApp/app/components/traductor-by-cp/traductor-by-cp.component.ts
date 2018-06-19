@@ -106,7 +106,7 @@ export class TraductorByCpComponent {
             cancleBtnContent: "",
             confirmBtnClass: "hide",
             cancleBtnClass: "btn btn-danger botonCerrarPopup glyphicon glyphicon-remove",
-            header: "Add a Request for our translator",
+            header: "Details",
             widthProsentage: 70,
             animation: "fadeInDown"
         }

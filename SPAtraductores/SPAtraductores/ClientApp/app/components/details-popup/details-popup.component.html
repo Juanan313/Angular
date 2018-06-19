@@ -1,4 +1,45 @@
-﻿<div *ngIf="detailTraductor" class="panel">
+﻿<div class="row">
+    <div class="col-md-12 profileBG">
+        <img src="{{detailTraductor.imagen}}" alt="Profile Img" class="profileImg img-circle" />
+    </div>
+    <div class="container-fluid col-md-12">
+        <div class="col-md-12">
+
+            <h3><strong>{{detailTraductor.name}} {{detailTraductor.lastName}}</strong></h3>
+            <hr />
+            <h4>  <span class="label label-default">Email: </span> <strong>{{detailTraductor.email}}</strong></h4>
+            <h4>
+                <span class="label label-default">Phone: </span> <strong>{{detailTraductor.tlfn}}</strong>
+                <span class="label label-default">PostalCode: </span> <strong>{{detailTraductor.cp}}</strong>
+            </h4>
+        </div>
+        <!--Div que muestra la informacion de la biografia del traductor-->
+        <div class="col-md-12 panel-primary" *ngIf="detailTraductor.bio">
+            <div class="panel-body">
+                <p>{{detailTraductor.bio}}</p>
+            </div>
+        </div>
+
+        <div class="col-md-12 " *ngIf="!detailTraductor.bio">
+            <p class="alert-warning alert">
+                This translator hasnt a bio yet.
+            </p>
+        </div>
+        <div class="container-fluid col-md-12">
+            <h3>
+                Languages ​​that speaks:
+            </h3>
+            <hr />
+            <span class="label label-success langServ" *ngFor="let idioma of langList"> {{idioma.lenguage}}</span>
+            <h3>
+                Services for which works:
+            </h3>
+            <hr />
+            <span class="label label-primary langServ" *ngFor="let servicio of servList"> {{servicio.service}}</span>
+        </div>
+    </div>
+</div>
+    <!--<div *ngIf="detailTraductor" class="panel">
         <h4 class="panel-heading"> {{detailTraductor.name}}{{detailTraductor.lastName}}</h4>
         <div class="panel-group">
             <div class="panel-default">
@@ -10,4 +51,4 @@
                 <h4> <i class="glyphicon glyphicon-phone"></i>Phone Number: {{detailTraductor.tlfn}}</h4>
             </div>
         </div>
-    </div>
+    </div>-->
