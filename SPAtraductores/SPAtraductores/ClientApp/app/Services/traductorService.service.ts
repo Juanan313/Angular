@@ -139,6 +139,12 @@ export class TraductorService {
             .catch(this.errorHandler);  
     }  
 
+    updateTraductorBio(bio) {
+        return this._http.put(this.myAppUrl + 'api/Traductor/Bio/Edit', bio)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }
+
 
     // DELETE DATA
     deleteTraductor(id) {  

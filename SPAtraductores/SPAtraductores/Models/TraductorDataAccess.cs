@@ -126,7 +126,7 @@ namespace SPAtraductores.Models
                         traductor.Email = rdr["Email"].ToString();
                         traductor.Usuario = rdr["Usuario"].ToString();
                         traductor.Pass = rdr["Pass"].ToString();
-                        traductor.CP = rdr["CP"].ToString(); 
+                        traductor.CP = rdr["CP"].ToString();
                         traductor.Tlfn = rdr["Tlfn"].ToString();
                         traductor.Imagen = rdr["Img"].ToString();
                     }
@@ -144,12 +144,12 @@ namespace SPAtraductores.Models
         public int GetTraductorId(string usuario, string contraseña)
         {
             try
-            {   
+            {
                 int ID = 0;
                 Traductor traductor = new Traductor();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT idTraductores FROM Traductores WHERE (Usuario = '" +usuario+"' OR Email='"+usuario+"') AND Pass='"+contraseña+"'";
+                    string sqlQuery = "SELECT idTraductores FROM Traductores WHERE (Usuario = '" + usuario + "' OR Email='" + usuario + "') AND Pass='" + contraseña + "'";
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
@@ -357,14 +357,14 @@ namespace SPAtraductores.Models
 
         // devuelve una lista de los idiomas hablados por un traductor
 
-        public IEnumerable<Idioma> getIdiomasHablados( int idTraductor)
+        public IEnumerable<Idioma> getIdiomasHablados(int idTraductor)
         {
             try
             {
                 List<Idioma> listLenguages = new List<Idioma>();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT Idioma, IdIdioma FROM Idiomas INNER JOIN dbo.TraductoresQueHablan ON Idiomas_IdIdioma = IdIdioma WHERE Traductores_idTraductores = "+ idTraductor +"ORDER BY Idioma";
+                    string sqlQuery = "SELECT Idioma, IdIdioma FROM Idiomas INNER JOIN dbo.TraductoresQueHablan ON Idiomas_IdIdioma = IdIdioma WHERE Traductores_idTraductores = " + idTraductor + "ORDER BY Idioma";
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
                     con.Open();
                     SqlDataReader rdr = cmd.ExecuteReader();
@@ -426,7 +426,7 @@ namespace SPAtraductores.Models
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
-                return 1; 
+                return 1;
             }
 
             catch
@@ -519,10 +519,10 @@ namespace SPAtraductores.Models
             catch (Exception ex)
             {
                 throw ex;
-            } 
+            }
             finally
             {
-                
+
             }
         }
 
@@ -554,7 +554,7 @@ namespace SPAtraductores.Models
                 }
                 return serviceList;
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
 
 
@@ -638,7 +638,7 @@ namespace SPAtraductores.Models
                         request.Tlfn = rdr["Telefono"].ToString();
                         request.Idioma = rdr["Idioma"].ToString();
                         request.Servicio = rdr["Servicio"].ToString();
-                        
+
 
                         requestList.Add(request);
                     }
@@ -679,7 +679,7 @@ namespace SPAtraductores.Models
                 throw;
             }
         }
-        
+
         /* --- Get bio of a translator ---*/
         public String GetTranslatorBio(int id)
         {
@@ -708,6 +708,29 @@ namespace SPAtraductores.Models
             }
         }
 
-    }
+        // Update Bio of translator
+        public int UpdateTranslatorBio(Bio bio)
+        {
+            try
+            {
+                int result;
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = "UPDATE Bios SET (Bio) VALUES("+bio.text+") WHERE Bios.idTraductor = "+bio.idTraductor+";";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                    con.Open();
+                    result = cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                return result;
+            }
+            catch
+            {
+                throw;
 
+
+            }
+
+        }
+    }
 }

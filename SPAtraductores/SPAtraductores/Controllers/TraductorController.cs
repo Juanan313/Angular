@@ -240,12 +240,19 @@ namespace SPAtraductores.Controllers
         [HttpPost]
         [Route("api/Traductor/CreateBio")]
         public int AddBioToTrad([FromBody] Bio bio)
-        {
+        { 
             int result;
 
             try
             {
+                if (bio.text.Length < 25 || bio.text.Length > 150) 
+                {
+                    result = 0;
+                }
+                else
+                {
                     result = objtraduct.AddBio(bio.idTraductor, bio.text);
+                }
             }
             catch (NullReferenceException nullEx)
             {
@@ -539,8 +546,29 @@ namespace SPAtraductores.Controllers
 
             return result;
         }
+
+
+        [HttpPut]
+        [Route("api/Traductor/Bio/Edit")]
+        public int EditBio([FromBody] Bio bio)
+        {
+            int result;
+
+            try
+            {
+                result = objtraduct.UpdateTranslatorBio(bio);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
+        }
+
     }
-    }
+}
 
 
 //public class objetoClase

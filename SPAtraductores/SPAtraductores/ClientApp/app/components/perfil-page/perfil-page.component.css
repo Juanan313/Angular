@@ -119,3 +119,9 @@ hr {
     top: -11px;
     position: relative;
 }
+
+.addBio {
+    margin-bottom: 5px;
+    background-color: #3c763d;
+    color: white;
+}

@@ -41,7 +41,7 @@ export class PerfilPageComponent implements OnInit/*, OnChanges*/ {
         this.bio = "";
 
         this.formBio = this._fb.group({
-            bio: ['', Validators.required]
+            bio: ['', Validators.required, Validators.minLength(25), Validators.maxLength(150)]
         })
     }
 
